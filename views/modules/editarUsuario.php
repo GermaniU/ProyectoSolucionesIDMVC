@@ -6,7 +6,7 @@
 
 	$editarUsuario = new MvcController();
 	$editarUsuario -> editarUsuarioController();
-	/*$editarUsuario -> actualizarUsuarioController();*/
+	$editarUsuario -> actualizarUsuarioController();
 
 	?>
 

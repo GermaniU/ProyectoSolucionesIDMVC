@@ -130,13 +130,13 @@ class MvcController{
 
 			 <input type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
 
-			 <input type="email" value="'.$respuesta["totalPago"].'" name="totalPago" required>
+			 <input type="text" value="'.$respuesta["totalPago"].'" name="totalPago" required>
 
 			 <input type="text" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
 
 			 <input type="text" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
 
-			 <input type="email" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
+			 <input type="text" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
 
 			 <input type="email" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
 
@@ -144,18 +144,22 @@ class MvcController{
 
 	}
 
-/*	#ACTUALIZAR USUARIO
+#ACTUALIZAR USUARIO
 	#------------------------------------
 	public function actualizarUsuarioController(){
 
-		if(isset($_POST["usuarioEditar"])){
+		if(isset($_POST["nombreCliente"])){
 
-			$datosController = array( "id"=>$_POST["idEditar"],
-							          "usuario"=>$_POST["usuarioEditar"],
-				                      "password"=>$_POST["passwordEditar"],
-				                      "email"=>$_POST["emailEditar"]);
+			$datosController = array( "RFC"=>$_POST["RFC"],
+							          "nombreCliente"=>$_POST["nombreCliente"],
+				                      "dominio"=>$_POST["dominio"],
+				                      "totalPago"=>$_POST["totalPago"],
+				                      "nombreEmpresa"=>$_POST["nombreEmpresa"],
+				                      "telefonoClienteEmpresa"=>$_POST["telefonoClienteEmpresa"],
+				                      "direccionClienteEmpresa"=>$_POST["direccionClienteEmpresa"],
+				                      "correoClienteEmpresa"=>$_POST["correoClienteEmpresa"]);
 			
-			$respuesta = Datos::actualizarUsuarioModel($datosController, "usuarios");
+			$respuesta = Datos::actualizarUsuarioModel($datosController, "Cliente");
 
 			if($respuesta == "success"){
 
@@ -172,6 +176,7 @@ class MvcController{
 		}
 	
 	}
+	/*
 
 	#BORRAR USUARIO
 	#------------------------------------
