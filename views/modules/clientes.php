@@ -18,8 +18,11 @@ table tbody tr td {
     padding: 10px;
     background-color: #e8503a;
 }
+button{
+	margin: auto;
+	font-size: 20px;
+}
  
-
 </style>
 
 <?php
@@ -36,11 +39,10 @@ if(!$_SESSION["validar"]){
 
 ?>
 
-<h1>USUARIOS</h1>
-  
 	<div class="container">
 	   <div id="tablaClientes">
-	   	
+	   	<h1>Cliente</h1> 
+<button> a</button>
 	 <table>
 		
 		<thead>

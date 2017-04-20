@@ -126,7 +126,7 @@ class MvcController{
 
 		echo'<input type="hidden" value="'.$respuesta["RFC"].'" name="RFC">
 
-			 <input type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
+             <input type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
 
 			 <input type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
 
@@ -147,35 +147,70 @@ class MvcController{
 #ACTUALIZAR USUARIO
 	#------------------------------------
 	public function actualizarUsuarioController(){
-
+        $errores ='';
 		if(isset($_POST["nombreCliente"])){
+         //-----Obtener datos del formulario-----
+		         $rfc = $_POST["RFC"];
+		         $cliente =$_POST["nombreCliente"];
+		         $dominio = $_POST["dominio"];
+		         $totalpago =$_POST["totalPago"];
+		         $nombreempresa =$_POST["nombreEmpresa"];
+		         $telefono = $_POST["telefonoClienteEmpresa"];
+		         $direccioncliente = $_POST["direccionClienteEmpresa"];
+		         $correo = $_POST["correoClienteEmpresa"];
+           
+         //--------Metodos para validar que los datos ingresados sean correctos
+         
+				
+				 $cliente = trim($cliente);
+				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
+				
+				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
 
-			$datosController = array( "RFC"=>$_POST["RFC"],
-							          "nombreCliente"=>$_POST["nombreCliente"],
-				                      "dominio"=>$_POST["dominio"],
-				                      "totalPago"=>$_POST["totalPago"],
-				                      "nombreEmpresa"=>$_POST["nombreEmpresa"],
-				                      "telefonoClienteEmpresa"=>$_POST["telefonoClienteEmpresa"],
-				                      "direccionClienteEmpresa"=>$_POST["direccionClienteEmpresa"],
-				                      "correoClienteEmpresa"=>$_POST["correoClienteEmpresa"]);
+				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+					$errores .= 'Por favor ingresa un correo valido <br />';
+				}
+
+				 $dominio = trim($dominio);
+				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
+
+				 $totalpago = trim($totalpago);
+
+				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
+					$errores .= 'Por favor ingresa una cantidad valida <br />';
+				}
+         //-----------------------------------
+       
+			$datosController = array( "RFC"=>$rfc,
+							          "nombreCliente"=>$cliente,
+				                      "dominio"=>$dominio,
+				                      "totalPago"=>$totalpago,
+				                      "nombreEmpresa"=>$nombreempresa,
+				                      "telefonoClienteEmpresa"=>$telefono,
+				                      "direccionClienteEmpresa"=>$direccioncliente,
+				                      "correoClienteEmpresa"=>$correo);
 			
-			$respuesta = Datos::actualizarUsuarioModel($datosController, "Cliente");
+			if(!$errores){
+               $respuesta = Datos::actualizarUsuarioModel($datosController, "Cliente");
+	                 if($respuesta == "success"){
 
-			if($respuesta == "success"){
+					header("location:index.php?action=cambio");
 
-				header("location:index.php?action=cambio");
+				}
 
+				else{
+
+					echo "error";
+				}
+			}else{
+				echo $errores;
 			}
+		 
+           
 
-			else{
-
-				echo "error";
-
-			}
-
-		}
-	
-	}
+			
+     }
+}
 	/*
 
 	#BORRAR USUARIO

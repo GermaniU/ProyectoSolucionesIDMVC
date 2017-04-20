@@ -11,6 +11,7 @@
 	margin: 0 auto;
 
 }
+
 #tablaClientes{
     width: 980px;
     margin:0 auto;
@@ -52,11 +53,11 @@ section h1 {
     text-align: center;
 }
 
-section form {
+/* section form {
     position: relative;
     margin: auto;
     width: 400px;
-}
+} */
 
 section form input {
     display: inline-block;
