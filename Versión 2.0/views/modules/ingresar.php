@@ -1,12 +1,21 @@
-<h1 class="animated fadeIn">INGRESAR</h1>
-<div class="container animated fast fadeIn">
-<img src="https://randomuser.me/api/portraits/med/men/83.jpg" class="rounded mx-auto d-block" >
-<form method="post" action="">
+<style>
+  body{
+
+  }
+</style>
+
+
+
+
+<h1 class="login-title animated fadeIn">INGRESAR</h1>
+<div class="container animated fast fadeIn cont-form">
+<img src="views/assets/img/fotoadmin.svg" class="rounded mx-auto d-block" >
+<form id="form-login" method="post" action="">
   <div class="form-group">
-    <input type="text" class="form-control"  placeholder="Ingrese su usuario" name="usuariof" required>
+    <input type="text" class="form-control login-input"  placeholder="Ingrese su usuario" name="usuariof" required>
   </div>
   <div class="form-group">
-    <input type="password" class="form-control" placeholder="Ingrese su contraseña" name="passwordf" required="">
+    <input type="password" class="form-control login-input" placeholder="Ingrese su contraseña" name="passwordf" required>
   </div>
   <input type="submit" class="btn btn-outline-primary" value="Enviar">
 </form>

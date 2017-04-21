@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 17.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="100px" height="90px" viewBox="0 0 100 90" enable-background="new 0 0 100 90" xml:space="preserve">
+<g>
+	<g opacity="0.15">
+		<path stroke="#000000" stroke-miterlimit="10" d="M64.274,15.637H40.634c-2.041,0-3.711,1.67-3.711,3.711v44.836
+			c0,2.041,1.67,3.711,3.711,3.711h33.639c2.041,0,3.711-1.67,3.711-3.711V29.496L64.274,15.637z"/>
+		<path stroke="#000000" stroke-miterlimit="10" d="M64.309,15.637v10.131c0,2.041,1.67,3.711,3.711,3.711h9.963L64.309,15.637z"/>
+		<path stroke="#000000" stroke-miterlimit="10" d="M54.741,47.09H34.934c-3.804,0-6.917-3.113-6.917-6.918v-4.743
+			c0-3.805,3.113-6.917,6.917-6.917h19.806c3.805,0,6.918,3.113,6.918,6.917v4.743C61.658,43.977,58.545,47.09,54.741,47.09z"/>
+		<text transform="matrix(1 0 0 1 33.8717 41.7646)" font-family="'Cabin-Bold'" font-size="11.7141">PDF</text>
+		<polygon stroke="#000000" stroke-width="3" stroke-miterlimit="10" points="61.5,65.5 61.5,54.5 53.5,54.5 53.5,65.5 45.482,65.5 
+			57.287,80.16 69.092,65.5 		"/>
+	</g>
+	<g>
+		<g>
+			<path fill="#FFFFFF" stroke="#F44C4D" stroke-miterlimit="10" d="M61.274,12.637H37.634c-2.041,0-3.711,1.67-3.711,3.711v44.836
+				c0,2.041,1.67,3.711,3.711,3.711h33.639c2.041,0,3.711-1.67,3.711-3.711V26.496L61.274,12.637z"/>
+			<path fill="#FFFFFF" stroke="#F44C4D" stroke-miterlimit="10" d="M61.309,12.637v10.131c0,2.041,1.67,3.711,3.711,3.711h9.963
+				L61.309,12.637z"/>
+			<path fill="#F44C4D" stroke="#FFFFFF" stroke-miterlimit="10" d="M51.741,44.09H31.934c-3.804,0-6.917-3.113-6.917-6.918v-4.743
+				c0-3.805,3.113-6.917,6.917-6.917h19.806c3.805,0,6.918,3.113,6.918,6.917v4.743C58.658,40.977,55.545,44.09,51.741,44.09z"/>
+			<text transform="matrix(1 0 0 1 30.8717 38.7646)" fill="#FFFFFF" font-family="'Cabin-Bold'" font-size="11.7141">PDF</text>
+			<polygon fill="#F44C4D" stroke="#FFFFFF" stroke-width="3" stroke-miterlimit="10" points="58.5,62.5 58.5,51.5 50.5,51.5 
+				50.5,62.5 42.482,62.5 54.287,77.16 66.092,62.5 			"/>
+		</g>
+	</g>
+</g>
+</svg>

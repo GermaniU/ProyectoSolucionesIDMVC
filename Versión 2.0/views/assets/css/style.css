@@ -1,10 +1,41 @@
+.login-title{
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#form-login input{
+  margin-top: 10px;
+  width:30%;
+  text-align: center;
+  display: inline-block;
+
+}
+#form-login{
+  text-align: center;
+  width: 100%;
+}
+
+#form-login input[type=submit]{
+  width: 15%;
+}
+
+#form-login input[type=submit]:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(25px);
+}
+
 .nav-color{
     background-color: green;
     text-align: center;
 }
 
 .footer{
-    position: absolute;
+    position: relative;
     bottom: 0px;
     width: 100%;
 }

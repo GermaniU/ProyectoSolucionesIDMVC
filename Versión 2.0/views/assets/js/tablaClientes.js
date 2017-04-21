@@ -1,7 +1,7 @@
 $(document).ready(function() {
     var table = $('#tdClientes').DataTable( {
-        	lengthChange: true,
-           	dom: 'Bfrtip',
+        	lengthChange: false,
+           	dom: 'Bfrtipl',
 		    buttons: [
 		    	{
 		            extend: 'pdfHtml5',
@@ -15,8 +15,8 @@ $(document).ready(function() {
 						     	}
 						 }
 		        },
-		        'colvis',
 		        'excel',
+		        'colvis'
 		    		],
 		    "language":idioma_espanol
 		});

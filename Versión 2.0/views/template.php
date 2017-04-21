@@ -4,6 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>SolucionesID</title>
+
 	<link rel="stylesheet" href="../views/assets/css/style.css">
 	<link rel="stylesheet" href="../views/assets/css/css/bootstrap.css">
 	<link rel="stylesheet" href="../views/assets/css/css/dataTables.bootstrap4.css">
@@ -27,15 +28,13 @@
 	<script type="text/javascript" src="../views/assets/js/tablaClientes.js"></script>
 </head>
 	<body>
-	 	<div id="navbar">
 	 		<?php include "modules/navegacion.php"; ?>
-	 	</div>
 		<section>
 		<?php
 			$mvc = new MvcController();
 			$mvc -> enlacesPaginasController();
 		 ?>
 		</section>
-		<?php include "modules/footer.php"; ?>
+		<?php /*include "modules/footer.php";*/ ?>
 	</body>
 </html>
