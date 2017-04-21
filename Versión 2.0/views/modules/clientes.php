@@ -43,7 +43,7 @@ if(!$_SESSION["validar"]){
 	   <div id="tablaClientes" >
 
 <!-- <button> a</button>
- --><table id="tdClientes " class="table table-responsive table-striped table-bordered table-hover animated  fadeIn">
+ --><table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn">
 			<thead class="">
 			<tr>
 				<th>RFC</th>
