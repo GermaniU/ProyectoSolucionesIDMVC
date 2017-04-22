@@ -114,69 +114,13 @@ class MvcController{
 		}
 
 	}
-	#AGREGAR CLIENTE
-	#------------------------------------
+	// #AGREGAR CLIENTE
+	// #------------------------------------
 
-	public function agregarClienteController(){
+	// public function agregarClienteController(){
 
-		
-		echo'
-		<div class="container">
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Rfc: </label>
-  				<div class="col-10">
-  				<input type="text" class="form-control" value="" name="RFC" required>
-				</div>
-		</div>
-		
-
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Nombre: </label>
-  				<div class="col-10">
-             <input type="text" class="form-control" value="" name="nombreCliente" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Dominio: </label>
-  				<div class="col-10">
-			 <input type="text" class="form-control" value="" name="dominio" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Total pagado: </label>
-  				<div class="col-10">
-			 <input type="text" class="form-control" value="" name="totalPago" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Nombre de la Empresa: </label>
-  				<div class="col-10">
-			 <input type="text" class="form-control" value="" name="nombreEmpresa" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Telefono: </label>
-  				<div class="col-10">
-			 <input type="text" class="form-control"" value="" name="telefonoClienteEmpresa" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Direccion: </label>
-  				<div class="col-10">
-			 <input type="text" class="form-control" value="" name="direccionClienteEmpresa" required>
-				</div>
-		</div>
-		<div class="form-group row">
-  			<label for="example-search-input" class="col-2 col-form-label">Correo: </label>
-  				<div class="col-10">
-			 <input type="email" class="form-control" value="" name="correoClienteEmpresa" required>
-				</div>
-		</div><br>
-			 <input type="submit" class=" btn btn-warning text-center" value="AgregarCliente">
-		</div>
-			 ';
-
-	}
+	
+	// }
 	#AGREGAR CLIENTE A LA BASE DE DATOS
 	#-----------------------------------------------
 	public function agregarClienteBDController(){
@@ -223,12 +167,12 @@ class MvcController{
 
 			
         //------------------------Comprobar que no contenga errores--------------------
-
-			/*if(!$errores){
-                     $respuesta = Datos::actualizarClienteModel($datosController, "Cliente");
+                  
+			if(!$errores){
+                     $respuesta = Datos::registroClienteModel($datosController, "Cliente");
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=cambio");
+					header("location:index.php?action=registrado");
 
 				     }else{
 
@@ -236,7 +180,7 @@ class MvcController{
 				    }
 			}else{
 				echo $errores;
-			}*/
+			}
 		}
     }
 
