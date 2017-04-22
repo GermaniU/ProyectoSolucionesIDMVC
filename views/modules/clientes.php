@@ -11,14 +11,13 @@ if(!$_SESSION["validar"]){
 }
 ?>
 <h1 class="text-center margin-20 animated fast fadeIn">Cliente</h1>
-<div class="container">
+<!-- <div class="container">
 	<div class="contenedorBotonAgregar">
 		<a href="index.php?action=agregarCliente" class="text-right botonagregar">Agregar Cliente</a>
    </div><br>
-</div>
-	<div class="container">
-<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn">
-
+</div> -->
+	<div class="table-responsive col-sm-12 margin-bottom">
+		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn ">
 			<thead class="">
 			<tr>
 				<th>RFC</th>
