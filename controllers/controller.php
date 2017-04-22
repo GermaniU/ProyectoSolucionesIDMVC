@@ -114,6 +114,132 @@ class MvcController{
 		}
 
 	}
+	#AGREGAR CLIENTE
+	#------------------------------------
+
+	public function agregarClienteController(){
+
+		
+		echo'
+		<div class="container">
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Rfc: </label>
+  				<div class="col-10">
+  				<input type="text" class="form-control" value="" name="RFC" required>
+				</div>
+		</div>
+		
+
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Nombre: </label>
+  				<div class="col-10">
+             <input type="text" class="form-control" value="" name="nombreCliente" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Dominio: </label>
+  				<div class="col-10">
+			 <input type="text" class="form-control" value="" name="dominio" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Total pagado: </label>
+  				<div class="col-10">
+			 <input type="text" class="form-control" value="" name="totalPago" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Nombre de la Empresa: </label>
+  				<div class="col-10">
+			 <input type="text" class="form-control" value="" name="nombreEmpresa" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Telefono: </label>
+  				<div class="col-10">
+			 <input type="text" class="form-control"" value="" name="telefonoClienteEmpresa" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Direccion: </label>
+  				<div class="col-10">
+			 <input type="text" class="form-control" value="" name="direccionClienteEmpresa" required>
+				</div>
+		</div>
+		<div class="form-group row">
+  			<label for="example-search-input" class="col-2 col-form-label">Correo: </label>
+  				<div class="col-10">
+			 <input type="email" class="form-control" value="" name="correoClienteEmpresa" required>
+				</div>
+		</div><br>
+			 <input type="submit" class=" btn btn-warning text-center" value="AgregarCliente">
+		</div>
+			 ';
+
+	}
+	#AGREGAR CLIENTE A LA BASE DE DATOS
+	#-----------------------------------------------
+	public function agregarClienteBDController(){
+        $errores ='';
+		if(isset($_POST["nombreCliente"])){
+         //-----Obtener datos del formulario-----
+		         $rfc = $_POST["RFC"];
+		         $cliente =$_POST["nombreCliente"];
+		         $dominio = $_POST["dominio"];
+		         $totalpago =$_POST["totalPago"];
+		         $nombreempresa =$_POST["nombreEmpresa"];
+		         $telefono = $_POST["telefonoClienteEmpresa"];
+		         $direccioncliente = $_POST["direccionClienteEmpresa"];
+		         $correo = $_POST["correoClienteEmpresa"];
+
+         //--------Metodos para validar que los datos ingresados sean correctos
+
+
+				 $cliente = trim($cliente);
+				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
+
+				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
+
+				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+						$errores .= 'Por favor ingresa un correo valido <br />';
+				 }
+
+				 $dominio = trim($dominio);
+				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
+
+				 $totalpago = trim($totalpago);
+
+				 
+         //-----------------------guardar datos en un arreglo para la clase CRUD
+
+			     $datosController = array( "RFC"=>$rfc,
+							          "nombreCliente"=>$cliente,
+				                      "dominio"=>$dominio,
+				                      "totalPago"=>$totalpago,
+				                      "nombreEmpresa"=>$nombreempresa,
+				                      "telefonoClienteEmpresa"=>$telefono,
+				                      "direccionClienteEmpresa"=>$direccioncliente,
+				                      "correoClienteEmpresa"=>$correo);
+
+			
+        //------------------------Comprobar que no contenga errores--------------------
+
+			/*if(!$errores){
+                     $respuesta = Datos::actualizarClienteModel($datosController, "Cliente");
+	                 if($respuesta == "success"){
+
+					header("location:index.php?action=cambio");
+
+				     }else{
+
+					  echo "error";
+				    }
+			}else{
+				echo $errores;
+			}*/
+		}
+    }
+
 
 	#EDITAR CLIENTE
 	#------------------------------------
@@ -175,6 +301,7 @@ class MvcController{
 
 	}
 
+
 #ACTUALIZAR USUARIO
 	#------------------------------------
 	public function actualizarClienteController(){
@@ -207,9 +334,7 @@ class MvcController{
 
 				 $totalpago = trim($totalpago);
 
-				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
-					$errores .= 'Por favor ingresa una cantidad valida <br />';
-				}
+				 
          //-----------------------guardar datos en un arreglo para la clase CRUD
 
 			     $datosController = array( "RFC"=>$rfc,

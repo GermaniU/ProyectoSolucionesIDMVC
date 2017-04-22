@@ -13,9 +13,7 @@ if(!$_SESSION["validar"]){
 <h1 class="text-center margin-20 animated fast fadeIn">Cliente</h1>
 <div class="container">
 	<div class="contenedorBotonAgregar">
-		<?php 
-	         include 'agregarCliente.php';
-		 ?>
+		<a href="index.php?action=agregarCliente" class="text-right botonagregar">Agregar Cliente</a>
    </div><br>
 </div>
 	<div class="container">
@@ -26,10 +24,10 @@ if(!$_SESSION["validar"]){
 				<th>RFC</th>
 				<th>Cliente</th>
 				<th>Dominio</th>
-				<th>PagoTotal</th>
+				<th>Pago total</th>
 				<th>Empresa</th>
-				<th>Tel - Cliente</th>
-				<th>Direccion Cliente</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
 				<th>Correo</th>
 				<th></th>
 			</tr>

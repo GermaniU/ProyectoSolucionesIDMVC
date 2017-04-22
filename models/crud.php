@@ -80,6 +80,8 @@ class Datos extends Conexion{
 		$stmt->close();
 
 	}
+	#AGREGAR CLIENTE
+	#---------------------------------------------------
 
 }
 
