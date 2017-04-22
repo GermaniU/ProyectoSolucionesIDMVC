@@ -1,9 +1,14 @@
-<!-- <style>
+<style>
 	.footer{
-		    position: relative;
-    bottom: 0px;
-    width: 100%;
+	    position: absolute;
+    	bottom: -30x;
+   		width: 100%;
 	}
+
+
+
+
+
 </style>
 
 <footer class="footer bg-inverse text-center">
@@ -13,6 +18,3 @@
   </p>
 </div>
 </footer>
-
-
- -->
