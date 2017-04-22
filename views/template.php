@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<title>SolucionesID</title>
-
+	<link rel="icon" type="image/png" href="../views/assets/img/favicon.ico" sizes="32x32">		
 	<link rel="stylesheet" href="../views/assets/css/style.css">
 	<link rel="stylesheet" href="../views/assets/css/css/bootstrap.css">
 	<link rel="stylesheet" href="../views/assets/css/css/dataTables.bootstrap4.css">
