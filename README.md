@@ -1,5 +1,5 @@
-ProyectoSolucionesIDMVC
+## ProyectoSolucionesIDMVC
 
 
-usuario: admin
-password: admin
++ Usuario : admin
++ Password: admin
