@@ -52,9 +52,8 @@ if(!$_SESSION["validar"]){
 			</thead>
 			<tbody>
 			<?php
-			$vistaUsuario = new MvcController();
-			$vistaUsuario -> vistaUsuariosController();
-			/*$vistaUsuario -> borrarUsuarioController();*/
+			$vistaCliente = new MvcController();
+			$vistaCliente -> vistaClienteController();
 			?>
 			</tbody>
 		</table>

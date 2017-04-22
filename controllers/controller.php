@@ -60,7 +60,7 @@ class MvcController{
 
 	}
 */
-	#INGRESO DE USUARIOS
+	#INGRESO DE USUARIO
 	#------------------------------------
 	public function ingresoUsuarioController(){
 
@@ -91,14 +91,12 @@ class MvcController{
 
 	}
 
-	#VISTA DE USUARIOS
+	#VISTA DE CLIENTE
 	#------------------------------------
 
-	public function vistaUsuariosController(){
+	public function vistaClienteController(){
 
-		$respuesta = Datos::vistaUsuariosModel("Cliente");
-
-		#El constructor foreach proporciona un modo sencillo de iterar sobre arrays. foreach funciona sólo sobre arrays y objetos, y emitirá un error al intentar usarlo con una variable de un tipo diferente de datos o una variable no inicializada.
+		$respuesta = Datos::vistaClienteModel("Cliente");
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
@@ -111,19 +109,19 @@ class MvcController{
 				<td>'.$item["telefonoClienteEmpresa"].'</td>
 				<td>'.$item["direccionClienteEmpresa"].'</td>
 				<td>'.$item["correoClienteEmpresa"].'</td>
-				<td><a href="index.php?action=editarUsuario&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary">Editar</button></a></td>';
+				<td><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary">Editar</button></a></td>';
 
 		}
 
 	}
 
-	#EDITAR USUARIO
+	#EDITAR CLIENTE
 	#------------------------------------
 
-	public function editarUsuarioController(){
+	public function editarClienteController(){
 
 		$datosController = $_GET["RFC"];
-		$respuesta = Datos::editarUsuarioModel($datosController, "Cliente");
+		$respuesta = Datos::editarClienteModel($datosController, "Cliente");
 
 		echo'
 		<div class="container">
@@ -179,7 +177,7 @@ class MvcController{
 
 #ACTUALIZAR USUARIO
 	#------------------------------------
-	public function actualizarUsuarioController(){
+	public function actualizarClienteController(){
         $errores ='';
 		if(isset($_POST["nombreCliente"])){
          //-----Obtener datos del formulario-----
@@ -201,8 +199,8 @@ class MvcController{
 				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
 
 				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-					$errores .= 'Por favor ingresa un correo valido <br />';
-				}
+						$errores .= 'Por favor ingresa un correo valido <br />';
+				 }
 
 				 $dominio = trim($dominio);
 				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
@@ -212,9 +210,9 @@ class MvcController{
 				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
 					$errores .= 'Por favor ingresa una cantidad valida <br />';
 				}
-         //-----------------------------------
+         //-----------------------guardar datos en un arreglo para la clase CRUD
 
-			$datosController = array( "RFC"=>$rfc,
+			     $datosController = array( "RFC"=>$rfc,
 							          "nombreCliente"=>$cliente,
 				                      "dominio"=>$dominio,
 				                      "totalPago"=>$totalpago,
@@ -223,49 +221,24 @@ class MvcController{
 				                      "direccionClienteEmpresa"=>$direccioncliente,
 				                      "correoClienteEmpresa"=>$correo);
 
+			
+        //------------------------Comprobar que no contenga errores--------------------
+
 			if(!$errores){
-               $respuesta = Datos::actualizarUsuarioModel($datosController, "Cliente");
+                     $respuesta = Datos::actualizarClienteModel($datosController, "Cliente");
 	                 if($respuesta == "success"){
 
 					header("location:index.php?action=cambio");
 
-				}
+				     }else{
 
-				else{
-
-					echo "error";
-				}
+					  echo "error";
+				    }
 			}else{
 				echo $errores;
 			}
-
-
-
-
-     }
-}
-	/*
-
-	#BORRAR USUARIO
-	#------------------------------------
-	public function borrarUsuarioController(){
-
-		if(isset($_GET["idBorrar"])){
-
-			$datosController = $_GET["idBorrar"];
-
-			$respuesta = Datos::borrarUsuarioModel($datosController, "Cliente");
-
-			if($respuesta == "success"){
-
-				header("location:index.php?action=clientes");
-
-			}
-
 		}
-
-	}*/
-
+    }
 }
 
 ?>

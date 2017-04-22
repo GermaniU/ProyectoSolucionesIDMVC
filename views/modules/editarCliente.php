@@ -8,9 +8,9 @@
 			<form method="post" class="form-cliente">
 				<?php
 
-				$editarUsuario = new MvcController();
-				$editarUsuario -> editarUsuarioController();
-				$editarUsuario -> actualizarUsuarioController();
+				$editarCliente = new MvcController();
+				$editarCliente -> editarClienteController();
+				$editarCliente -> actualizarClienteController();
 				?>
 			</form>
 	    </div>
