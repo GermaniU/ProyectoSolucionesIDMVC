@@ -1,6 +1,6 @@
 $(document).ready(function() {
     var table = $('#tdClientes').DataTable( {
-        	lengthChange: false,
+        	lengthChange: true,
            	dom: 'Bfrtipl',
 		    buttons: [
 		    	{
@@ -27,7 +27,7 @@ var idioma_espanol = {
 	    "sLengthMenu":     "Mostrar _MENU_ registros",
 	    "sZeroRecords":    "No se encontraron resultados",
 	    "sEmptyTable":     "Ningún dato disponible en esta tabla",
-	    "sInfo":           "Mostrando registros del _START_ al _END_ de un total de _TOTAL_ registros",
+	    "sInfo":           "Mostrando del _START_ al _END_ de  _TOTAL_ clientes",
 	    "sInfoEmpty":      "Mostrando registros del 0 al 0 de un total de 0 registros",
 	    "sInfoFiltered":   "(filtrado de un total de _MAX_ registros)",
 	    "sInfoPostFix":    "",
