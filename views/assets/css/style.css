@@ -78,3 +78,40 @@
 .fadeIn {
   animation-name: fadeIn;
 }
+table {
+    position: relative;
+    margin: auto;
+    width: 100%;
+}
+
+.margin-20{
+  margin-top: 30px;
+  margin-bottom: 50px;
+}
+
+h1{
+    font-size: 30px;
+    font-weight: bold;
+}
+
+#tdClientes{
+  font-family: 'Open Sans', sans-serif;
+}
+.contenedorBotonAgregar{
+  float: right;
+}
+
+.contenedorBotonAgregar .botonagregar{
+    padding: 15px 50px;
+    border-radius: 60px;
+    background-color: #acd263;
+    color: white;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+    text-decoration: none;
+    width: 200px;
+    text-align: center;
+}
+.contenedorBotonAgregar .botonagregar:hover{
+  background-color:rgba(172,210,99,0.8);
+}
