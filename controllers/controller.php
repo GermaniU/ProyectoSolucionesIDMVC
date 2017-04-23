@@ -119,7 +119,7 @@ class MvcController{
 
 	// public function agregarClienteController(){
 
-	
+
 	// }
 	#AGREGAR CLIENTE A LA BASE DE DATOS
 	#-----------------------------------------------
@@ -153,7 +153,7 @@ class MvcController{
 
 				 $totalpago = trim($totalpago);
 
-				 
+
          //-----------------------guardar datos en un arreglo para la clase CRUD
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -165,9 +165,9 @@ class MvcController{
 				                      "direccionClienteEmpresa"=>$direccioncliente,
 				                      "correoClienteEmpresa"=>$correo);
 
-			
+
         //------------------------Comprobar que no contenga errores--------------------
-                  
+
 			if(!$errores){
                      $respuesta = Datos::registroClienteModel($datosController, "Cliente");
 	                 if($respuesta == "success"){
@@ -194,46 +194,46 @@ class MvcController{
 		$respuesta = Datos::editarClienteModel($datosController, "Cliente");
 
 		echo'
-		<div class="container">
+		<div class="cli-container container">
 		<input type="hidden" class="form-control" value="'.$respuesta["RFC"].'" name="RFC">
 
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Nombre: </label>
   				<div class="col-10">
              <input type="text" class="form-control" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Dominio: </label>
   				<div class="col-10">
 			 <input type="text" class="form-control" value="'.$respuesta["dominio"].'" name="dominio" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Total pagado: </label>
   				<div class="col-10">
 			 <input type="text" class="form-control" value="'.$respuesta["totalPago"].'" name="totalPago" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Nombre de la Empresa: </label>
   				<div class="col-10">
 			 <input type="text" class="form-control" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Telefono: </label>
   				<div class="col-10">
 			 <input type="text" class="form-control"" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Direccion: </label>
   				<div class="col-10">
 			 <input type="text" class="form-control" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
 				</div>
 		</div>
-		<div class="form-group row">
+		<div class="hid-label form-group row">
   			<label for="example-search-input" class="col-2 col-form-label">Correo: </label>
   				<div class="col-10">
 			 <input type="email" class="form-control" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
@@ -278,7 +278,7 @@ class MvcController{
 
 				 $totalpago = trim($totalpago);
 
-				 
+
          //-----------------------guardar datos en un arreglo para la clase CRUD
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -290,7 +290,7 @@ class MvcController{
 				                      "direccionClienteEmpresa"=>$direccioncliente,
 				                      "correoClienteEmpresa"=>$correo);
 
-			
+
         //------------------------Comprobar que no contenga errores--------------------
 
 			if(!$errores){
