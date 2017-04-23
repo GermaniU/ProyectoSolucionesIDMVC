@@ -17,7 +17,9 @@
   <div class="form-group">
     <input type="password" class="form-control login-input" placeholder="Ingrese su contraseña" name="passwordf" required>
   </div>
-  <input type="submit" class="btn btn-outline-primary" value="Enviar">
+  <button type="submit" class="btn btn-outline-primary" value="Enviar">
+    <i class="fa fa-sign-in" aria-hidden="true"></i>
+  </button>
 </form>
 </div>
 
