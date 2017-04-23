@@ -17,18 +17,18 @@ body{
   width:30%;
   text-align: center;
   display: inline-block;
-
 }
+
 #form-login{
   text-align: center;
   width: 100%;
 }
 
-#form-login input[type=submit]{
+#form-login button[type=submit]{
   width: 15%;
 }
 
-#form-login input[type=submit]:active {
+#form-login button[type=submit]:active {
   background-color: #3e8e41;
   box-shadow: 0 5px #666;
   transform: translateY(25px);
@@ -40,12 +40,46 @@ body{
 }
 
 .footer{
-    position: absolute;
-    bottom: 0px;
-    width: 100%;
+      position: absolute;
+      bottom: -70px;
+      width: 100%;
+}
+
+@media only screen and (max-width: 770px) {
+    .footer{
+      position: absolute;
+      bottom: -120px;
+      width: 100%;
+  }
+
+  #form-login input[type=text]{
+    width: 70%;
+  }
+
+  #form-login input[type=password]{
+    width: 70%;
+  }
+}
+
+@media only screen and (max-width: 500px) {
+  .hid-label label{
+    display: none;
+  }
+
+  .hid-label input[type=text]{
+    width: 120%;
+  }
+
+  .cli-container{
+    text-align: center;
+  }
 }
 
 .form-cliente input{
+    text-align: center;
+}
+
+.form-cliente .container{
     text-align: center;
 }
 
