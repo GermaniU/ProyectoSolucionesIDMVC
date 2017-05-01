@@ -16,7 +16,7 @@
 
 <?php
 
-$ingreso = new MvcControllerAdministrador();
+$ingreso = new ControllerAdministrador();
 $ingreso -> ingresoUsuarioController();
 
 if(isset($_GET["action"])){
@@ -30,6 +30,6 @@ if(isset($_GET["action"])){
 }
 session_start();
 if($_SESSION == true){
-  header("location:index.php?action=clientes");
+  header("location:index.php?action=RegistrosClientes");
 } 
 ?>

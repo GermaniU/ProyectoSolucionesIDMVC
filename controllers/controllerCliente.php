@@ -9,7 +9,7 @@
      public $nombreEmpresa;
      public $direccionCliente;
      public $correo;
-
+   
 	 
 	 public function set_rfc($rfc) {
 			$this->rfc = $rfc;
@@ -53,7 +53,7 @@
 
 	public function vistaUsuariosController(){
 
-		$respuesta = Datos::vistaUsuariosModel("Cliente");
+		$respuesta = ModelCliente::vistaUsuariosModel();
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
@@ -78,7 +78,7 @@
 	public function editarUsuarioController(){
 
 		$datosController = $_GET["RFC"];
-		$respuesta = Datos::editarUsuarioModel($datosController, "Cliente");
+		$respuesta = ModelCliente::editarUsuarioModel($datosController);
 
 		echo'<input type="hidden" value="'.$respuesta["RFC"].'" name="RFC">
 
@@ -147,7 +147,7 @@
 				                      "correoClienteEmpresa"=>$correo);
 			
 			if(!$errores){
-               $respuesta = Datos::actualizarUsuarioModel($datosController, "Cliente");
+               $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
 	                 if($respuesta == "success"){
 
 					header("location:index.php?action=cambio");
@@ -217,10 +217,10 @@
         //------------------------Comprobar que no contenga errores--------------------
 
 			if(!$errores){
-                     $respuesta = Datos::registroClienteModel($datosController, "Cliente");
+                     $respuesta = ModelCliente::registroClienteModel($datosController);
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=registrado");
+					header("location:index.php?action=IngresarAdministrador");
 
 				     }else{
 

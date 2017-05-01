@@ -31,19 +31,18 @@
 
 <body>
 
- 		<?php include "modules/navegacion.php"; ?>
+ 		<?php include "modules/nav.php"; ?>
 
 <section>
 
 <?php 
 
-$mvc = new MvcControllerAdministrador();
+$mvc = new ControllerAdministrador();
 $mvc -> enlacesPaginasController();
 
  ?>
 
 </section>
-
 
 </body>
 

@@ -1,6 +1,6 @@
 <?php
 
-class MvcControllerAdministrador{
+class ControllerAdministrador{
 
 	#LLAMADA A LA PLANTILLA
 	#-------------------------------------
@@ -41,7 +41,7 @@ class MvcControllerAdministrador{
 			$datosController = array( "UserAdmin"=>$_POST["usuariof"], 
 								      "password"=>$_POST["passwordf"]);
 
-			$respuesta = Datos::ingresoUsuarioModel($datosController, "Administrador");
+			$respuesta = ModelAdministrador::ingresoAdministradorModel($datosController, "Administrador");
 
 			if($respuesta["UserAdmin"] == $_POST["usuariof"] && $respuesta["password"] == $_POST["passwordf"]){
 
@@ -62,31 +62,6 @@ class MvcControllerAdministrador{
 		}	
 
 	}
-
-	#VISTA DE USUARIOS
-	#------------------------------------
-
-	/*
-
-	#BORRAR USUARIO
-	#------------------------------------
-	public function borrarUsuarioController(){
-
-		if(isset($_GET["idBorrar"])){
-
-			$datosController = $_GET["idBorrar"];
-			
-			$respuesta = Datos::borrarUsuarioModel($datosController, "Cliente");
-
-			if($respuesta == "success"){
-
-				header("location:index.php?action=clientes");
-			
-			}
-
-		}
-
-	}*/
 
 }
 
