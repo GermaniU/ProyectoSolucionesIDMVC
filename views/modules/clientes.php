@@ -1,30 +1,3 @@
-<style >
-table {
-    position: relative;
-    margin: auto;
-    width: 100%;
-    left: -10%;
-    border: 1px black;
-
-}
-
-table thead tr th {
-    padding: 10px;
-    background-color:green;
-    color: white;
-}
-
-table tbody tr td {
-    padding: 10px;
-    background-color: #e8503a;
-}
-button{
-	margin: auto;
-	font-size: 20px;
-}
- 
-</style>
-
 <?php
 
 session_start();
@@ -32,49 +5,31 @@ session_start();
 if(!$_SESSION["validar"]){
 
 	header("location:index.php?action=ingresar");
-
-	exit();
-
 }
 
 ?>
+<h1 class="text-center margin-20 animated fast fadeIn">Cliente</h1>
 
-	<div class="container">
-	   <div id="tablaClientes">
-	   	<h1>Cliente</h1> 
-<button> a</button>
-	 <table>
-		
-		<thead>
-			
+	<div class="table-responsive col-sm-12 margin-bottom">
+		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn ">
+			<thead class="">
 			<tr>
 				<th>RFC</th>
-				<th>nombreCliente</th>
-				<th>dominio</th>
-				<th>totalPago</th>
-				<th>nombreEmpresa</th>
-				<th>telefonoClienteEmpresa</th>
-				<th>direccionClienteEmpresa</th>
-				<th>correoClienteEmpresa</th>	
+				<th>Cliente</th>
+				<th>Dominio</th>
+				<th>Pago total</th>
+				<th>Empresa</th>
+				<th>Teléfono</th>
+				<th>Dirección</th>
+				<th>Correo</th>
 				<th></th>
-
 			</tr>
-
-		</thead>
-
-		<tbody>
-			
+			</thead>
+			<tbody>
 			<?php
-
-			$vistaUsuario = new MvcController();
-			$vistaUsuario -> vistaUsuariosController();
-			/*$vistaUsuario -> borrarUsuarioController();*/
-
+			$vistaCliente = new MvcControllerCliente();
+			$vistaCliente -> vistaUsuariosController();
 			?>
-
-		</tbody>
-
-	</table>
-	   </div>
-    
-	</div>
+			</tbody>
+		</table>
+</div>
