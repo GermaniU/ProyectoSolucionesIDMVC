@@ -44,7 +44,7 @@
 			 }
 	  }
 
-	  #MostrarPaquetes
+	  #MOSTRAT PAQUETES
 	  #----------------------------------------------------------
 	 /* <td>'.$item["estado"].'</td>
 		<td>'.$item["idServicio"].'</td>*/
@@ -66,7 +66,7 @@
 		}
 
 	}
-	#EDITAR USUARIO
+	#EDITAR PAQUETE
 	#------------------------------------
 
 	public function editarPaqueteController(){
@@ -164,7 +164,7 @@
 		        $nombrePaquete=$this->nombrePaquete;         
    				$idPaquete=$this->idPaquete;      
 /*   				$idServicio=$this->idServicio;     
-*/   				$costoPaquete=$this->costoPaquete;   
+*/   			$costoPaquete=$this->costoPaquete;   
    				$tipoPaquete=$this->tipoPaquete;          
   				$descripcionPaquete=$this->descripcionPaquete;   
    				$estado=$this->estado;

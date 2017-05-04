@@ -59,7 +59,7 @@ class ModelPaquete extends Conexion{
 		$stmt->close();
 
 	}
-	#AGREGAR CLIENTE
+	#AGREGAR PAQUETE
 	#----------------------------------------
 	public function registroPaqueteModel($datosModel){
 
