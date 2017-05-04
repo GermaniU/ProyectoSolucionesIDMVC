@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: May 01, 2017 at 06:44 PM
+-- Generation Time: May 03, 2017 at 08:56 PM
 -- Server version: 5.7.18-0ubuntu0.16.04.1
 -- PHP Version: 7.0.15-0ubuntu0.16.04.4
 
@@ -60,7 +60,7 @@ CREATE TABLE `Cliente` (
 --
 
 INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEmpresa`, `telefonoClienteEmpresa`, `direccionClienteEmpresa`, `correoClienteEmpresa`) VALUES
-('232', 'Germani', 'wwww.facebook.com', 2000, 'soluciones', 9999, '343', 'germani@gmail.com'),
+('232', 'Germania', 'wwww.facebook.com', 2000, 'soluciones', 9999, '343', 'germani@gmail.com'),
 ('453', 'Pedro', 'www.google.com', 200000, 'GOOGLE', 999139274, 'calle 23 #453', 'pedr@gmail.com');
 
 -- --------------------------------------------------------
@@ -72,12 +72,19 @@ INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEm
 CREATE TABLE `Paquete` (
   `nombrePaquete` varchar(50) NOT NULL,
   `idPaquete` int(11) NOT NULL,
-  `idServicio` int(11) DEFAULT NULL,
   `costoPaquete` int(11) DEFAULT NULL,
   `tipoPaquete` varchar(50) DEFAULT NULL,
   `descripcionPaquete` varchar(150) DEFAULT NULL,
   `estado` varchar(15) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `Paquete`
+--
+
+INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquete`, `descripcionPaquete`, `estado`) VALUES
+('Basico 3', 1, 10000, 'Hosting 1', 'Paquetecon 2', '1'),
+('HOSWEB', 12, 2000, 'WEB', 'PAQUETE PARA 4 EQUIPOS', '1');
 
 -- --------------------------------------------------------
 
@@ -116,8 +123,7 @@ ALTER TABLE `Cliente`
 -- Indexes for table `Paquete`
 --
 ALTER TABLE `Paquete`
-  ADD PRIMARY KEY (`idPaquete`),
-  ADD KEY `fk_paquete` (`idServicio`);
+  ADD PRIMARY KEY (`idPaquete`);
 
 --
 -- Indexes for table `Servicio`
