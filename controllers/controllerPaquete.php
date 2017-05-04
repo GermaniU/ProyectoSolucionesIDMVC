@@ -3,7 +3,7 @@
  class MvcControllerPaquete{
    public $nombrePaquete;         
    public $idPaquete;      
-   public $idServicio;     
+   #public $idServicio;     
    public $costoPaquete;   
    public $tipoPaquete;          
    public $descripcionPaquete;   
@@ -15,9 +15,9 @@
 	public function set_idPaquete($idPaquete) {
 			$this->idPaquete = $idPaquete;
 	} 
-	public function set_idServicio($idServicio) {
+/*	public function set_idServicio($idServicio) {
 			$this->idServicio = $idServicio;
-	}
+	}*/
 	public function set_costoPaquete($costoPaquete) {
 			$this->costoPaquete = $costoPaquete;
 	} 
@@ -36,8 +36,8 @@
 			
 			$this->set_nombrePaquete( $_POST["nombrePaquete"]);
 			$this->set_idPaquete($_POST["idPaquete"]);
-			$this->set_idServicio( $_POST["idServicio"]);
-			$this->set_costoPaquete( $_POST["costoPaquete"]);
+/*			$this->set_idServicio( $_POST["idServicio"]);
+*/			$this->set_costoPaquete( $_POST["costoPaquete"]);
 			$this->set_tipoPaquete($_POST["tipoPaquete"]);
 			$this->set_descripcionPaquete( $_POST["descripcionPaquete"]);
 			$this->set_estado( $_POST["estado"]);
@@ -97,8 +97,8 @@
          //-----Obtener datos del formulario-----
    				$nombrePaquete=$this->nombrePaquete;         
    				$idPaquete=$this->idPaquete;      
-   				$idServicio=$this->idServicio;     
-   				$costoPaquete=$this->costoPaquete;   
+/*   				$idServicio=$this->idServicio;     
+*/   				$costoPaquete=$this->costoPaquete;   
    				$tipoPaquete=$this->tipoPaquete;          
   				$descripcionPaquete=$this->descripcionPaquete;   
    				$estado=$this->estado;
@@ -127,8 +127,8 @@
        
 			$datosController = array( "nombrePaquete"=>$nombrePaquete,
 							          "idPaquete"=>$idPaquete,
-				                      "idServicio"=>$idServicio,
-				                      "costoPaquete"=>$costoPaquete,
+/*				                      "idServicio"=>$idServicio,
+*/				                      "costoPaquete"=>$costoPaquete,
 				                      "tipoPaquete"=>$tipoPaquete,
 				                      "descripcionPaquete"=>$descripcionPaquete,
 				                      "estado"=>$estado);
@@ -154,6 +154,68 @@
 			
      }
  }
+
+ #Agregar Paquete
+	#-----------------------------------------------
+	public function agregarPaqueteBDController(){
+        $errores ='';
+		if(isset($_POST["nombrePaquete"])){
+         //-----Obtener datos del formulario-----
+		        $nombrePaquete=$this->nombrePaquete;         
+   				$idPaquete=$this->idPaquete;      
+/*   				$idServicio=$this->idServicio;     
+*/   				$costoPaquete=$this->costoPaquete;   
+   				$tipoPaquete=$this->tipoPaquete;          
+  				$descripcionPaquete=$this->descripcionPaquete;   
+   				$estado=$this->estado;
+           
+
+         //--------Metodos para validar que los datos ingresados sean correctos
+
+
+		/*		 $cliente = trim($cliente);
+				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
+
+				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
+
+				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+						$errores .= 'Por favor ingresa un correo valido <br />';
+				 }
+
+				 $dominio = trim($dominio);
+				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
+
+				 $totalpago = trim($totalpago);*/
+
+
+         //-----------------------guardar datos en un arreglo para la clase CRUD
+
+			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
+							          "idPaquete"=>$idPaquete,
+/*				                      "idServicio"=>$idServicio,
+*/				                      "costoPaquete"=>$costoPaquete,
+				                      "tipoPaquete"=>$tipoPaquete,
+				                      "descripcionPaquete"=>$descripcionPaquete,
+				                      "estado"=>$estado);
+
+
+        //------------------------Comprobar que no contenga errores--------------------
+
+			if(!$errores){
+                     $respuesta = ModelPaquete::registroPaqueteModel($datosController);
+	                 if($respuesta == "success"){
+
+					header("location:index.php?action=RegistrosPaquete");
+
+				     }else{
+
+					  print_r($respuesta);
+				    }
+			}else{
+				echo $errores;
+			}
+		}
+    }
 	
 
 			   

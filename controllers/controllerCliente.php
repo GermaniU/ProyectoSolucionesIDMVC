@@ -222,7 +222,7 @@
                      $respuesta = ModelCliente::registroClienteModel($datosController);
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=IngresarAdministrador");
+					header("location:index.php?action=RegistrosClientes");
 
 				     }else{
 
