@@ -60,7 +60,7 @@
 				<td>'.$item["nombrePaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
 				<td>'.$item["costoPaquete"].'</td>
-				<td><a href="index.php?action=editarPaquete&RFC='.$item["idPaquete"].'"><button class="btn btn-outline-primary" >Editar</button></a></td>
+				<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary" >Editar</button></a></td>
 				</tr>';
 
 		}
@@ -71,28 +71,89 @@
 
 	public function editarPaqueteController(){
 
-		$datosController = $_GET["RFC"];
-		$respuesta = ModelCliente::editarUsuarioModel($datosController);
+		$idPaquete = $_GET["idPaquete"];
+		$respuesta = ModelPaquete::editarPaqueteModel($idPaquete);
 
-		echo'<input type="hidden" value="'.$respuesta["RFC"].'" name="RFC">
+		echo'<input type="hidden" value="'.$respuesta["idPaquete"].'" name="idPaquete">
 
-             <input type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
+             <input type="text" value="'.$respuesta["tipoPaquete"].'" name="tipoPaquete" required>
 
-			 <input type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
+			 <input type="text" value="'.$respuesta["nombrePaquete"].'" name="nombrePaquete" required>
 
-			 <input type="text" value="'.$respuesta["totalPago"].'" name="totalPago" required>
+			 <input type="text" value="'.$respuesta["costoPaquete"].'" name="costoPaquete" required>
 
-			 <input type="text" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
+			 <input type="text" value="'.$respuesta["descripcionPaquete"].'" name="descripcionPaquete" required>
 
-			 <input type="text" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
-
-			 <input type="text" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
-
-			 <input type="email" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
+			 <input type="text" value="'.$respuesta["estado"].'" name="estado" required>
 
 			 <input type="submit" value="Actualizar">';
 
 	}
+	#ACTUALIZAR PAQUETE
+	#------------------------------------
+	public function actualizarPaqueteController(){
+        $errores ='';
+		if(isset($_POST["nombrePaquete"])){
+         //-----Obtener datos del formulario-----
+   				$nombrePaquete=$this->nombrePaquete;         
+   				$idPaquete=$this->idPaquete;      
+   				$idServicio=$this->idServicio;     
+   				$costoPaquete=$this->costoPaquete;   
+   				$tipoPaquete=$this->tipoPaquete;          
+  				$descripcionPaquete=$this->descripcionPaquete;   
+   				$estado=$this->estado;
+           
+         //--------Metodos para validar que los datos ingresados sean correctos
+         
+				
+				 /*$cliente = trim($cliente);
+				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
+				
+				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
+
+				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+					$errores .= 'Por favor ingresa un correo valido <br />';
+				}
+
+				 $dominio = trim($dominio);
+				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
+
+				 $totalpago = trim($totalpago);
+
+				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
+					$errores .= 'Por favor ingresa una cantidad valida <br />';
+				}*/
+         //-----------------------------------
+       
+			$datosController = array( "nombrePaquete"=>$nombrePaquete,
+							          "idPaquete"=>$idPaquete,
+				                      "idServicio"=>$idServicio,
+				                      "costoPaquete"=>$costoPaquete,
+				                      "tipoPaquete"=>$tipoPaquete,
+				                      "descripcionPaquete"=>$descripcionPaquete,
+				                      "estado"=>$estado);
+			
+			if(!$errores){
+               $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);
+	                 if($respuesta == "success"){
+
+					header("location:index.php?action=cambioPaquete");
+
+				}
+
+				else{
+
+					echo "error";
+				}
+			}else{
+				echo $errores;
+			}
+		 
+           
+
+			
+     }
+ }
 	
 
 			   
