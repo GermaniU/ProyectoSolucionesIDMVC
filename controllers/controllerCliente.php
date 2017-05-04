@@ -49,7 +49,9 @@
 			$this->set_correo( $_POST["correoClienteEmpresa"]);
 			 }
 	  }
-			   
+		
+    #MOSTRAR CLIENTES
+    #-----------------------			   
 
 	public function vistaUsuariosController(){
 
