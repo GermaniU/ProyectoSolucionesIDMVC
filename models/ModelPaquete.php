@@ -66,12 +66,12 @@ class ModelPaquete extends Conexion{
 
 
 		$stmt = Conexion::conectar()->prepare(
-			"INSERT INTO Paquete (idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado ) 
+			"INSERT INTO Paquete (nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado ) 
 
 			VALUES (
-			:idpaquete,:nombrepaquete,:costopaquete,:tipopaquete,:descripcionpaquete,:estado)");	
+			:nombrepaquete,:costopaquete,:tipopaquete,:descripcionpaquete,:estado)");	
 
-		$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
+		//$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":costopaquete", $datosModel["costoPaquete"], PDO::PARAM_INT);
 		$stmt->bindParam(":tipopaquete", $datosModel["tipoPaquete"], PDO::PARAM_STR);

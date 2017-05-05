@@ -167,7 +167,7 @@
 */   			$costoPaquete=$this->costoPaquete;   
    				$tipoPaquete=$this->tipoPaquete;          
   				$descripcionPaquete=$this->descripcionPaquete;   
-   				$estado=$this->estado;
+   				$estado=1;
            
 
          //--------Metodos para validar que los datos ingresados sean correctos
