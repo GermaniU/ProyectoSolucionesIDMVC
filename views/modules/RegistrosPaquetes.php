@@ -14,7 +14,7 @@ if(!$_SESSION["validar"]){
 		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn text-center ">
 			<thead class="">
 			<tr>
-				<th>idPaquete</th>
+			
 				<th>TipoPaquete</th>
 				<th>NombrePaquete</th>
 				<th>DescripcionPaquete</th>
@@ -23,6 +23,12 @@ if(!$_SESSION["validar"]){
 			</tr>
 			</thead>
 			<tbody>
+			<?php 
+			
+			$vistaCliente = new MvcControllerPaquete();
+			$vistaCliente -> vistaPaqueteController();
+			
+			?>
 		
 			</tbody>
 		</table>

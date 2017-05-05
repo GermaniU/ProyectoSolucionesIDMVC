@@ -52,10 +52,10 @@
 	  public function vistaPaqueteController(){
 
 		$respuesta = ModelPaquete::vistaPaqueteModel();
+		//		<td>'.$item["idPaquete"].'</td>
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
-				<td>'.$item["idPaquete"].'</td>
 				<td>'.$item["tipoPaquete"].'</td>
 				<td>'.$item["nombrePaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
