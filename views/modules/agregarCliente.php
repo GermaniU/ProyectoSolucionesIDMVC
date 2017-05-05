@@ -31,7 +31,7 @@ ini_set('error_reporting', E_ALL);
 
 	<input type="text" placeholder="NombreEmpresa:" name="nombreEmpresa" required>
 
-	<input type="text" placeholder="Telefono" name="telefonoClienteEmpresa" required>
+	<input type="tel" placeholder="Telefono" name="telefonoClienteEmpresa" required>
 
 	<input type="text" placeholder="Dirrecion" name="direccionClienteEmpresa" required>
 	
