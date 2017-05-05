@@ -8,18 +8,20 @@ if(!$_SESSION["validar"]){
 }
 
 ?>
-<h1 class="text-center margin-20 animated fast fadeIn">Paquetes</h1>
+<h1 class="text-center margin-20 animated fast fadeIn">Servicio</h1>
 
 	<div class="table-responsive col-sm-12 margin-bottom">
 		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn text-center ">
 			<thead class="">
 			<tr>
-				<th>idPaquete</th>
-				<th>TipoPaquete</th>
+				<th>RFC</th>
 				<th>NombrePaquete</th>
-				<th>DescripcionPaquete</th>
-				<th>CostoPaquete</th>
-				<th></th>
+				<th>CostoServicio</th>
+				<th>DesripcionServicio</th>
+				<th>InicioServico</th>
+				<th>FechadeRenovacion</th>
+				<th>ComplementoExtra</th>
+
 			</tr>
 			</thead>
 			<tbody>

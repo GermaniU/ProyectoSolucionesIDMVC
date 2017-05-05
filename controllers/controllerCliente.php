@@ -68,6 +68,8 @@
 				<td>'.$item["direccionClienteEmpresa"].'</td>
 				<td>'.$item["correoClienteEmpresa"].'</td>
 				<td><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" >Editar</button></a></td>
+				</tr>
+				<td><a href="index.php?action=agregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" >Agregar Servicio</button></a></td>
 				</tr>';
 
 		}
