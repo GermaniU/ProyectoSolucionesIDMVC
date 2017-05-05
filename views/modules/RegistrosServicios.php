@@ -23,7 +23,10 @@ if(!$_SESSION["validar"]){
 			</tr>
 			</thead>
 			<tbody>
-		
+			<?php
+/*			$vistaCliente = new MvcControllerPaquete();
+			$vistaCliente -> vistaPaqueteController();*/
+			?>
 			</tbody>
 		</table>
 </div>

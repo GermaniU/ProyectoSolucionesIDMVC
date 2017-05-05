@@ -2,10 +2,10 @@
 -- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
--- Host: localhost
--- Generation Time: May 03, 2017 at 08:56 PM
--- Server version: 5.7.18-0ubuntu0.16.04.1
--- PHP Version: 7.0.15-0ubuntu0.16.04.4
+-- Servidor: localhost
+-- Tiempo de generación: 05-05-2017 a las 14:27:31
+-- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -17,13 +17,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `solucionesid`
+-- Base de datos: `solucionesid`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Administrador`
+-- Estructura de tabla para la tabla `Administrador`
 --
 
 CREATE TABLE `Administrador` (
@@ -32,7 +32,7 @@ CREATE TABLE `Administrador` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Administrador`
+-- Volcado de datos para la tabla `Administrador`
 --
 
 INSERT INTO `Administrador` (`UserAdmin`, `password`) VALUES
@@ -41,7 +41,7 @@ INSERT INTO `Administrador` (`UserAdmin`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Cliente`
+-- Estructura de tabla para la tabla `Cliente`
 --
 
 CREATE TABLE `Cliente` (
@@ -56,7 +56,7 @@ CREATE TABLE `Cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Cliente`
+-- Volcado de datos para la tabla `Cliente`
 --
 
 INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEmpresa`, `telefonoClienteEmpresa`, `direccionClienteEmpresa`, `correoClienteEmpresa`) VALUES
@@ -66,7 +66,7 @@ INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEm
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Paquete`
+-- Estructura de tabla para la tabla `Paquete`
 --
 
 CREATE TABLE `Paquete` (
@@ -79,59 +79,75 @@ CREATE TABLE `Paquete` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `Paquete`
+-- Volcado de datos para la tabla `Paquete`
 --
 
 INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquete`, `descripcionPaquete`, `estado`) VALUES
-('Basico 3', 1, 10000, 'Hosting 1', 'Paquetecon 2', '1'),
-('HOSWEB', 12, 2000, 'WEB', 'PAQUETE PARA 4 EQUIPOS', '1');
+('Basico q', 1, 1000, 'Hosting 1', 'Paquetecon 2', '1'),
+('dasndh', 2, 9292, 'shbbfhs', 'shdhas', '1'),
+('sshdhas', 6, 212, 'shjdhas', 'shdhba', '1'),
+('HOSWEB', 12, 2000, 'WEB', 'PAQUETE PARA 4 EQUIPOS', '1'),
+('ddfasd', 23, 222, 'assdas', 'asdasd', '1'),
+('shdsa', 67, 838, 'shdh', 'sjds', '1'),
+('dhasdh', 68, 2738, 'ashdhas', 'sjdhas', '1'),
+('sjdjas', 69, 2763, 'sdjas', 'sdhbas', '1');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `Servicio`
+-- Estructura de tabla para la tabla `Servicio`
 --
 
 CREATE TABLE `Servicio` (
   `idServicio` int(11) NOT NULL,
   `RFC` varchar(13) DEFAULT NULL,
+  `idPaquete` int(11) NOT NULL,
   `costoServicio` int(11) DEFAULT NULL,
   `descripcionServicio` varchar(150) DEFAULT NULL,
   `inicioServicio` date DEFAULT NULL,
-  `finServicio` date DEFAULT NULL,
+  `FechadeRenovacion` date DEFAULT NULL,
   `descripcionServicioExtra` varchar(150) DEFAULT NULL,
   `estadoServicio` tinyint(1) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Indexes for dumped tables
+-- Índices para tablas volcadas
 --
 
 --
--- Indexes for table `Administrador`
+-- Indices de la tabla `Administrador`
 --
 ALTER TABLE `Administrador`
   ADD PRIMARY KEY (`UserAdmin`);
 
 --
--- Indexes for table `Cliente`
+-- Indices de la tabla `Cliente`
 --
 ALTER TABLE `Cliente`
   ADD PRIMARY KEY (`RFC`);
 
 --
--- Indexes for table `Paquete`
+-- Indices de la tabla `Paquete`
 --
 ALTER TABLE `Paquete`
   ADD PRIMARY KEY (`idPaquete`);
 
 --
--- Indexes for table `Servicio`
+-- Indices de la tabla `Servicio`
 --
 ALTER TABLE `Servicio`
   ADD PRIMARY KEY (`idServicio`),
   ADD KEY `fk_servicio` (`RFC`);
 
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `Paquete`
+--
+ALTER TABLE `Paquete`
+  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
