@@ -97,8 +97,8 @@
          //-----Obtener datos del formulario-----
    				$nombrePaquete=$this->nombrePaquete;         
    				$idPaquete=$this->idPaquete;      
-/*   				$idServicio=$this->idServicio;     
-*/   				$costoPaquete=$this->costoPaquete;   
+/*   			$idServicio=$this->idServicio;     
+*/   			$costoPaquete=$this->costoPaquete;   
    				$tipoPaquete=$this->tipoPaquete;          
   				$descripcionPaquete=$this->descripcionPaquete;   
    				$estado=$this->estado;

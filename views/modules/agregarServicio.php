@@ -1,6 +1,3 @@
-
-
-
 <?php
 // Motrar todos los errores de PHP
 error_reporting(-1);
@@ -14,34 +11,92 @@ error_reporting(E_ALL);
 // Motrar todos los errores de PHP
 ini_set('error_reporting', E_ALL);
 ?>
-<div class="container text-center">
+<div class="text-center">
 	
-
 <h1 class="text-center title-form-cli">Agregar Servicio</h1>
 	  <h1>Orden de Registro</h1>
 
+</div>
+<div class="container text-center form-group">
 <form method="post">
-	
-	<input type="text" class="form-group form-control"  placeholder="RFC:" name="RFC" required>
+              <div class="form-group">
+              	 <input type="text" readonly="readonly"  class="form-control"  value="<?php echo $_GET["RFC"]; ?>" name="RFC">
+              </div>
+              <div class="form-group">
+              	  <select class="form-control" name="nombrePaquete">
+              	  	 <?php
 
-	<input type="text"  class="form-group form-control" placeholder="Nombre:" name="nombreCliente" required>
-	
-	<input type="text"  class="form-group form-control" placeholder="Dominio:" name="dominio" required>
-	
-	<input type="text" class="form-group form-control"  placeholder="Pago:" name="totalPago" required>
+              	  	  $respuesta = new MvcControllerServicio();
+                      $respuesta2= $respuesta->ObtenerDatosPaquetes();
+						foreach($respuesta2 as $row => $item) { 
+						?> 
+						<option value = " <?php echo $item['nombrePaquete']; ?> "><?php echo $item['nombrePaquete']; ?></option> 
+						<?php 
+						}
+				   ?>
+				   <option value="otro"> Otro</option>
+              	  </select>
 
-	<input type="text" class="form-group form-control"  placeholder="NombreEmpresa:" name="nombreEmpresa" required>
+              </div>
+              <div class="form-group">
+              	   <input type="text"  class="form-control" placeholder="PrecioServicio:" name="costoServicio" required>
 
-	<input type="tel"  class="form-group form-control" placeholder="Telefono" name="telefonoClienteEmpresa" required>
+              </div>
+              <div class="form-group">
+              	   <input type="text"  class="form-control" placeholder="Descripcion:" name="descripcionServicio" required>
 
-	<input type="text"  class="form-group form-control" placeholder="Dirrecion" name="direccionClienteEmpresa" required>
-	
-	<input type="text"  class="form-group form-control" placeholder="Correo" name="correoClienteEmpresa" required>
+              </div>
+	          <div class="form-group">
+			      <div class="row">
+			        <div class='col-sm-6'>
+			            <div class="form-group">
+			                <div class='input-group date' id='datetimepicker1'>
+			                    <input type='text' class="form-control" name="inicioServicio" />
+			                    <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+			                </div>
+			            </div>
+			        </div>
+			        <script type="text/javascript">
+			            $(function () {
+			                $('#datetimepicker1').datetimepicker();
+			            });
+			        </script>
+			    </div>
+		      </div>
+              <div class="form-group">
+			      <div class="row">
+			        <div class='col-sm-6'>
+			            <div class="form-group">
+			                <div class='input-group date' id='datetimepicker2'>
+			                    <input type='text' class="form-control" name="FechadeRenovacion" />
+			                    <span class="input-group-addon">
+			                        <span class="glyphicon glyphicon-calendar"></span>
+			                    </span>
+			                </div>
+			            </div>
+			        </div>
+			        <script type="text/javascript">
+			            $(function () {
+			                $('#datetimepicker2').datetimepicker();
+			            });
+			        </script>
+			    </div>
+		      </div>
+              <div class="form-group">
+              	   <input type="text"  class="form-control" placeholder="Complemento:" name="descripcionServicioExtra" required>
+              </div>
+              <div class="form-group">
+              	   	<input type="email" class="form-control" placeholder="Estado:" name="estadoServicio" required>
+              </div>
+              <div class="form-group">
+              	   <input type="submit"  class="form-control btn btn-outline-primary" value="Agregar Servicio">
 
-	<input type="submit" class="btn btn-outline-primary" value="Enviar">
+              </div> 
+            
 
 </form>
-</div>
 
 <?php
 
