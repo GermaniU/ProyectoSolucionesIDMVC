@@ -9,7 +9,7 @@
    public $descripcionPaquete;   
    public $estado;
 
-   public function set_nombrePaquete($nombrePaquete) {
+    public function set_nombrePaquete($nombrePaquete) {
 		$this->nombrePaquete = $nombrePaquete;
 	} 
 	public function set_idPaquete($idPaquete) {
