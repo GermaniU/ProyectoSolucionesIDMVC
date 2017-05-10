@@ -11,7 +11,7 @@ if(!$_SESSION["validar"]){
 <h1 class="text-center margin-20 animated fast fadeIn">Servicio</h1>
 
 	<div class="table-responsive col-sm-12 margin-bottom">
-		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn text-center ">
+		<table id="tdServicios" class="table table-striped table-bordered table-hover animated  fadeIn text-center ">
 			<thead class="">
 			<tr>
 				<th>RFC</th>
@@ -25,7 +25,7 @@ if(!$_SESSION["validar"]){
 			</tr>
 			</thead>
 			<tbody>
-		
+
 			</tbody>
 		</table>
 </div>
