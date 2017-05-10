@@ -1,39 +1,39 @@
-<?php 
+<?php
 
  class MvcControllerPaquete{
-   public $nombrePaquete;         
-   public $idPaquete;      
-   #public $idServicio;     
-   public $costoPaquete;   
-   public $tipoPaquete;          
-   public $descripcionPaquete;   
+   public $nombrePaquete;
+   public $idPaquete;
+   #public $idServicio;
+   public $costoPaquete;
+   public $tipoPaquete;
+   public $descripcionPaquete;
    public $estado;
 
     public function set_nombrePaquete($nombrePaquete) {
 		$this->nombrePaquete = $nombrePaquete;
-	} 
+	}
 	public function set_idPaquete($idPaquete) {
 			$this->idPaquete = $idPaquete;
-	} 
+	}
 /*	public function set_idServicio($idServicio) {
 			$this->idServicio = $idServicio;
 	}*/
 	public function set_costoPaquete($costoPaquete) {
 			$this->costoPaquete = $costoPaquete;
-	} 
+	}
 	public function set_tipoPaquete($tipoPaquete) {
 			$this->tipoPaquete = $tipoPaquete;
-	} 
+	}
 	public function set_descripcionPaquete($descripcionPaquete) {
 			$this->descripcionPaquete = $descripcionPaquete;
-	} 
+	}
 	public function set_estado($estado) {
 			$this->estado = $estado;
 	}
 
 	public function __construct() {
 			 if (isset($_POST["idPaquete"])) {
-			
+
 			$this->set_nombrePaquete( $_POST["nombrePaquete"]);
 			$this->set_idPaquete($_POST["idPaquete"]);
 /*			$this->set_idServicio( $_POST["idServicio"]);
@@ -60,7 +60,9 @@
 				<td>'.$item["nombrePaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
 				<td>'.$item["costoPaquete"].'</td>
-				<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary" >Editar</button></a></td>
+								<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-cubes" aria-hidden="true"></i></button></a>
+
+					</td>
 				</tr>';
 
 		}
@@ -74,19 +76,30 @@
 		$idPaquete = $_GET["idPaquete"];
 		$respuesta = ModelPaquete::editarPaqueteModel($idPaquete);
 
-		echo'<input type="hidden" value="'.$respuesta["idPaquete"].'" name="idPaquete">
-
-             <input type="text" value="'.$respuesta["tipoPaquete"].'" name="tipoPaquete" required>
-
-			 <input type="text" value="'.$respuesta["nombrePaquete"].'" name="nombrePaquete" required>
-
-			 <input type="text" value="'.$respuesta["costoPaquete"].'" name="costoPaquete" required>
-
-			 <input type="text" value="'.$respuesta["descripcionPaquete"].'" name="descripcionPaquete" required>
-
-			 <input type="text" value="'.$respuesta["estado"].'" name="estado" required>
-
-			 <input type="submit" value="Actualizar">';
+		echo
+		'
+			<input class="form-control" type="hidden" value="'.$respuesta["idPaquete"].'" name="idPaquete">
+			<div class="form-group">
+				<label>Tipo del paquete:</label>
+             	<input class="form-control" type="text" value="'.$respuesta["tipoPaquete"].'" name="tipoPaquete" required>
+			</div>
+			<div class="form-group">
+				<label>Nombre del paquete:</label>
+			 	<input class="form-control" type="text" value="'.$respuesta["nombrePaquete"].'" name="nombrePaquete" required>
+			</div>
+			<div class="form-group">
+				<label>Costo del paquete:</label>
+			 	<input class="form-control" type="text" value="'.$respuesta["costoPaquete"].'" name="costoPaquete" required>
+			</div>
+			<div class="form-group">
+				<label>Descripcion del paquete:</label>
+				<input class="form-control" type="text" value="'.$respuesta["descripcionPaquete"].'" name="descripcionPaquete" required>
+			</div>
+			<div class="form-group">
+				<label>Estado del paquete:</label>
+			 	<input class="form-control" type="text" value="'.$respuesta["estado"].'" name="estado" required>
+			</div>
+			 <button type="submit" class="btn btn-primary">Actualizar</button>';
 
 	}
 	#ACTUALIZAR PAQUETE
@@ -95,20 +108,20 @@
         $errores ='';
 		if(isset($_POST["nombrePaquete"])){
          //-----Obtener datos del formulario-----
-   				$nombrePaquete=$this->nombrePaquete;         
-   				$idPaquete=$this->idPaquete;      
-/*   			$idServicio=$this->idServicio;     
-*/   			$costoPaquete=$this->costoPaquete;   
-   				$tipoPaquete=$this->tipoPaquete;          
-  				$descripcionPaquete=$this->descripcionPaquete;   
+   				$nombrePaquete=$this->nombrePaquete;
+   				$idPaquete=$this->idPaquete;
+/*   			$idServicio=$this->idServicio;
+*/   			$costoPaquete=$this->costoPaquete;
+   				$tipoPaquete=$this->tipoPaquete;
+  				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=$this->estado;
-           
+
          //--------Metodos para validar que los datos ingresados sean correctos
-         
-				
+
+
 				 /*$cliente = trim($cliente);
 				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-				
+
 				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
 
 				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
@@ -124,7 +137,7 @@
 					$errores .= 'Por favor ingresa una cantidad valida <br />';
 				}*/
          //-----------------------------------
-       
+
 			$datosController = array( "nombrePaquete"=>$nombrePaquete,
 							          "idPaquete"=>$idPaquete,
 /*				                      "idServicio"=>$idServicio,
@@ -132,7 +145,7 @@
 				                      "tipoPaquete"=>$tipoPaquete,
 				                      "descripcionPaquete"=>$descripcionPaquete,
 				                      "estado"=>$estado);
-			
+
 			if(!$errores){
                $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);
 	                 if($respuesta == "success"){
@@ -142,16 +155,34 @@
 				}
 
 				else{
-
-					echo "error";
+					echo '<div id="errorActualizarPaquete"></div>
+				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							       Los datos son demasiado largos o son datos incompatibles
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>';
+					//echo "error";
 				}
 			}else{
 				echo $errores;
 			}
-		 
-           
 
-			
+
+
+
      }
  }
 
@@ -161,14 +192,14 @@
         $errores ='';
 		if(isset($_POST["nombrePaquete"])){
          //-----Obtener datos del formulario-----
-		        $nombrePaquete=$this->nombrePaquete;         
-   				$idPaquete=$this->idPaquete;      
-/*   				$idServicio=$this->idServicio;     
-*/   			$costoPaquete=$this->costoPaquete;   
-   				$tipoPaquete=$this->tipoPaquete;          
-  				$descripcionPaquete=$this->descripcionPaquete;   
+		        $nombrePaquete=$this->nombrePaquete;
+   				$idPaquete=$this->idPaquete;
+/*   				$idServicio=$this->idServicio;
+*/   			$costoPaquete=$this->costoPaquete;
+   				$tipoPaquete=$this->tipoPaquete;
+  				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=1;
-           
+
 
          //--------Metodos para validar que los datos ingresados sean correctos
 
@@ -205,20 +236,38 @@
                      $respuesta = ModelPaquete::registroPaqueteModel($datosController);
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=RegistrosPaquete");
+					header("location:index.php?action=RegistrosPaquetes");
 
 				     }else{
-
-					  print_r($respuesta);
+				      echo '<div id="errorAgregarPaquete"></div>
+				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							       Los datos son demasiado largos o son datos incompatibles
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>';
+					  //print_r($respuesta);
 				    }
 			}else{
 				echo $errores;
 			}
 		}
     }
-	
 
-			   
+
+
 
 
 

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
  class MvcControllerCliente{
      public $rfc;
@@ -9,8 +9,8 @@
      public $nombreEmpresa;
      public $direccionCliente;
      public $correo;
-   
-	 
+
+
 	 public function set_rfc($rfc) {
 			$this->rfc = $rfc;
 	  }
@@ -35,10 +35,10 @@
 	  public function set_correo($correo) {
 			$this->correo = $correo ;
 	  }
-	 
+
 	 public function __construct() {
 			 if (isset($_POST["RFC"])) {
-			 	
+
 			$this->set_rfc( $_POST["RFC"]);
 			$this->set_nombreCliente($_POST["nombreCliente"]);
 			$this->set_dominio( $_POST["dominio"]);
@@ -49,9 +49,9 @@
 			$this->set_correo( $_POST["correoClienteEmpresa"]);
 			 }
 	  }
-		
+
     #MOSTRAR CLIENTES
-    #-----------------------			   
+    #-----------------------
 
 	public function vistaUsuariosController(){
 
@@ -67,9 +67,12 @@
 				<td>'.$item["telefonoClienteEmpresa"].'</td>
 				<td>'.$item["direccionClienteEmpresa"].'</td>
 				<td>'.$item["correoClienteEmpresa"].'</td>
-				<td><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" >Editar</button></a></td>
-				</tr>
-				<td><a href="index.php?action=agregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" >Agregar Servicio</button></a></td>
+				<td>
+				<p><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-user-o" aria-hidden="true"></i></button></a>
+				</p>
+				<p><a href="index.php?action=agregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-suitcase" aria-hidden="true"></i></button></a>
+				</p>
+				</td>
 				</tr>';
 
 		}
@@ -84,23 +87,35 @@
 		$datosController = $_GET["RFC"];
 		$respuesta = ModelCliente::editarUsuarioModel($datosController);
 
-		echo'<input type="hidden" value="'.$respuesta["RFC"].'" name="RFC">
+		echo'
 
-             <input type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
+		<input type="text" value="'.$respuesta["RFC"].'" name="RFC" hidden>
 
-			 <input type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
+				<p>Nombre del cliente: </p>
+            	<input class="form-control" type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
 
-			 <input type="text" value="'.$respuesta["totalPago"].'" name="totalPago" required>
 
-			 <input type="text" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
+				<p>Dominio: </p>
+				 <input class="form-control" type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
 
-			 <input type="text" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
 
-			 <input type="text" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
+				<p>Total de pago: </p>
+				 <input class="form-control" type="text" value="'.$respuesta["totalPago"].'" name="totalPago" required>
 
-			 <input type="email" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
+				<p>Nombre del cliente: </p>
+				 <input class="form-control" type="text" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
 
-			 <input type="submit" value="Actualizar">';
+				<p>Telefono del cliente: </p>
+				<input class="form-control" type="tel" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
+
+
+				<p>Direccion del cliente: </p>
+				<input class="form-control" type="text" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
+
+				<p>Correo del cliente</p>
+				<input class="form-control" type="email" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
+
+			  <button type="submit" class="btn btn-primary">Actualizar</button>';
 
 	}
 
@@ -118,13 +133,13 @@
 		         $telefono = $this->telefonoCliente;
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
-           
+
          //--------Metodos para validar que los datos ingresados sean correctos
-         
-				
+
+
 				 /*$cliente = trim($cliente);
 				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-				
+
 				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
 
 				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
@@ -140,7 +155,7 @@
 					$errores .= 'Por favor ingresa una cantidad valida <br />';
 				}*/
          //-----------------------------------
-       
+
 			$datosController = array( "RFC"=>$rfc,
 							          "nombreCliente"=>$cliente,
 				                      "dominio"=>$dominio,
@@ -149,26 +164,42 @@
 				                      "telefonoClienteEmpresa"=>$telefono,
 				                      "direccionClienteEmpresa"=>$direccioncliente,
 				                      "correoClienteEmpresa"=>$correo);
-			
+
 			if(!$errores){
                $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
 	                 if($respuesta == "success"){
 
 					header("location:index.php?action=cambio");
 
-				}
+				}else{
 
-				else{
-
-					echo "error";
+					echo '<div id="errorActualizarCliente"></div>
+				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							       Los datos son demasiado largos o son datos incompatibles
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>';
 				}
 			}else{
 				echo $errores;
 			}
-		 
-           
 
-			
+
+
+
      }
  }
  #Agregar Cliente
@@ -227,8 +258,26 @@
 					header("location:index.php?action=RegistrosClientes");
 
 				     }else{
-
-					  print_r($respuesta);
+				     echo '<div id="errorAgregarCliente"></div>
+				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+							  <div class="modal-dialog" role="document">
+							    <div class="modal-content">
+							      <div class="modal-header">
+							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
+							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+							          <span aria-hidden="true">&times;</span>
+							        </button>
+							      </div>
+							      <div class="modal-body">
+							       Los datos son demasiado largos o son datos incompatibles
+							      </div>
+							      <div class="modal-footer">
+							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+							</div>';
+					  //print_r($respuesta);
 				    }
 			}else{
 				echo $errores;
