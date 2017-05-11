@@ -7,7 +7,7 @@ class Paginas{
 	public function enlacesPaginasModel($enlaces){
 
 
-		if($enlaces == "IngresarAdministrador" || $enlaces == "RegistrosClientes" || $enlaces == "RegistrosPaquetes" || $enlaces == "RegistrosServicios" ||  $enlaces == "salir" ||  $enlaces == "editarCliente"||  $enlaces == "agregarCliente" ||$enlaces == "agregarPaquete"|| $enlaces == "editarPaquete"||$enlaces == "agregarServicio"){
+		if($enlaces == "IngresarAdministrador" || $enlaces == "RegistrosClientes" || $enlaces == "RegistrosPaquetes" || $enlaces == "RegistrosServicios" ||  $enlaces == "salir" ||  $enlaces == "editarCliente"||  $enlaces == "agregarCliente" ||$enlaces == "agregarPaquete"|| $enlaces == "editarPaquete"||$enlaces == "agregarServicio"||$enlaces == "editarServicio"){
 
 			$module =  "views/modules/".$enlaces.".php";
 		
