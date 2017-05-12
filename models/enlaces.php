@@ -4,7 +4,7 @@
 
 class Paginas{
 	
-	public function enlacesPaginasModel($enlaces){
+	public static function enlacesPaginasModel($enlaces){
 
 
 		if($enlaces == "IngresarAdministrador" || $enlaces == "RegistrosClientes" || $enlaces == "RegistrosPaquetes" || $enlaces == "RegistrosServicios" ||  $enlaces == "salir" ||  $enlaces == "editarCliente"||  $enlaces == "agregarCliente" ||$enlaces == "agregarPaquete"|| $enlaces == "editarPaquete"||$enlaces == "agregarServicio"||$enlaces == "editarServicio"){
@@ -23,6 +23,17 @@ class Paginas{
 			$module =  "views/modules/RegistrosPaquetes.php";
 		
 		}
+		else if($enlaces == "cambioCliente"){
+
+			$module =  "views/modules/RegistrosClientes.php";
+		
+		}
+		else if($enlaces == "cambioServicio"){
+
+			$module =  "views/modules/RegistrosServicios.php";
+		
+		}
+
 
 
 		else{

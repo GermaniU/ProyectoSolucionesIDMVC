@@ -45,23 +45,23 @@ ini_set('error_reporting', E_ALL);*/
     
               <div class="form-group">
                      <label>Precio del servicio: </label>
-              	<input type="text"  class="form-control"  name="costoServicio" required>
+              	<input type="text"  class="form-control" value="<?php if(isset($_POST["costoServicio"])){echo $_POST["costoServicio"]; } ?>" name="costoServicio" required>
               </div>
               <div class="form-group">
                      <label>Descripcion del servicio</label>
-              	<input type="text"  class="form-control"  name="descripcionServicio" required>
+              	<input type="text"  class="form-control" value="<?php if(isset($_POST["descripcion"])){echo $_POST["descripcion"]; } ?>"  name="descripcion" required>
               </div>
 	      <div class="form-group">
                      <label>Inicio del servicio</label>
-	      		<input type="date" class="form-control" name="inicioServicio">
+	      		<input type="date" class="form-control" value="<?php if(isset($_POST["inicioServicio"])){echo $_POST["inicioServicio"]; } ?>" name="inicioServicio">
 	      </div>
 	      <div class="form-group">
                      <label>Fecha de renovacion</label>
-	      		<input type="date" class="form-control" name="fechadeRenovacion">
+	      		<input type="date" class="form-control" value="<?php if(isset($_POST["fechadeRenovacion"])){echo $_POST["fechadeRenovacion"]; } ?>" name="fechadeRenovacion">
 	      </div>
               <div class="form-group">
                      <label>Descripcion del servicio extra</label>
-              	<input type="text"  class="form-control"  name="descripcionServicioExtra" required>
+              	<input type="text"  class="form-control" value="<?php if(isset($_POST["descripcionServicioExtra"])){echo $_POST["descripcionServicioExtra"]; } ?>" name="descripcionServicioExtra" required>
               </div>
               <div class="form-group">
                      <!-- <label>Estado del servicio</label> -->

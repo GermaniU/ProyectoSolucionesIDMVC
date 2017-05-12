@@ -6,7 +6,7 @@ class ModelPaquete extends Conexion{
 
     #VISTA PAQUETE
 	#-------------------------------
-	public function vistaPaqueteModel(){
+	public static function vistaPaqueteModel(){
 
 		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete");	
 		$stmt->execute();
@@ -18,7 +18,7 @@ class ModelPaquete extends Conexion{
 	}	
 	#EDITAR PAQUETE
 	#-------------------------------------
-  public function editarPaqueteModel($rfc){
+  public static function editarPaqueteModel($rfc){
 
 		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete WHERE idPaquete= :idPaquete");
 		$stmt->bindParam(":idPaquete", $rfc, PDO::PARAM_STR);	
@@ -31,7 +31,7 @@ class ModelPaquete extends Conexion{
 	}
 	#ACTUALIZAR PAQUETE
 	#-------------------------------------
-	public function actualizarPaqueteModel($datosModel){
+	public static function actualizarPaqueteModel($datosModel){
 
 		$stmt = Conexion::conectar()->prepare("UPDATE Paquete SET idPaquete = :idpaquete, nombrePaquete = :nombrepaquete, costoPaquete = :costopaquete, tipoPaquete = :tipopaquete, descripcionPaquete = :descripcionpaquete, estado = :estado WHERE idPaquete = :idpaquete");
 
@@ -61,7 +61,7 @@ class ModelPaquete extends Conexion{
 	}
 	#AGREGAR PAQUETE
 	#----------------------------------------
-	public function registroPaqueteModel($datosModel){
+	public static function registroPaqueteModel($datosModel){
 
 
 

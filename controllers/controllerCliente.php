@@ -169,7 +169,7 @@
                $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=cambio");
+					header("location:index.php?action=cambioCliente");
 
 				}else{
 

@@ -1,50 +1,56 @@
+
 <?php 
-
 require_once 'conexionBD.php';
-
 class ModelServicio extends Conexion{
 	#VISTA SERVICIO	
 	#---------------------------------
-	public function vistaServicioModel(){
+	public static function vistaServicioModel(){
+		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio");	
+		$stmt->execute();
+		return $stmt->fetchAll();
+		$stmt->close();
+	}
+	#TRAER INFORMACION DEL SERVICIO A EDITAR
+	#-----------------------------------------------------
+	public static function editarServicioModel($idServicio){
 
-		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcionServicio,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio");	
+		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio WHERE idServicio= :idServicio");
+		$stmt->bindParam(":idServicio", $idServicio, PDO::PARAM_STR);	
 		$stmt->execute();
 
-		return $stmt->fetchAll();
+		return $stmt->fetch();
 
 		$stmt->close();
 
 	}
+	#EDITAR INFORMACION DEL SERVICIO A LA BASE DE DATOS
+	#------------------------------------------------------------
+	public static function actualizarServicioModel($datosModel){
 
-	#AGREGAR SERVICIO
-	#-----------------------------------
-	public function registroServicioModel($datosModel){
+		$stmt = Conexion::conectar()->prepare("UPDATE Servicio SET 
+			idServicio = :idservicio,
+			RFC = :rfc, 
+			nombrePaquete = :nombrepaquete,
+			costoServicio = :costoservicio,
+			descripcion = :descripcion,
+		    inicioServicio = :inicioservicio,
+			fechadeRenovacion = :fechaderenovacion,
+			descripcionServicioExtra = :descripcionservicioextra,
+			estadoServicio = :estadoservicio 
+			WHERE idServicio = :idservicio");
 
-		$stmt = Conexion::conectar()->prepare(
-			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcionServicio,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio) 
-		
-			VALUES (
-			:rfc,:nombrepaquete,:costoservicio,:descripcionservicio,:inicioservicio,:fechaderenovacion,:descripcionservicioextra,:estadoservicio)");	
-
-		//$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
-		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
-
+		$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
+        $stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
-
 		$stmt->bindParam(":costoservicio", $datosModel["costoServicio"], PDO::PARAM_INT);
-		
-		$stmt->bindParam(":descripcionservicio", $datosModel["
-			descripcionServicio"], PDO::PARAM_STR);
-		
+		$stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
 		$stmt->bindParam(":inicioservicio", $datosModel["inicioServicio"], PDO::PARAM_STR);
-		
 		$stmt->bindParam(":fechaderenovacion", $datosModel["fechadeRenovacion"], PDO::PARAM_STR);
-
 		$stmt->bindParam(":descripcionservicioextra", $datosModel["descripcionServicioExtra"], PDO::PARAM_STR);
-
 		$stmt->bindParam(":estadoservicio", $datosModel["estadoServicio"], PDO::PARAM_STR);
+	
 
-     	if($stmt->execute()){
+		if($stmt->execute()){
 
 			return "success";
 
@@ -52,7 +58,7 @@ class ModelServicio extends Conexion{
 
 		else{
 
-			return $stmt->errorInfo();
+			return "error";
 
 		}
 
@@ -60,15 +66,34 @@ class ModelServicio extends Conexion{
 
 	}
 
+
+	#AGREGAR SERVICIO
+	#-----------------------------------
+	public static function registroServicioModel($datosModel){
+		$stmt = Conexion::conectar()->prepare(
+			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio) 
+		
+			VALUES (
+			:rfc,:nombrepaquete,:costoservicio,:descripcion,:inicioservicio,:fechaderenovacion,:descripcionservicioextra,:estadoservicio)");	
+		//$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
+		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
+		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
+		$stmt->bindParam(":costoservicio", $datosModel["costoServicio"], PDO::PARAM_INT);
+		
+		$stmt->bindParam(":descripcion", $datosModel["descripcion"], PDO::PARAM_STR);
+
+		$stmt->bindParam(":inicioservicio", $datosModel["inicioServicio"], PDO::PARAM_STR);
+		
+		$stmt->bindParam(":fechaderenovacion", $datosModel["fechadeRenovacion"], PDO::PARAM_STR);
+		$stmt->bindParam(":descripcionservicioextra", $datosModel["descripcionServicioExtra"], PDO::PARAM_STR);
+		$stmt->bindParam(":estadoservicio", $datosModel["estadoServicio"], PDO::PARAM_STR);
+     	if($stmt->execute()){
+			return "success";
+		}
+		else{
+			return $stmt->errorInfo();
+		}
+		$stmt->close();
+	}
 }
-
-
-
-
-
-
-
-
-
  ?>
-

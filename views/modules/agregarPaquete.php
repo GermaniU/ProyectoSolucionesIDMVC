@@ -4,19 +4,19 @@
 	<input class="form-control" type="Hidden" name="idPaquete" required>
 	<div class="form-group">
 		<label for="Nombre del paquete">Nombre del paquete:</label>
-		<input class="form-control" type="text" name="nombrePaquete" required>
+		<input class="form-control" type="text" name="nombrePaquete" value="<?php if(isset($_POST["nombrePaquete"])){echo $_POST["nombrePaquete"]; } ?>" required>
 	</div>
 	<div class="form-group">
 		<label for="Tipo del paquete">Tipo del paquete:</label>
-		<input class="form-control" type="text" name="tipoPaquete" required>
+		<input class="form-control" type="text" name="tipoPaquete"  value="<?php if(isset($_POST["tipoPaquete"])){echo $_POST["tipoPaquete"]; } ?>" required>
 	</div>
 	<div class="form-group">
 		<label for="Descripcion del paquete">Descripcion del paquete:</label>
-		<input class="form-control" type="text" name="descripcionPaquete" required>
+		<input class="form-control" type="text" name="descripcionPaquete" value="<?php if(isset($_POST["descripcionPaquete"])){echo $_POST["descripcionPaquete"]; } ?>" required>
 	</div>
 	<div class="form-group">
 		<label for="Costo del paquete">Costo del paquete:</label>
-		<input class="form-control" type="text" name="costoPaquete" required>
+		<input class="form-control" type="text" name="costoPaquete"  value="<?php if(isset($_POST["costoPaquete"])){echo $_POST["costoPaquete"]; } ?>" required>
 	</div>
 	<button type="submit" class="btn btn-primary">Enviar</button>
 </div>
