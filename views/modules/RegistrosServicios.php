@@ -21,17 +21,10 @@ if(!$_SESSION["validar"]){
 				<th>InicioServico</th>
 				<th>FechadeRenovacion</th>
 				<th>ComplementoExtra</th>
-				<th>Estado</th>
 
 			</tr>
 			</thead>
 			<tbody>
-			<?php 
-
-                 $vistaServicio = new MvcControllerServicio();
-                 $vistaServicio ->vistaServicioController();
-
-			 ?>
 
 			</tbody>
 		</table>

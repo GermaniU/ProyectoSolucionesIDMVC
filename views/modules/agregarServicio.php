@@ -42,7 +42,11 @@ ini_set('error_reporting', E_ALL);*/
        		     <option value="otro"> Otro</option>
                      </select>
               </div>
-    
+              <div class="form-group">
+                    <?php
+			    echo $seleccion;
+                     ?>
+              </div>
               <div class="form-group">
                      <label>Precio del servicio: </label>
               	<input type="text"  class="form-control"  name="costoServicio" required>
@@ -64,8 +68,8 @@ ini_set('error_reporting', E_ALL);*/
               	<input type="text"  class="form-control"  name="descripcionServicioExtra" required>
               </div>
               <div class="form-group">
-                     <!-- <label>Estado del servicio</label> -->
-              	<input type="hidden" class="form-control"  name="estadoServicio" required>
+                     <label>Estado del servicio</label>
+              	<input type="text" class="form-control"  name="estadoServicio" required>
               </div>
               <div class="form-group">
               	<button type="submit" class="btn btn-primary">Agregar</button>
@@ -77,7 +81,7 @@ ini_set('error_reporting', E_ALL);*/
 <?php
 
 $registro = new MvcControllerServicio();
-$registro -> agregarServicioBDController();
+ print_r($registro -> agregarServicioBDController());
 
 /*if(isset($_GET["action"])){
 
