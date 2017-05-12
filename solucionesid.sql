@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 05-05-2017 a las 14:27:31
+-- Tiempo de generación: 11-05-2017 a las 20:20:40
 -- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
@@ -60,8 +60,12 @@ CREATE TABLE `Cliente` (
 --
 
 INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEmpresa`, `telefonoClienteEmpresa`, `direccionClienteEmpresa`, `correoClienteEmpresa`) VALUES
-('232', 'Germania', 'wwww.facebook.com', 2000, 'soluciones', 9999, '343', 'germani@gmail.com'),
-('453', 'Pedro', 'www.google.com', 200000, 'GOOGLE', 999139274, 'calle 23 #453', 'pedr@gmail.com');
+('123123', 'asdasdds', 'bootstrap@example.com', 323123, 'dasda', 231123, 'adasd', 'germanidelsoccorro@gmail.com'),
+('232', 'Juan de Dios Canche Cen', 'www.fulanito.com', 5000, 'TEC', 9991728, 'Calle 45 x 50 y 52 #503', 'juanazo@live.com.mx'),
+('3123', 'asdad', 'dada', 23313, 'dads', 3324423, 'dadadaad', 'dads@dasd.com'),
+('332', 'asdad', 'asdad', 233, 'asdad', 23123, 'asdasd', 'addasad@dsd.com'),
+('3342342', 'dadsda', 'asdada', 33232, 'sdasd', 3232, 'dasdsd', 'sada@dad.com'),
+('346', 'Germani Uicab Puc Chuc', 'www.cibermundo.com.mx', 4000, 'ITM', 9992345, 'Calle 45', 'germanidelsoccorro@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -83,14 +87,17 @@ CREATE TABLE `Paquete` (
 --
 
 INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquete`, `descripcionPaquete`, `estado`) VALUES
-('Basico q', 1, 1000, 'Hosting 1', 'Paquetecon 2', '1'),
-('dasndh', 2, 9292, 'shbbfhs', 'shdhas', '1'),
-('sshdhas', 6, 212, 'shjdhas', 'shdhba', '1'),
 ('HOSWEB', 12, 2000, 'WEB', 'PAQUETE PARA 4 EQUIPOS', '1'),
-('ddfasd', 23, 222, 'assdas', 'asdasd', '1'),
-('shdsa', 67, 838, 'shdh', 'sjds', '1'),
-('dhasdh', 68, 2738, 'ashdhas', 'sjdhas', '1'),
-('sjdjas', 69, 2763, 'sdjas', 'sdhbas', '1');
+('Paquete YOO', 70, 3000, 'Exelsior', 'El mejor paquete', '1'),
+('prueba', 110, 12323, 'test', 'Nunico', '1'),
+('Paquete platinum', 111, 5000, 'Supremo', 'El paquete mÃ¡s caro y poderoso de todos', '1'),
+('Sin Fin', 115, 300, 'Datos y llamadotas', 'llamadas ilimitadSx', '1'),
+('Paquete Amigo', 116, 3000, 'Plan Axtel', 'Es el paquete mÃ¡s rÃ¡pido del Oeste', '1'),
+('ddasd', 117, 213123, 'dsa', 'sadasd', '1'),
+('Paquete DinÃ¡mico', 118, 0, 'Gratis', 'Es un paquete gratis', '1'),
+('DDLFKSJ', 119, 3323, 'DSKDFJ', 'DKLJ', '1'),
+('sdfsf', 120, 3213, 'fdssdf', 'sdfsd', '1'),
+('Premium', 121, 3400, 'Excelsor', 'El mas barabara', '1');
 
 -- --------------------------------------------------------
 
@@ -147,7 +154,7 @@ ALTER TABLE `Servicio`
 -- AUTO_INCREMENT de la tabla `Paquete`
 --
 ALTER TABLE `Paquete`
-  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=122;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
