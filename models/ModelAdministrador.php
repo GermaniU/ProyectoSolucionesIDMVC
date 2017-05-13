@@ -19,6 +19,7 @@ class ModelAdministrador extends Conexion{
 
 	}
 
+   
 
 }
 

@@ -27,3 +27,11 @@ if(!$_SESSION["validar"]){
 	<button type="submit" class="btn btn-primary">Enviar</button>
 </div>
 </form>
+
+<?php 
+
+  $cambiarcontraseña = new ControllerAdministrador();
+  $cambiarcontraseña -> cambiarContraseñaAdministrador();
+
+
+?>

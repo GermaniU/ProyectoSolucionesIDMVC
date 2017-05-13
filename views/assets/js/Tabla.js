@@ -145,14 +145,6 @@ function visualizarTablaServicios() {
         	responsive: true,
            	dom: 'Bfrtipl',
 		    buttons: [
-		        {
-		        	text:'<i class="fa fa-plus-circle" aria-hidden="true"></i>',
-		        	className: 'btn color btn-success',
-		        	titleAttr: 'Agregar Servicio',
-		        	action: function( e, dt, node, config ){
-		        		location.href="index.php?action=agregarServicio";
-		        	}
-		        },
 		    	{
 		    		text:'<i class="fa fa-file-pdf-o" aria-hidden="true"></i>',
 		            extend: 'pdfHtml5',

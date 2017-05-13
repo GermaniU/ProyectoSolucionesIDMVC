@@ -89,7 +89,8 @@
 
 		echo'
 
-		<input type="text" value="'.$respuesta["RFC"].'" name="RFC" hidden>
+		         <p>RFC: </p>
+		          <input class="form-control" type="text" value="'.$respuesta["RFC"].'" name="RFC" required>
 
 				<p>Nombre del cliente: </p>
             	<input class="form-control" type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
