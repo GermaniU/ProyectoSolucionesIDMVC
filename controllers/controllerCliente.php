@@ -68,7 +68,7 @@
 				<td>'.$item["direccionClienteEmpresa"].'</td>
 				<td>'.$item["correoClienteEmpresa"].'</td>
 				<td>
-				<p><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-user-o" aria-hidden="true"></i></button></a>
+				<p><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 				</p>
 				<p><a href="index.php?action=agregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-suitcase" aria-hidden="true"></i></button></a>
 				</p>
@@ -134,29 +134,26 @@
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
 
-         //--------Metodos para validar que los datos ingresados sean correctos
+          #metodos de validacion
+	      //---------------------------------------------------------------------
+				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+				 		  $errores .= 'Por favor ingresa un correo valido <br />';
+			     }
+			    elseif (!preg_match("/[_a-zA-Z-]/",$cliente)) 
+			    { 
+			        $errores = "Ingresa un nombre  valido"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z-.-]/",$dominio)) 
+			    { 
+			        $errores = "Ingresa un domino valido"; 
+			    }  
+			    elseif(!preg_match("/[0-9]{10}/", $telefono)) //check for a pattern of 91-0123456789 
+			    { 
+			        $errores = "Ingresa un numero de telefono valido"; 
+			    } 
+			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
-
-				 /*$cliente = trim($cliente);
-				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-
-				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
-
-				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-					$errores .= 'Por favor ingresa un correo valido <br />';
-				}
-
-				 $dominio = trim($dominio);
-				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
-
-				 $totalpago = trim($totalpago);
-
-				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
-					$errores .= 'Por favor ingresa una cantidad valida <br />';
-				}*/
-         //-----------------------------------
-
-			$datosController = array( "RFC"=>$rfc,
+			     $datosController = array( "RFC"=>$rfc,
 							          "nombreCliente"=>$cliente,
 				                      "dominio"=>$dominio,
 				                      "totalPago"=>$totalpago,
@@ -165,40 +162,38 @@
 				                      "direccionClienteEmpresa"=>$direccioncliente,
 				                      "correoClienteEmpresa"=>$correo);
 
-			if(!$errores){
-               $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
-	                 if($respuesta == "success"){
+           if(!$errores){
+                    
+                    $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
+	                if($respuesta == "success"){
 
 					header("location:index.php?action=cambioCliente");
+			     	}
+                    		         
+		         }else{
 
-				}else{
 
-					echo '<div id="errorActualizarCliente"></div>
-				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
+		         	echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
 							        </button>
 							      </div>
-							      <div class="modal-body">
-							       Los datos son demasiado largos o son datos incompatibles
+							      <div class='modal-body'>
+							          $errores
 							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
 							      </div>
 							    </div>
 							  </div>
-							</div>';
-				}
-			}else{
-				echo $errores;
-			}
-
-
-
+							</div>";
+		        }
+			
 
      }
  }
@@ -218,26 +213,41 @@
 		         $telefono = $_POST["telefonoClienteEmpresa"];
 		         $direccioncliente = $_POST["direccionClienteEmpresa"];
 		         $correo = $_POST["correoClienteEmpresa"];
+                   
+		 
+				 #metodos de validacion
+				//---------------------------------------------------------------------
+				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+				 		  $errores .= 'Por favor ingresa un correo valido <br />';
+			     }
+			    elseif (!preg_match("/[_a-zA-Z-]/",$cliente)) 
+			    { 
+			        $errores = "Ingresa un nombre  valido"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z-.-]/",$dominio)) 
+			    { 
+			        $errores = "Ingresa un domino valido"; 
+			    }  
+			    elseif(!preg_match("/[0-9]{10}/", $telefono)) //check for a pattern of 91-0123456789 
+			    { 
+			        $errores = "Ingresa un numero de telefono valido"; 
+			    }
+			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789 
+			    { 
+			        $errores = "Ingresa un numero valido"; 
+			    }
 
-         //--------Metodos para validar que los datos ingresados sean correctos
+				 #VALIDAR RFC IGUAL
+	             #-------------------------------------------------------------------
+	             $respuesta1 = ModelCliente::vistaUsuariosModel();
+				 foreach($respuesta1 as $row => $item){
+	                  if ($item["RFC"]==$rfc) {
+	              	  		$errores ="Cliente existente";
+	              	  }
+	             }
 
-
-		/*		 $cliente = trim($cliente);
-				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-
-				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
-
-				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-						$errores .= 'Por favor ingresa un correo valido <br />';
-				 }
-
-				 $dominio = trim($dominio);
-				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
-
-				 $totalpago = trim($totalpago);*/
-
-
-         //-----------------------guardar datos en un arreglo para la clase CRUD
+	            #--------------------------------------------------------------------  
+			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
 			     $datosController = array( "RFC"=>$rfc,
 							          "nombreCliente"=>$cliente,
@@ -249,40 +259,39 @@
 				                      "correoClienteEmpresa"=>$correo);
 
 
-        //------------------------Comprobar que no contenga errores--------------------
+			     if(!$errores){
+                    
+                    $respuesta = ModelCliente::registroClienteModel($datosController);
+	                if($respuesta == "success"){
 
-			if(!$errores){
-                     $respuesta = ModelCliente::registroClienteModel($datosController);
-	                 if($respuesta == "success"){
+					header("location:index.php?action=cambioCliente");
+			     	}
+                    		         
+		         }else{
 
-					header("location:index.php?action=RegistrosClientes");
 
-				     }else{
-				     echo '<div id="errorAgregarCliente"></div>
-				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
+		         	echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
 							        </button>
 							      </div>
-							      <div class="modal-body">
-							       Los datos son demasiado largos o son datos incompatibles
+							      <div class='modal-body'>
+							          $errores
 							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
 							      </div>
 							    </div>
 							  </div>
-							</div>';
-					  //print_r($respuesta);
-				    }
-			}else{
-				echo $errores;
-			}
-		}
+							</div>";
+		        }
+
+	    }
     }
 
 

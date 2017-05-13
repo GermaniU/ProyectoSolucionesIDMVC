@@ -96,7 +96,9 @@
 				<td>'.$item["inicioServicio"].'</td>
 				<td>'.$item["fechadeRenovacion"].'</td>
 				<td>'.$item["descripcionServicioExtra"].'</td>
-								<td><a href="index.php?action=editarServicio&idServicio='.$item["idServicio"].'"><button class="btn btn-outline-primary"><i class="fa " aria-hidden="true"></i></button></a>
+								
+
+				<td><a href="index.php?action=editarServicio&idServicio='.$item["idServicio"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 
 					</td>
 				</tr>';

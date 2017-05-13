@@ -1,24 +1,23 @@
-
 -- phpMyAdmin SQL Dump
--- version 3.5.2.2
+-- version 4.5.4.1deb2ubuntu2
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 12-05-2017 a las 20:30:03
--- Versión del servidor: 10.1.22-MariaDB
--- Versión de PHP: 5.2.17
+-- Tiempo de generación: 11-05-2017 a las 23:25:37
+-- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
+-- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
-SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8 */;
+/*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `u700675089_soluc`
+-- Base de datos: `solucionesid`
 --
 
 -- --------------------------------------------------------
@@ -27,11 +26,10 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `Administrador`
 --
 
-CREATE TABLE IF NOT EXISTS `Administrador` (
+CREATE TABLE `Administrador` (
   `UserAdmin` varchar(20) NOT NULL,
-  `password` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`UserAdmin`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `password` varchar(20) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Administrador`
@@ -46,7 +44,7 @@ INSERT INTO `Administrador` (`UserAdmin`, `password`) VALUES
 -- Estructura de tabla para la tabla `Cliente`
 --
 
-CREATE TABLE IF NOT EXISTS `Cliente` (
+CREATE TABLE `Cliente` (
   `RFC` varchar(13) NOT NULL,
   `nombreCliente` varchar(120) DEFAULT NULL,
   `dominio` varchar(250) DEFAULT NULL,
@@ -54,21 +52,25 @@ CREATE TABLE IF NOT EXISTS `Cliente` (
   `nombreEmpresa` varchar(60) DEFAULT NULL,
   `telefonoClienteEmpresa` int(11) DEFAULT NULL,
   `direccionClienteEmpresa` varchar(200) DEFAULT NULL,
-  `correoClienteEmpresa` varchar(100) DEFAULT NULL,
-  PRIMARY KEY (`RFC`)
-) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+  `correoClienteEmpresa` varchar(100) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Cliente`
 --
 
 INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEmpresa`, `telefonoClienteEmpresa`, `direccionClienteEmpresa`, `correoClienteEmpresa`) VALUES
-('23232', 'Germani Uicab Moo', 'www.easy.es', 2000, 'mexico', 9999, 'calle 23 ', 'ger@dfhsjks.com'),
+('231', 'Germani Uicab Mooahwa', 'wwww.facebook.com', 2000, 'safari', 98273891, 'CALLE 223 NUMERO 5482', 'germani@gmail.com'),
+('23123', 'germani', 'WWW.XVIDEOS.COM', 222, 'dsadNBA', 892719, 'CALLE 223 NUMERO 5482', 'germani@gmail.coma'),
+('232', 'Germania', 'wwww.facebook.com', 2000, 'soluciones', 9999, '343', 'germani@gmail.com'),
+('23232', 'Germani Uicab Moo', 'ww', 2000, 'mexico', 9999, 'calle 23 ', 'ger@dfhsjks.com'),
+('237338', 'Germani Uicab Mooaaaa', 'www.nba.com.ms', 20000, 'NBA2ssA', 9827391, 'calle 78', 'ge_ce@gmail.com'),
+('239828', 'pene', '2222', 2938, 'mexico', 8394719, 'calle 73', 'germani.asesino@gmail.com'),
+('2783', 'Germani jala', 'www.facebook.com', 20902, 'mexico', 928391, 'calle 23', 'germani@gmail.com'),
+('323213', 'Gerardp', 'www.facebook.com4', 2000, 'mexico', 8297322, 'calle 26', 'germani@gmail.com'),
 ('453', 'Pedro', 'www.google.com', 200000, 'GOOGLE', 999139274, 'calle 23 #453', 'pedr@gmail.com'),
-('fdsfsdfsfsdfs', 'sdfsdfsdfsdfsdfsdfs', 'fsdfsdfsdfsdfsdfsdfsddsf', 2147483647, 'sfsfsdfsdfsdfsfsfsdfsdfs', 0, 'fsdfsdfdfdsfsfsdfdsfs', 'dsfsdf@dffs.com'),
-('123', 'Gerardo Cetzal', 'www.gcetzal.com', 2500, 'Deathcore', 2147483647, '35 x16 y 18 CTM', 'gcetzalb@gmail.com'),
-('345', 'Oswaldo Torres Matos', 'www.electronica60.com', 3000, 'Electronica60', 999999999, 'av 60 merida progreso', 'electronica60@gmail.com'),
-('UIMG960301DG0', 'Germani de jesusu', 'www.trivago.mx', 23000, 'TrivagoES', 2147483647, 'calle 56 numero 453 x 57 y 58', 'germani.jesus.uicab@gmail.com');
+('663627', 'Germani jala', 'www.nba.com.ms', 2000, 'mex', 92839138, 'calle 26', 'germani.asesino@gmail.com'),
+('778', 'Gerardp', 'www.facebook.com', 246822, 'Df', 928937, 'calle 23', 'germani@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -76,28 +78,28 @@ INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `totalPago`, `nombreEm
 -- Estructura de tabla para la tabla `Paquete`
 --
 
-CREATE TABLE IF NOT EXISTS `Paquete` (
+CREATE TABLE `Paquete` (
   `nombrePaquete` varchar(50) NOT NULL,
-  `idPaquete` int(11) NOT NULL AUTO_INCREMENT,
+  `idPaquete` int(11) NOT NULL,
   `costoPaquete` int(11) DEFAULT NULL,
   `tipoPaquete` varchar(50) DEFAULT NULL,
   `descripcionPaquete` varchar(150) DEFAULT NULL,
-  `estado` tinyint(1) DEFAULT NULL,
-  PRIMARY KEY (`idPaquete`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=75 ;
+  `estado` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Paquete`
 --
 
 INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquete`, `descripcionPaquete`, `estado`) VALUES
-('Basico q', 1, 1000, 'Hosting 2', 'Paquetecon 3', 1),
+('Basico q', 1, 1000, 'Hosting 1', 'Paquetecon 2', 1),
+('dasndh', 2, 9292, 'shbbfhs', 'shdhas', 1),
+('sshdhas', 6, 212, 'shjdhas', 'shdhba', 1),
 ('HOSWEB', 12, 2000, 'WEB', 'PAQUETE PARA 4 EQUIPOS', 1),
-('300', 23, 222, 'internet', 'PAQUETAXO', 1),
-('PACK', 70, 3000, 'PACK MEGA', 'LIBROS PROGRAMACION', 1),
-('Platzi', 71, 4000, 'SERVICIO', 'LOREM', 1),
-('paquete', 72, 30, 'kind', 'description', 1),
-('PaqueteBasico', 74, 20000, 'Basico', '1 servidor host ', 1);
+('ddfasd', 23, 222, 'assdas', 'asdasd', 1),
+('shdsa', 67, 838, 'shdh', 'sjds', 1),
+('dhasdh', 68, 2738, 'ashdhas', 'sjdhas', 1),
+('sjdjas', 69, 2763, 'sdjas', 'sdhbas', 1);
 
 -- --------------------------------------------------------
 
@@ -105,8 +107,8 @@ INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquet
 -- Estructura de tabla para la tabla `Servicio`
 --
 
-CREATE TABLE IF NOT EXISTS `Servicio` (
-  `idServicio` int(11) NOT NULL AUTO_INCREMENT,
+CREATE TABLE `Servicio` (
+  `idServicio` int(11) NOT NULL,
   `RFC` varchar(13) DEFAULT NULL,
   `nombrePaquete` varchar(30) NOT NULL,
   `costoServicio` int(11) DEFAULT NULL,
@@ -114,24 +116,65 @@ CREATE TABLE IF NOT EXISTS `Servicio` (
   `inicioServicio` date DEFAULT NULL,
   `FechadeRenovacion` date DEFAULT NULL,
   `descripcionServicioExtra` varchar(150) DEFAULT NULL,
-  `estadoServicio` int(1) DEFAULT NULL,
-  PRIMARY KEY (`idServicio`),
-  KEY `fk_servicio` (`RFC`),
-  KEY `idServicio` (`idServicio`)
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+  `estadoServicio` int(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `Servicio`
 --
 
 INSERT INTO `Servicio` (`idServicio`, `RFC`, `nombrePaquete`, `costoServicio`, `descripcion`, `inicioServicio`, `FechadeRenovacion`, `descripcionServicioExtra`, `estadoServicio`) VALUES
-(7, '232', ' HOSWEB 1', 2000, 'un seervicio', '2018-01-02', '2018-01-02', 'nada', 1),
+(7, '232', ' HOSWEB ', 20000, 'aaa', '2018-01-01', '2018-01-01', 'kdjaslkdjasuweknaaskdas', 1),
+(8, '231', ' Basico q ', 2222, 'aaa', '2019-01-01', '2920-01-01', 'sdasdjasldjasdasdas', 1),
+(9, '453', ' Basico q ', 2222, 'aaa', '2020-01-01', '2020-01-01', 'kosdasjdkasdlasjdkasdas', 1),
 (10, '778', ' Basico q ', 2222, '', '2020-01-01', '0202-01-01', 'sakdjasldjaslkdjaskdjas', 1),
 (11, '323213', ' Basico q ', 20000, 'kkljasdkasjdiowjaioijdaskldjasdhauwhjksdnasjkdlllll', '2019-01-01', '2919-10-10', 'jskadasdasdouwdjiwajdas', 1),
-(12, '2783', ' Basico ', 2700, 'un servicio triple', '2019-01-01', '2019-01-01', '2 host', 0),
-(13, '239828', ' Basico q ', 20000000, 'servicioslkskdjslkdsaj', '2017-01-01', '2018-01-01', 'osiadjiasjdasidjasiodjiojasd', 1),
-(14, 'UIMG960301DG0', ' Basico q ', 27000, '4 correos 1 host 2 direcciones', '2017-01-01', '2018-01-01', 'ninguno', 1);
+(12, '2783', ' Basico q ', 200000, 'un servicio doble', '2017-01-01', '2018-01-01', '1 host', 1);
 
+--
+-- Índices para tablas volcadas
+--
+
+--
+-- Indices de la tabla `Administrador`
+--
+ALTER TABLE `Administrador`
+  ADD PRIMARY KEY (`UserAdmin`);
+
+--
+-- Indices de la tabla `Cliente`
+--
+ALTER TABLE `Cliente`
+  ADD PRIMARY KEY (`RFC`);
+
+--
+-- Indices de la tabla `Paquete`
+--
+ALTER TABLE `Paquete`
+  ADD PRIMARY KEY (`idPaquete`);
+
+--
+-- Indices de la tabla `Servicio`
+--
+ALTER TABLE `Servicio`
+  ADD PRIMARY KEY (`idServicio`),
+  ADD KEY `fk_servicio` (`RFC`),
+  ADD KEY `idServicio` (`idServicio`);
+
+--
+-- AUTO_INCREMENT de las tablas volcadas
+--
+
+--
+-- AUTO_INCREMENT de la tabla `Paquete`
+--
+ALTER TABLE `Paquete`
+  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+--
+-- AUTO_INCREMENT de la tabla `Servicio`
+--
+ALTER TABLE `Servicio`
+  MODIFY `idServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
