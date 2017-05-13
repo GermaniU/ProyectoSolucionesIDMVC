@@ -14,15 +14,15 @@ if(!$_SESSION["validar"]){
 <div class="form-group">
 	<div class="form-group">
 		<label>Contraseña actual:</label>
-		<input class="form-control" type="text" name="contrasenaActual" value="" required>
+		<input class="form-control" type="password" name="contrasenaActual" value="" required>
 	</div>
 	<div class="form-group">
 		<label>Introducir contraseña nueva</label>
-		<input class="form-control" type="text" name="contrasenaNueva" value="" required>
+		<input class="form-control" type="password" name="contrasenaNueva" value="" required>
 	</div>
 	<div class="form-group">
 		<label>Confirmar contraseña nueva:</label>
-		<input class="form-control" type="text" name="verificarContrasena" value="" required>
+		<input class="form-control" type="password" name="verificarContrasena" value="" required>
 	</div>
 	<button type="submit" class="btn btn-primary">Enviar</button>
 </div>
