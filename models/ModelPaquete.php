@@ -18,10 +18,10 @@ class ModelPaquete extends Conexion{
 	}	
 	#EDITAR PAQUETE
 	#-------------------------------------
-  public static function editarPaqueteModel($rfc){
+  public static function editarPaqueteModel($idPaquete){
 
-		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete WHERE idPaquete= :idPaquete");
-		$stmt->bindParam(":idPaquete", $rfc, PDO::PARAM_STR);	
+		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete WHERE idPaquete= :idPaquete");
+		$stmt->bindParam(":idPaquete", $idPaquete, PDO::PARAM_STR);	
 		$stmt->execute();
 
 		return $stmt->fetch();
@@ -29,6 +29,21 @@ class ModelPaquete extends Conexion{
 		$stmt->close();
 
 	}
+   #BUSCAR PAQUETE PARA EL SERVICIO
+   #-------------------------------------------------
+   public static function buscarpaquete($nombrepaquete){
+       
+		$stmt = Conexion::conectar()->prepare("SELECT nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete FROM Paquete WHERE nombrePaquete= :nombrepaquete");
+
+		$stmt->bindParam(":nombrepaquete",$nombrepaquete, PDO::PARAM_STR);	
+		$stmt->execute();
+
+		return $stmt->fetch();
+
+		$stmt->close();
+
+	}
+	
 	#ACTUALIZAR PAQUETE
 	#-------------------------------------
 	public static function actualizarPaqueteModel($datosModel){

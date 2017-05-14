@@ -87,37 +87,7 @@
 		$datosController = $_GET["RFC"];
 		$respuesta = ModelCliente::editarUsuarioModel($datosController);
 
-		echo'
-
-		         <p>RFC: </p>
-		          <input class="form-control" type="text" value="'.$respuesta["RFC"].'" name="RFC" required>
-
-				<p>Nombre del cliente: </p>
-            	<input class="form-control" type="text" value="'.$respuesta["nombreCliente"].'" name="nombreCliente" required>
-
-
-				<p>Dominio: </p>
-				 <input class="form-control" type="text" value="'.$respuesta["dominio"].'" name="dominio" required>
-
-
-				<p>Total de pago: </p>
-				 <input class="form-control" type="text" value="'.$respuesta["totalPago"].'" name="totalPago" required>
-
-				<p>Nombre del cliente: </p>
-				 <input class="form-control" type="text" value="'.$respuesta["nombreEmpresa"].'" name="nombreEmpresa" required>
-
-				<p>Telefono del cliente: </p>
-				<input class="form-control" type="tel" value="'.$respuesta["telefonoClienteEmpresa"].'" name="telefonoClienteEmpresa" required>
-
-
-				<p>Direccion del cliente: </p>
-				<input class="form-control" type="text" value="'.$respuesta["direccionClienteEmpresa"].'" name="direccionClienteEmpresa" required>
-
-				<p>Correo del cliente</p>
-				<input class="form-control" type="email" value="'.$respuesta["correoClienteEmpresa"].'" name="correoClienteEmpresa" required>
-
-			  <button type="submit" class="btn btn-primary">Actualizar</button>';
-
+		return $respuesta;
 	}
 
 #ACTUALIZAR USUARIO
@@ -131,27 +101,33 @@
 		         $dominio = $this->dominio;
 		         $totalpago =$this->totalPago;
 		         $nombreempresa =$this->nombreEmpresa;
-		         $telefono = $this->telefonoCliente;
+		         $telefono = $_POST["telefonoClienteEmpresa"];
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
+		         $rfcAnterior = $_POST["rfcAnterior"];
 
           #metodos de validacion
 	      //---------------------------------------------------------------------
 				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
 			     }
-			    elseif (!preg_match("/[_a-zA-Z-]/",$cliente)) 
+			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente)) 
 			    { 
 			        $errores = "Ingresa un nombre  valido"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z-.-]/",$dominio)) 
+			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio)) 
 			    { 
 			        $errores = "Ingresa un domino valido"; 
-			    }  
-			    elseif(!preg_match("/[0-9]{10}/", $telefono)) //check for a pattern of 91-0123456789 
+			    }
+			    elseif (!preg_match("/^[0-9]{10}$/",$telefono)) 
 			    { 
-			        $errores = "Ingresa un numero de telefono valido"; 
-			    } 
+			        $errores = "Ingresa un telefono valido"; 
+			    }  
+			      
+			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789 
+			    { 
+			        $errores = "Ingresa un numero valido"; 
+			    }
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -161,11 +137,13 @@
 				                      "nombreEmpresa"=>$nombreempresa,
 				                      "telefonoClienteEmpresa"=>$telefono,
 				                      "direccionClienteEmpresa"=>$direccioncliente,
-				                      "correoClienteEmpresa"=>$correo);
+				                      "correoClienteEmpresa"=>$correo,
+				                      "rfcAnterior" =>$rfcAnterior); // LINEA AGREGADA
 
            if(!$errores){
                     
                     $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
+                    echo $respuesta;
 	                if($respuesta == "success"){
 
 					header("location:index.php?action=cambioCliente");
@@ -206,33 +184,32 @@
         $errores ='';
 		if(isset($_POST["nombreCliente"])){
          //-----Obtener datos del formulario-----
-		         $rfc = $_POST["RFC"];
-		         $cliente =$_POST["nombreCliente"];
-		         $dominio = $_POST["dominio"];
-		         $totalpago =$_POST["totalPago"];
-		         $nombreempresa =$_POST["nombreEmpresa"];
-		         $telefono = $_POST["telefonoClienteEmpresa"];
-		         $direccioncliente = $_POST["direccionClienteEmpresa"];
-		         $correo = $_POST["correoClienteEmpresa"];
-                   
+		         $rfc = $this->rfc;
+		         $cliente =$this->nombreCliente;
+		         $dominio =$this->dominio;
+		         $totalpago =$this->totalPago;
+		         $nombreempresa =$this->nombreEmpresa;
+		         $telefono = $this->telefonoCliente;
+		         $direccioncliente = $this->direccionCliente;
+		         $correo = $this->correo;
 		 
 				 #metodos de validacion
 				//---------------------------------------------------------------------
 				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
 			     }
-			    elseif (!preg_match("/[_a-zA-Z-]/",$cliente)) 
+			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente)) 
 			    { 
 			        $errores = "Ingresa un nombre  valido"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z-.-]/",$dominio)) 
+			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio)) 
 			    { 
 			        $errores = "Ingresa un domino valido"; 
 			    }  
-			    elseif(!preg_match("/[0-9]{10}/", $telefono)) //check for a pattern of 91-0123456789 
+			    elseif (!preg_match("/^[0-9]{10}$/",$telefono)) 
 			    { 
-			        $errores = "Ingresa un numero de telefono valido"; 
-			    }
+			        $errores = "Ingresa un telefono valido"; 
+			    }  
 			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789 
 			    { 
 			        $errores = "Ingresa un numero valido"; 

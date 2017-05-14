@@ -27,7 +27,7 @@
 			</div>
 			<div class="form-group">
 				<label>Estado del paquete:</label>
-			 	<input class="form-control" type="text" value="<?php echo $respuesta["descripcionPaquete"]; ?>" name="estado" required>
+			 	<input class="form-control" type="text" value="<?php echo $respuesta["estado"]; ?>" name="estado" required>
 			</div>
 			 <button type="submit" class="btn btn-primary">Actualizar</button>
 		

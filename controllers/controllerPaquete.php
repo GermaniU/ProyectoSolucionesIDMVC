@@ -103,15 +103,15 @@
 			    if ($costoPaquete < 0) {
 			        $errores = "ingresa una cantidad valida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$descripcionPaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete)) 
 			    { 
 			        $errores = "Ingresa una descripcion valida"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$nombrePaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete)) 
 			    { 
 			        $errores = "Ingresa un nombre de paquete valido"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$tipoPaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete)) 
 			    { 
 			        $errores = "Ingresa un nombre de paquete valido"; 
 			    }elseif ($estado > 1 || $estado < 0) {
@@ -187,15 +187,15 @@
 			    if ($costoPaquete < 0) {
 			        $errores = "ingresa una cantidad valida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$descripcionPaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete)) 
 			    { 
 			        $errores = "Ingresa una descripcion valida"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$nombrePaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete)) 
 			    { 
 			        $errores = "Ingresa un nombre de paquete valido"; 
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$tipoPaquete)) 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete)) 
 			    { 
 			        $errores = "Ingresa un nombre de paquete valido"; 
 			    }

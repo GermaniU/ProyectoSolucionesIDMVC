@@ -95,7 +95,9 @@
 				<td>'.$item["descripcion"].'</td>
 				<td>'.$item["inicioServicio"].'</td>
 				<td>'.$item["fechadeRenovacion"].'</td>
-				<td>'.$item["descripcionServicioExtra"].'</td>								
+				<td>'.$item["descripcionServicioExtra"].'</td>
+								
+
 				<td><a href="index.php?action=editarServicio&idServicio='.$item["idServicio"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 
 					</td>
@@ -113,58 +115,123 @@
 		return $respuesta;
 
 	}
+	public function ObtenerDatosPaquete(){
+		if (isset( $_POST["nombrePaquete"])) {
+	    $nombrePaquete = $_POST["nombrePaquete"];
+
+	    $nombrePaquete= trim($nombrePaquete);
+		
+		$respuesta2 = ModelPaquete::buscarpaquete($nombrePaquete);
+         
+        return $respuesta2;
+		}
+  	}
 
 	//Agregar un nuevoServicio
 	//------------------------------
 	public function agregarServicioBDController(){
 		$errores = '';
-         $seleccion = $_POST["opcion"];
-          echo $seleccion;
+
+          if (isset($_POST["RFC"])) {
+          	    //$idServicio = 1;//$this->idServicio;
+ 	   			 $RFC = $this->RFC;
+ 	   			 $nombrePaquete = $this->nombrePaquete;
+ 	   			 $costoServicio = $this->costoServicio;
+ 	   			 $descripcion = $this->descripcion;
+ 	   			 $inicioServicio = $this->inicioServicio;
+ 	   			 $fechadeRenovacion = $this->fechadeRenovacion;
+ 	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
+ 	   			 $estadoServicio = 1;//$this->estadoServicio;
+
+ 	   			//------------------Metodos de validacion------------------------------
+ 	   			  $fechaInicioServicio= explode("-", $inicioServicio); 
+ 	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
+  
+                  if ($fechaInicioServicio[0]<2008) {
+                  	 $errores = "ingresa un año valido";
+                  }
+                  elseif($fechaRenovacionServicio[0]<2008) {
+                  	 $errores = "ingresa un año valido";
+                  }
+                  elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
+			      { 
+			        $errores = "Ingresa un numero valido"; 
+			      }
+			      elseif (!preg_match("/[a-zA-Z-0-9]/",$descripcion)) 
+			      { 
+			        $errores = "Ingresa una descripcion valida"; 
+			      }
+			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
+			      { 
+			        $errores = "Ingresa una descripcion valida"; 
+			      }    
+
+                     
+	            #--------------------------------------------------------------------  
+			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
+
+	              $datosController = array(
+	                "RFC" =>$RFC,
+	                "nombrePaquete" =>$nombrePaquete,
+	            	"costoServicio" =>$costoServicio,
+	            	"descripcion" =>$descripcion,
+	            	"inicioServicio" =>$inicioServicio,
+	            	"fechadeRenovacion" =>$fechadeRenovacion,
+	            	"descripcionServicioExtra" =>$descripcionServicioExtra,
+	            	"estadoServicio" =>$estadoServicio
+
+	           	     );
+
+ 	   			 
+	             #VALIDAR QUE UN CLIENTE SOLO PUEDA TENER UN SERVICIO
+	             #---------------------------------------------------
+	             $respuesta1 = ModelServicio::vistaServicioModel();
+				 foreach($respuesta1 as $row => $item){
+	                  if ($item["RFC"]==$RFC) {
+	              	  		$errores ="Ya se ha agregado un servicio a este clientes";
+	              	  }
+	             }
+
+       			 if(!$errores){
+                    
+                    $respuesta = ModelServicio::registroServicioModel($datosController);
+	                 if($respuesta == "success"){
+
+					header("location:index.php?action=RegistrosServicios");
+                      }		         
+		         }else{
+
+		         	echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
+							        </button>
+							      </div>
+							      <div class='modal-body'>
+							          $errores
+							      </div>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+						</div>";
+	      }
+
 	}
+}
 	#FORMULARIO QUE MUESTRA EN PANTALLA LOS DATOS DEL SERVICIO
 	#--------------------------------------------------------------------------
 	public function editarServicioController(){
 
 		$idServicio = $_GET["idServicio"];
 		$respuesta = ModelServicio::editarServicioModel($idServicio);
-		echo
-		'
-			<input class="form-control" type="hidden" value="'.$respuesta["idServicio"].'" name="idServicio">
-			
-			<div class="form-group">
-				
-				<label>RFC:</label>
-             	<input class="form-control"  readonly="readonly" type="text" value="'.$respuesta["RFC"].'" name="RFC" required>
-			</div>
-			<div class="form-group">
-				<label>Nombre del paquete:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["nombrePaquete"].'" name="nombrePaquete" required>
-			</div>
-			<div class="form-group">
-				<label>Costo del servicio:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["costoServicio"].'" name="costoServicio" required>
-			</div>
-			<div class="form-group">
-				<label>Descripcion del servicio:</label>
-				<input class="form-control" type="text" value="'.$respuesta["descripcion"].'" name="descripcion" required>
-			</div>
-			<div class="form-group">
-				<label>Fecha inicio servicio:</label>
-				<input class="form-control" type="text" value="'.$respuesta["inicioServicio"].'" name="inicioServicio" required>
-			</div>
-			<div class="form-group">
-				<label>Fecha renovacion servicio:</label>
-				<input class="form-control" type="text" value="'.$respuesta["fechadeRenovacion"].'" name="fechadeRenovacion" required>
-			</div>
-			<div class="form-group">
-				<label>Descripcion complemento extra:</label>
-				<input class="form-control" type="text" value="'.$respuesta["descripcionServicioExtra"].'" name="descripcionServicioExtra" required>
-			</div>
-			<div class="form-group">
-				<label>Estado del servicio:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["estadoServicio"].'" name="estadoServicio" required>
-			</div>
-			 <button type="submit" class="btn btn-primary">Actualizar</button>';
+		
+		return $respuesta;
 
 	}
 	#EDITAR INFORMACION DEL SERVICIO A LA BASE DE DATOS
@@ -183,25 +250,27 @@
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
  	   			 $estadoServicio = $this->estadoServicio;
          //--------Metodos para validar que los datos ingresados sean correctos
-
-
-				 /*$cliente = trim($cliente);
-				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-
-				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
-
-				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-					$errores .= 'Por favor ingresa un correo valido <br />';
-				}
-
-				 $dominio = trim($dominio);
-				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
-
-				 $totalpago = trim($totalpago);
-
-				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
-					$errores .= 'Por favor ingresa una cantidad valida <br />';
-				}*/
+                  $fechaInicioServicio= explode("-", $inicioServicio); 
+ 	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
+  
+                  if ($fechaInicioServicio[0]<2008) {
+                  	 $errores = "ingresa un año valido";
+                  }
+                  elseif($fechaRenovacionServicio[0]<2008) {
+                  	 $errores = "ingresa un año valido";
+                  }
+                  elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
+			      { 
+			        $errores = "Ingresa un numero valido"; 
+			      }
+			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcion)) 
+			      { 
+			        $errores = "Ingresa una descripcion valida"; 
+			      }
+			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
+			      { 
+			        $errores = "Ingresa una descripcion valida"; 
+			      }    
          //-----------------------------------
 
 			    

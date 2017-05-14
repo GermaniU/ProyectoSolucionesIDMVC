@@ -13,43 +13,64 @@ ini_set('error_reporting', E_ALL);*/
 ?>
 <?php
 
- $respuesta = new MvcControllerServicio();
- $respuesta2= $respuesta->ObtenerDatosPaquetes();
+ $nombrepaquete = new MvcControllerServicio();
+ $nombrespaquetes= $nombrepaquete->ObtenerDatosPaquetes();
 
 ?>
 <div class="text-center">
 
 <h1 class="text-center title-form-cli">Agregar Servicio</h1>
 </div>
+
+<div class="container text-center form-group">
+  <form method="post" id="form-registro">
+            <div class="form-group">
+                    <label>Nombre Paquete </label>
+                     <select class="form-control" name="nombrePaquete">
+                            <?php
+                                foreach($nombrespaquetes as $row => $item) {
+                            ?>
+                            <option value = " <?php   echo $seleccion = $item['nombrePaquete']; ?> "><?php echo $item['nombrePaquete']; ?></option>
+                            <?php
+                                }
+                           ?>
+                     </select>
+              </div>
+               <div class="form-group">
+                     <button type="submit" class="btn btn-primary">Seleccionar</button>
+              </div>
+
+  </form>
+       
+</div>
+
+<?php 
+$paquete = new MvcControllerServicio();
+$infopaquete = $paquete -> ObtenerDatosPaquete();
+
+ ?>
+
 <div class="container text-center form-group">
        <form method="post" id="form-registro">
               <div class="form-group">
               	<input type="Hidden" placeholder="idServicio:" name="idServicio" required>
               </div>
+              
+              <div class="form-group">
+                     <input type="Hidden" placeholder="nombrePaquete:" name="nombrePaquete" value="<?php echo $infopaquete["nombrePaquete"]; ?>" required>
+              </div>
+              
               <div class="form-group">
                      <label>RFC</label>
               	<input type="text" readonly="readonly"  class="form-control"  value="<?php echo $_GET["RFC"]; ?>" name="RFC">
               </div>
               <div class="form-group">
-                     <select class="form-control" name="nombrePaquete" id="paqueteOpcion">
-                     	<?php
-       			    foreach($respuesta2 as $row => $item) {
-       			?>
-       			<option id="paqueteOpcion" value = " <?php   echo $seleccion = $item['nombrePaquete']; ?> "><?php echo $item['nombrePaquete']; ?></option>
-       			<?php
-       			    }
-       		      ?>
-       		     <option value="otro"> Otro</option>
-                     </select>
-              </div>
-
-              <div class="form-group">
                      <label>Precio del servicio: </label>
-              	<input type="text"  class="form-control" value="<?php if(isset($_POST["costoServicio"])){echo $_POST["costoServicio"]; } ?>" name="costoServicio" required>
+              	<input type="text"  class="form-control" value="<?php echo $infopaquete["costoPaquete"];  ?>" name="costoServicio" required>
               </div>
               <div class="form-group">
                      <label>Descripcion del servicio</label>
-              	<input type="text"  class="form-control" value="<?php if(isset($_POST["descripcion"])){echo $_POST["descripcion"]; } ?>"  name="descripcion" required>
+              	<input type="text"  class="form-control" value="<?php echo $infopaquete["descripcionPaquete"];  ?>" name="descripcion" required>
               </div>
 	      <div class="form-group">
                      <label>Inicio del servicio</label>
@@ -76,9 +97,8 @@ ini_set('error_reporting', E_ALL);*/
 
 <?php
 
-$registro = new MvcControllerServicio();
-$registro -> agregarServicioBDController();
-
+  $actualizardatos = new MvcControllerServicio();
+  $actualizardatos->agregarServicioBDController()
 /*if(isset($_GET["action"])){
 
 	if($_GET["action"] == "ok"){

@@ -18,7 +18,6 @@
 		<label for="Costo del paquete">Costo del paquete:</label>
 		<input class="form-control" type="text" name="costoPaquete"  value="<?php if(isset($_POST["costoPaquete"])){echo $_POST["costoPaquete"]; } ?>" required>
 	</div>
-	
 	<button type="submit" class="btn btn-primary">Enviar</button>
 </div>
 </form>
