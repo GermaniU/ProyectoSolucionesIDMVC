@@ -31,18 +31,18 @@ ini_set('error_reporting', E_ALL);*/
               	<input type="text" readonly="readonly"  class="form-control"  value="<?php echo $_GET["RFC"]; ?>" name="RFC">
               </div>
               <div class="form-group">
-                     <select class="form-control" name="nombrePaquete">
+                     <select class="form-control" name="nombrePaquete" id="paqueteOpcion">
                      	<?php
        			    foreach($respuesta2 as $row => $item) {
        			?>
-       			<option value = " <?php   echo $seleccion = $item['nombrePaquete']; ?> "><?php echo $item['nombrePaquete']; ?></option>
+       			<option id="paqueteOpcion" value = " <?php   echo $seleccion = $item['nombrePaquete']; ?> "><?php echo $item['nombrePaquete']; ?></option>
        			<?php
        			    }
        		      ?>
        		     <option value="otro"> Otro</option>
                      </select>
               </div>
-    
+
               <div class="form-group">
                      <label>Precio del servicio: </label>
               	<input type="text"  class="form-control" value="<?php if(isset($_POST["costoServicio"])){echo $_POST["costoServicio"]; } ?>" name="costoServicio" required>
