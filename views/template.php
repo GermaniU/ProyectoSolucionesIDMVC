@@ -29,6 +29,7 @@
 	<script type="text/javascript" src="views/assets/js/buttons.colVis.min.js"></script>
 	<script type="text/javascript" src="views/assets/js/Tabla.js"></script>
 	<script type="text/javascript" src="views/assets/js/Advertencia.js"></script>
+	<script type="text/javascript" src="views/assets/js/Ajax.js"></script>
 
 
 
