@@ -71,22 +71,43 @@ class ControllerAdministrador{
 		if(isset($_POST["contrasenaActual"])){
 
          	$password = $_POST["contrasenaActual"];
-         	$contraseñaActual = $_POST["contrasenaActual"];
+         	$contrasenaNueva = $_POST["contrasenaNueva"];
             $VerificarContrasena= $_POST["verificarContrasena"];
-            $respuesta1	= ModelAdministrador::ingresoAdministradorModel($datosController, "Administrador");
+
+            $respuesta1	= ModelAdministrador::DatosAdministrador();
             
-            if ($respuesta["password"] == $_POST["passwordf"]) {
 
+            if ($respuesta1["password"] == $password) {
+               
+            }else {
+               $errores = "La contraseña Actual no concide";
+            }
+
+
+         
+            if ($contrasenaNueva == $VerificarContrasena) {
+           
             }else{
-                $errores = "Las Contraseñas actual no coincide";
+
+                $errores = "Las Contraseñas no coinciden";
 
             }
-            if (!$password == $VerificarContrasena) {
-               $errores = "Las Contraseñas no coinciden";
-            }
+
+
+            $datosController = array( "UserAdmin"=>$respuesta1["UserAdmin"], 
+								      "password"=>$contrasenaNueva);
 
             if (!$errores) {
-            	
+        
+
+                 $respuesta=ModelAdministrador::actualizarContrasena($datosController);
+
+                 if($respuesta == "success"){
+
+					header("location:index.php?action=cambioContraseña");
+			      }
+
+
             }else{
             	echo "<div id='errorAgregarCliente'></div>
 				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
@@ -109,9 +130,8 @@ class ControllerAdministrador{
 							</div>";
             }
 
-            $datosController = array("password"=>$password);
 	
-	        print_r($datosController);
+
 
 		}
          
