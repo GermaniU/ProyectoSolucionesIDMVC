@@ -40,7 +40,9 @@
 */			$this->set_costoPaquete( $_POST["costoPaquete"]);
 			$this->set_tipoPaquete($_POST["tipoPaquete"]);
 			$this->set_descripcionPaquete( $_POST["descripcionPaquete"]);
-			$this->set_estado( $_POST["estado"]);
+			  if (isset( $_POST["estado"])) {
+			  	 $this->set_estado( $_POST["estado"]);
+			  }
 			 }
 	  }
 
@@ -76,38 +78,17 @@
 		$idPaquete = $_GET["idPaquete"];
 		$respuesta = ModelPaquete::editarPaqueteModel($idPaquete);
 
-		echo
-		'
-			<input class="form-control" type="hidden" value="'.$respuesta["idPaquete"].'" name="idPaquete">
-			<div class="form-group">
-				<label>Tipo del paquete:</label>
-             	<input class="form-control" type="text" value="'.$respuesta["tipoPaquete"].'" name="tipoPaquete" required>
-			</div>
-			<div class="form-group">
-				<label>Nombre del paquete:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["nombrePaquete"].'" name="nombrePaquete" required>
-			</div>
-			<div class="form-group">
-				<label>Costo del paquete:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["costoPaquete"].'" name="costoPaquete" required>
-			</div>
-			<div class="form-group">
-				<label>Descripcion del paquete:</label>
-				<input class="form-control" type="text" value="'.$respuesta["descripcionPaquete"].'" name="descripcionPaquete" required>
-			</div>
-			<div class="form-group">
-				<label>Estado del paquete:</label>
-			 	<input class="form-control" type="text" value="'.$respuesta["estado"].'" name="estado" required>
-			</div>
-			 <button type="submit" class="btn btn-primary">Actualizar</button>';
+		return $respuesta;
+
+	
 
 	}
 	#ACTUALIZAR PAQUETE
 	#------------------------------------
 	public function actualizarPaqueteController(){
-        $errores ='';
-		if(isset($_POST["nombrePaquete"])){
-         //-----Obtener datos del formulario-----
+      $errores ='';
+    if(isset($_POST["nombrePaquete"])){
+		//-----Obtener datos del formulario-----
    				$nombrePaquete=$this->nombrePaquete;
    				$idPaquete=$this->idPaquete;
 /*   			$idServicio=$this->idServicio;
@@ -115,111 +96,28 @@
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=$this->estado;
-
-         //--------Metodos para validar que los datos ingresados sean correctos
-
-
-				 /*$cliente = trim($cliente);
-				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-
-				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
-
-				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-					$errores .= 'Por favor ingresa un correo valido <br />';
-				}
-
-				 $dominio = trim($dominio);
-				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
-
-				 $totalpago = trim($totalpago);
-
-				 if(!filter_var($correo, FILTER_SANITIZE_NUMBER_FLOAT)){
-					$errores .= 'Por favor ingresa una cantidad valida <br />';
-				}*/
-         //-----------------------------------
-
-			$datosController = array( "nombrePaquete"=>$nombrePaquete,
-							          "idPaquete"=>$idPaquete,
-/*				                      "idServicio"=>$idServicio,
-*/				                      "costoPaquete"=>$costoPaquete,
-				                      "tipoPaquete"=>$tipoPaquete,
-				                      "descripcionPaquete"=>$descripcionPaquete,
-				                      "estado"=>$estado);
-
-			if(!$errores){
-               $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);
-	                 if($respuesta == "success"){
-
-					header("location:index.php?action=cambioPaquete");
-
-				}
-
-				else{
-					echo '<div id="errorActualizarPaquete"></div>
-				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
-							        </button>
-							      </div>
-							      <div class="modal-body">
-							       Los datos son demasiado largos o son datos incompatibles
-							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
-							      </div>
-							    </div>
-							  </div>
-							</div>';
-					//echo "error";
-				}
-			}else{
-				echo $errores;
-			}
-
-
-
-
-     }
- }
-
- #Agregar Paquete
-	#-----------------------------------------------
-	public function agregarPaqueteBDController(){
-        $errores ='';
-		if(isset($_POST["nombrePaquete"])){
-         //-----Obtener datos del formulario-----
-		        $nombrePaquete=$this->nombrePaquete;
-   				$idPaquete=$this->idPaquete;
-/*   				$idServicio=$this->idServicio;
-*/   			$costoPaquete=$this->costoPaquete;
-   				$tipoPaquete=$this->tipoPaquete;
-  				$descripcionPaquete=$this->descripcionPaquete;
-   				$estado=1;
-
-
-         //--------Metodos para validar que los datos ingresados sean correctos
-
-
-		/*		 $cliente = trim($cliente);
-				 $cliente = filter_var($cliente, FILTER_SANITIZE_STRING);
-
-				 $correo = filter_var($correo, FILTER_SANITIZE_EMAIL);
-
-				 if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-						$errores .= 'Por favor ingresa un correo valido <br />';
-				 }
-
-				 $dominio = trim($dominio);
-				 $dominio = filter_var($dominio, FILTER_SANITIZE_STRING);
-
-				 $totalpago = trim($totalpago);*/
-
-
-         //-----------------------guardar datos en un arreglo para la clase CRUD
+          
+          #metodos de validacion
+	      //---------------------------------------------------------------------
+				  
+			    if ($costoPaquete < 0) {
+			        $errores = "ingresa una cantidad valida positiva";
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$descripcionPaquete)) 
+			    { 
+			        $errores = "Ingresa una descripcion valida"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$nombrePaquete)) 
+			    { 
+			        $errores = "Ingresa un nombre de paquete valido"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$tipoPaquete)) 
+			    { 
+			        $errores = "Ingresa un nombre de paquete valido"; 
+			    }elseif ($estado > 1 || $estado < 0) {
+			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
+			    }
+         //-----------------------guardar datos en un arreglo para la base de datos------------------
 
 			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
 							          "idPaquete"=>$idPaquete,
@@ -229,50 +127,127 @@
 				                      "descripcionPaquete"=>$descripcionPaquete,
 				                      "estado"=>$estado);
 
+		 // ---------------------Si no hay errores enviar a la base de datos------------------------------	     
 
-        //------------------------Comprobar que no contenga errores--------------------
+           if(!$errores){
+                    
+                  $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);                  
+                  
+                  if($respuesta == "success"){
+					header("location:index.php?action=cambioPaquete");
+			       }
+                    		         
+		    }else{
 
-			if(!$errores){
-                     $respuesta = ModelPaquete::registroPaqueteModel($datosController);
-	                 if($respuesta == "success"){
 
-					header("location:index.php?action=RegistrosPaquetes");
-
-				     }else{
-				      echo '<div id="errorAgregarPaquete"></div>
-				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
+		         	echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
 							        </button>
 							      </div>
-							      <div class="modal-body">
-							       Los datos son demasiado largos o son datos incompatibles
+							      <div class='modal-body'>
+							          $errores
 							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
 							      </div>
 							    </div>
 							  </div>
-							</div>';
-					  //print_r($respuesta);
-				    }
-			}else{
-				echo $errores;
-			}
-		}
+							</div>";
+		        }
+			
+
+        }
+}
+
+
+
+ #Agregar Paquete
+	#-----------------------------------------------
+	public function agregarPaqueteBDController(){
+         $errores ='';
+		if(isset($_POST["nombrePaquete"])){
+          //-----Obtener datos del formulario-----
+		        $nombrePaquete=$this->nombrePaquete;
+   				$idPaquete=$this->idPaquete;
+/*   			$idServicio=$this->idServicio;
+*/   			$costoPaquete=$this->costoPaquete;
+   				$tipoPaquete=$this->tipoPaquete;
+  				$descripcionPaquete=$this->descripcionPaquete;
+   				$estado=1;
+          
+          #metodos de validacion
+	      //---------------------------------------------------------------------
+				  
+			    if ($costoPaquete < 0) {
+			        $errores = "ingresa una cantidad valida positiva";
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$descripcionPaquete)) 
+			    { 
+			        $errores = "Ingresa una descripcion valida"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$nombrePaquete)) 
+			    { 
+			        $errores = "Ingresa un nombre de paquete valido"; 
+			    }
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]/",$tipoPaquete)) 
+			    { 
+			        $errores = "Ingresa un nombre de paquete valido"; 
+			    }
+         //-----------------------guardar datos en un arreglo para la base de datos------------------
+
+			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
+							          "idPaquete"=>$idPaquete,
+/*				                      "idServicio"=>$idServicio,
+*/				                      "costoPaquete"=>$costoPaquete,
+				                      "tipoPaquete"=>$tipoPaquete,
+				                      "descripcionPaquete"=>$descripcionPaquete,
+				                      "estado"=>$estado);
+
+		 // ---------------------Si no hay errores enviar a la base de datos------------------------------	     
+
+           if(!$errores){
+                    
+                  $respuesta = ModelPaquete::registroPaqueteModel($datosController);	              
+                  if($respuesta == "success"){
+
+					header("location:index.php?action=cambioPaquete");
+			       }
+                    		         
+		    }else{
+
+
+		         	echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
+							        </button>
+							      </div>
+							      <div class='modal-body'>
+							          $errores
+							      </div>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
+							      </div>
+							    </div>
+							  </div>
+						</div>";
+		        }
+			
+
+        }
     }
 
-
-
-
-
-
-
- }
+}
 
 
  ?>
