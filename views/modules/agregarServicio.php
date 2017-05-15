@@ -38,13 +38,14 @@ ini_set('error_reporting', E_ALL);*/
               </div>
                <div class="form-group">
                      <button type="submit" class="btn btn-primary">Seleccionar</button>
+
               </div>
 
   </form>
-       
+
 </div>
 
-<?php 
+<?php
 $paquete = new MvcControllerServicio();
 $infopaquete = $paquete -> ObtenerDatosPaquete();
 
@@ -55,11 +56,11 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
               <div class="form-group">
               	<input type="Hidden" placeholder="idServicio:" name="idServicio" required>
               </div>
-              
+
               <div class="form-group">
                      <input type="Hidden" placeholder="nombrePaquete:" name="nombrePaquete" value="<?php echo $infopaquete["nombrePaquete"]; ?>" required>
               </div>
-              
+
               <div class="form-group">
                      <label>RFC</label>
               	<input type="text" readonly="readonly"  class="form-control"  value="<?php echo $_GET["RFC"]; ?>" name="RFC">
@@ -90,7 +91,9 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
               </div>
               <div class="form-group">
               	<button type="submit" class="btn btn-primary">Agregar</button>
+                <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosServicios'">Cancelar</button>
               </div>
+
 
 
 </form>
