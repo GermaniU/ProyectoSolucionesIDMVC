@@ -7,6 +7,7 @@ $(document).ready(function() {
 
 function visualizarTablaPaquetes() {
 	    var table = $('#tdPaquetes').DataTable( {
+	    	lengthMenu: [ 5, 10, 25, 50, 75,100 ],
         	lengthChange: true,
         	responsive: true,
            	dom: 'Bfrtipl',
@@ -74,6 +75,7 @@ function visualizarTablaPaquetes() {
 
 function visualizarTablaClientes() {
 	var table = $('#tdClientes').DataTable( {
+			lengthMenu: [ 5, 10, 25, 50, 75,100 ],
         	lengthChange: true,
         	responsive: true,
            	dom: 'Bfrtipl',
@@ -141,6 +143,7 @@ function visualizarTablaClientes() {
 
 function visualizarTablaServicios() {
 	var table = $('#tdServicios').DataTable( {
+			lengthMenu: [ 5, 10, 25, 50, 75,100 ],
         	lengthChange: true,
         	responsive: true,
            	dom: 'Bfrtipl',
