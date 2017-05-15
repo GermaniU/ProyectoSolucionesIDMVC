@@ -111,22 +111,22 @@
 				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
 			     }
-			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente)) 
-			    { 
-			        $errores = "Ingresa un nombre  valido"; 
+			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente))
+			    {
+			        $errores = "Ingresa un nombre  valido";
 			    }
-			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio)) 
-			    { 
-			        $errores = "Ingresa un domino valido"; 
+			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio))
+			    {
+			        $errores = "Ingresa un domino valido";
 			    }
-			    elseif (!preg_match("/^[0-9]{10}$/",$telefono)) 
-			    { 
-			        $errores = "Ingresa un telefono valido"; 
-			    }  
-			      
-			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789 
-			    { 
-			        $errores = "Ingresa un numero valido"; 
+			    elseif (!preg_match("/^[0-9]{10}$/",$telefono))
+			    {
+			        $errores = "Ingresa un telefono valido";
+			    }
+
+			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
+			    {
+			        $errores = "Ingresa un numero valido";
 			    }
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
@@ -141,14 +141,14 @@
 				                      "rfcAnterior" =>$rfcAnterior); // LINEA AGREGADA
 
            if(!$errores){
-                    
+
                     $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
                     echo $respuesta;
 	                if($respuesta == "success"){
 
 					header("location:index.php?action=cambioCliente");
 			     	}
-                    		         
+
 		         }else{
 
 
@@ -172,7 +172,7 @@
 							  </div>
 							</div>";
 		        }
-			
+
 
      }
  }
@@ -192,27 +192,27 @@
 		         $telefono = $this->telefonoCliente;
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
-		 
+
 				 #metodos de validacion
 				//---------------------------------------------------------------------
 				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
 			     }
-			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente)) 
-			    { 
-			        $errores = "Ingresa un nombre  valido"; 
+			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente))
+			    {
+			        $errores = "Ingresa un nombre  valido";
 			    }
-			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio)) 
-			    { 
-			        $errores = "Ingresa un domino valido"; 
-			    }  
-			    elseif (!preg_match("/^[0-9]{10}$/",$telefono)) 
-			    { 
-			        $errores = "Ingresa un telefono valido"; 
-			    }  
-			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789 
-			    { 
-			        $errores = "Ingresa un numero valido"; 
+			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio))
+			    {
+			        $errores = "Ingresa un domino valido";
+			    }
+			    elseif (!preg_match("/^[0-9]{10}$/",$telefono))
+			    {
+			        $errores = "Ingresa un telefono valido";
+			    }
+			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
+			    {
+			        $errores = "Ingresa un numero valido";
 			    }
 
 				 #VALIDAR RFC IGUAL
@@ -224,7 +224,7 @@
 	              	  }
 	             }
 
-	            #--------------------------------------------------------------------  
+	            #--------------------------------------------------------------------
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -238,13 +238,13 @@
 
 
 			     if(!$errores){
-                    
+
                     $respuesta = ModelCliente::registroClienteModel($datosController);
 	                if($respuesta == "success"){
 
 					header("location:index.php?action=cambioCliente");
 			     	}
-                    		         
+
 		         }else{
 
 
