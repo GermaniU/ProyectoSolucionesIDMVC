@@ -1,6 +1,6 @@
 <h1 class="text-center title-form-cli">Editar Cliente</h1>
 
-<?php 
+<?php
   $traerdatos = new MvcControllerCliente();
   $respuesta = $traerdatos-> editarUsuarioController();
  ?>
@@ -38,6 +38,7 @@
 				<input class="form-control" type="email" value="<?php echo $respuesta["correoClienteEmpresa"]; ?>" name="correoClienteEmpresa" required>
 
 			  <button type="submit" class="btn btn-primary">Actualizar</button>
+			  <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosClientes'">Cancelar</button>
 
 		</form>
 </div>
