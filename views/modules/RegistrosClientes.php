@@ -8,12 +8,12 @@ if(!$_SESSION["validar"]){
 }
 
 ?>
-<h1 class="text-center margin-20 animated fast fadeIn">Cliente</h1>
+<h1 class="text-center animated fast fadeIn">Cliente</h1>
 
 	<div class="table-responsive col-sm-12 margin-bottom">
 		<table id="tdClientes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn ">
 			<thead class="">
-			<tr>
+			<tr class="table-success">
 				<th>RFC</th>
 				<th>Cliente</th>
 				<th>Dominio</th>
