@@ -62,7 +62,7 @@
 				<td>'.$item["nombrePaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
 				<td>'.$item["costoPaquete"].'</td>
-								<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-cubes" aria-hidden="true"></i></button></a>
+								<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 
 					</td>
 				</tr>';
@@ -80,7 +80,7 @@
 
 		return $respuesta;
 
-	
+
 
 	}
 	#ACTUALIZAR PAQUETE
@@ -96,24 +96,24 @@
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=$this->estado;
-          
+
           #metodos de validacion
 	      //---------------------------------------------------------------------
-				  
+
 			    if ($costoPaquete < 0) {
 			        $errores = "ingresa una cantidad valida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete)) 
-			    { 
-			        $errores = "Ingresa una descripcion valida"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
+			    {
+			        $errores = "Ingresa una descripcion valida";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete)) 
-			    { 
-			        $errores = "Ingresa un nombre de paquete valido"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
+			    {
+			        $errores = "Ingresa un nombre de paquete valido";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete)) 
-			    { 
-			        $errores = "Ingresa un nombre de paquete valido"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
+			    {
+			        $errores = "Ingresa un nombre de paquete valido";
 			    }elseif ($estado > 1 || $estado < 0) {
 			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			    }
@@ -127,16 +127,16 @@
 				                      "descripcionPaquete"=>$descripcionPaquete,
 				                      "estado"=>$estado);
 
-		 // ---------------------Si no hay errores enviar a la base de datos------------------------------	     
+		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
 
            if(!$errores){
-                    
-                  $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);                  
-                  
+
+                  $respuesta = ModelPaquete::actualizarPaqueteModel($datosController);
+
                   if($respuesta == "success"){
 					header("location:index.php?action=cambioPaquete");
 			       }
-                    		         
+
 		    }else{
 
 
@@ -160,7 +160,7 @@
 							  </div>
 							</div>";
 		        }
-			
+
 
         }
 }
@@ -180,24 +180,24 @@
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=1;
-          
+
           #metodos de validacion
 	      //---------------------------------------------------------------------
-				  
+
 			    if ($costoPaquete < 0) {
 			        $errores = "ingresa una cantidad valida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete)) 
-			    { 
-			        $errores = "Ingresa una descripcion valida"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
+			    {
+			        $errores = "Ingresa una descripcion valida";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete)) 
-			    { 
-			        $errores = "Ingresa un nombre de paquete valido"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
+			    {
+			        $errores = "Ingresa un nombre de paquete valido";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete)) 
-			    { 
-			        $errores = "Ingresa un nombre de paquete valido"; 
+			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
+			    {
+			        $errores = "Ingresa un nombre de paquete valido";
 			    }
          //-----------------------guardar datos en un arreglo para la base de datos------------------
 
@@ -209,16 +209,16 @@
 				                      "descripcionPaquete"=>$descripcionPaquete,
 				                      "estado"=>$estado);
 
-		 // ---------------------Si no hay errores enviar a la base de datos------------------------------	     
+		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
 
            if(!$errores){
-                    
-                  $respuesta = ModelPaquete::registroPaqueteModel($datosController);	              
+
+                  $respuesta = ModelPaquete::registroPaqueteModel($datosController);
                   if($respuesta == "success"){
 
 					header("location:index.php?action=cambioPaquete");
 			       }
-                    		         
+
 		    }else{
 
 
@@ -242,7 +242,7 @@
 							  </div>
 						</div>";
 		        }
-			
+
 
         }
     }

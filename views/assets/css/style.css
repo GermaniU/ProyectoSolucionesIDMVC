@@ -1,95 +1,20 @@
-body{
-  padding-top: 70px;
-
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: content-box;
 }
 
-.login-title{
-  text-align: center;
-  font-size: 35px;
+body{
+  padding-top: 70px;
+}
+
+nav{
+  background-color: #81A14B;
   font-weight: bold;
-  margin-top: 15px;
-  margin-bottom: 15px;
   font-family: 'Open Sans', sans-serif;
 }
 
-#form-login input{
-  margin-top: 10px;
-  width:30%;
-  text-align: center;
-  display: inline-block;
-}
-
-#form-login{
-  text-align: center;
-  width: 100%;
-}
-
-#form-login button[type=submit]{
-  width: 15%;
-}
-
-#form-login button[type=submit]:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(25px);
-}
-
-.nav-color{
-    background-color: green;
-    text-align: center;
-}
-
-.footer{
-      position: absolute;
-      bottom: -70px;
-      width: 100%;
-}
-
-@media only screen and (max-width: 770px) {
-    .footer{
-      position: absolute;
-      bottom: -120px;
-      width: 100%;
-  }
-
-  #form-login input[type=text]{
-    width: 70%;
-  }
-
-  #form-login input[type=password]{
-    width: 70%;
-  }
-}
-
-@media only screen and (max-width: 500px) {
-  .hid-label label{
-    display: none;
-  }
-
-  .hid-label input[type=text]{
-    width: 120%;
-  }
-
-  .cli-container{
-    text-align: center;
-  }
-}
-
-.form-cliente input{
-    text-align: center;
-}
-
-.form-cliente .container{
-    text-align: center;
-}
-
-.title-form-cli{
-    margin-bottom: 20px;
-    margin-top: 20px;
-    font-weight: bold;
-}
-
-
+/*-----animaciones-----*/
 .animated {
   -webkit-animation-duration: 1s;
   animation-duration: 1s;
@@ -117,10 +42,68 @@ body{
 .fadeIn {
   animation-name: fadeIn;
 }
-table {
-    position: relative;
-    margin: auto;
-    width: 100%;
+
+
+/*------------Propiedades del formulario del login----------*/
+.login-title{
+  text-align: center;
+  font-size: 35px;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 15px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+#form-login{
+  text-align: center;
+  width: 100%;
+}
+
+#form-login input{
+  margin-top: 10px;
+  width:30%;
+  text-align: center;
+  display: inline-block;
+}
+
+
+#form-login button[type=submit]{
+    width: 15%;
+    background-color: #E0493E;
+    color: white;
+    border: black;
+}
+
+#form-login button[type=submit]:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(25px);
+}
+
+@media only screen and (max-width: 770px) {
+  #form-login input[type=text]{
+    width: 70%;
+  }
+
+  #form-login input[type=password]{
+    width: 70%;
+  }
+}
+
+
+/*---Propiedades de los formularios----*/
+.form-cliente input{
+    text-align: center;
+}
+
+.form-cliente .container{
+    text-align: center;
+}
+
+.title-form-cli{
+    margin-bottom: 20px;
+    margin-top: 20px;
+    font-weight: bold
 }
 
 
@@ -129,42 +112,10 @@ h1{
     font-weight: bold;
 }
 
-#tdClientes{
-  font-family: 'Open Sans', sans-serif;
-}
-
-/*.contenedorBotonAgregar{
-  float: right;
-}
-
-.contenedorBotonAgregar .botonagregar{
-    padding: 15px 50px;
-    border-radius: 60px;
-    background-color: #acd263;
-    color: white;
+.text-center{
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
-    text-decoration: none;
-    width: 200px;
-    text-align: center;
-}
-.contenedorBotonAgregar .botonagregar:hover{
-  background-color:rgba(172,210,99,0.8);
-}
-*/
- .error{
-  margin:auto;
-  text-align: center;
-  font-size: 20px;
-  padding-top: : 20px;
-  border: 1px red solid;
- }
-.formulario .error ul {
-  padding: 0 15px;
-}
+    font-weight:bold;
 
-.formulario .error ul li {
-  margin-bottom: 10px;
 }
 
 #form-registro{
@@ -198,10 +149,94 @@ h1{
   margin-bottom: 15px;
 }
 
+#form-registro button[type=button]{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+#form-registro input[type=number]{
+  text-align: center;
+  margin-bottom: 15px;
+}
+
 #form-registro label{
   font-weight: bold;
 }
 
 #form-registro p{
   font-weight: bold;
+}
+
+#navbarText ul li a{
+  color: #fff;
+  font-weight: initial;
+}
+
+#navbarText ul li div a{
+  color: black;
+  font-weight: initial;
+}
+
+#tdClientes tbody td button{
+  background-color: #E0493E;
+  color: white;
+  border: black;
+}
+
+#tdClientes tbody td{
+  font-family: 'Helvetica';
+}
+
+#tdClientes tbody td button:hover{
+  background-color: #EF2F21;
+}
+
+#tdServicios tbody td button{
+  background-color: #E0493E;
+  color: white;
+  border: black;
+
+}
+
+#tdServicios tbody td{
+  font-family: 'Helvetica';
+}
+
+#tdServicios tbody td button:hover{
+  background-color: #EF2F21;
+}
+
+#tdPaquetes tbody td button{
+  background-color: #E0493E;
+  color: white;
+  border: black;
+
+}
+
+#tdPaquetes tbody td{
+  font-family: 'Helvetica';
+}
+
+#tdPaquetes tbody td button:hover{
+  background-color: #EF2F21;
+}
+
+#form-registro div button{
+    background-color: #E0493E;
+    color: white;
+    border: black;
+}
+
+#form-registro div button:hover{
+    background-color: #EF2F21;
+}
+
+#form-registro button{
+    background-color: #E0493E;
+    color: white;
+    border: black;
+}
+
+#form-registro button:hover{
+    background-color: #EF2F21;
 }

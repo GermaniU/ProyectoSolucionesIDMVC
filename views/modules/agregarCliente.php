@@ -41,8 +41,9 @@ ini_set('error_reporting', E_ALL);
 
 		<p>Correo del cliente</p>
 		<input class="form-control" type="email" placeholder="Correo" name="correoClienteEmpresa" value="<?php if(isset($_POST["correoClienteEmpresa"])){echo $_POST["correoClienteEmpresa"]; } ?>" required>
-		
+
 		<button type="submit" class="btn btn-primary">Agregar</button>
+		<button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosClientes'">Cancelar</button>
 	</form>
 
 <?php

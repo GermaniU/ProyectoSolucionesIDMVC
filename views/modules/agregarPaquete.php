@@ -19,6 +19,7 @@
 		<input class="form-control" type="text" name="costoPaquete"  value="<?php if(isset($_POST["costoPaquete"])){echo $_POST["costoPaquete"]; } ?>" required>
 	</div>
 	<button type="submit" class="btn btn-primary">Enviar</button>
+	<button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosPaquetes'">Cancelar</button>
 </div>
 </form>
 
