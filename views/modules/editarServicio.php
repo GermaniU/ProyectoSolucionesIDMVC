@@ -42,7 +42,7 @@ $respuesta = $traerdatos -> editarServicioController();
 			</div>
 			<div class="form-group">
 				<label>Estado del servicio:</label>
-			 	<input class="form-control" type="text" value="<?php echo $respuesta["estadoServicio"]; ?>" name="estadoServicio" required>
+			 	<input class="form-control" type="number" value="<?php echo $respuesta["estadoServicio"]; ?>" name="estadoServicio" required>
 			</div>
 			 <button type="submit" class="btn btn-primary">Actualizar</button>
 			 <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosServicios'">Cancelar</button>

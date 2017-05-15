@@ -19,7 +19,7 @@
 			<tbody>
 			<?php
 				$vistaCliente = new MvcControllerPaquete();
-				$vistaCliente -> vistaPaqueteController();
+				$vistaCliente -> visualizarPaqueteController();
 			?>
 			</tbody>
 		</table>

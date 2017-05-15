@@ -7,7 +7,7 @@ class ModelCliente extends Conexion{
  #VISTA USUARIOS
 	#-------------------------------------
 
-	public static function vistaUsuariosModel(){
+	public static function visualizarClienteModel(){
 
 		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,totalPago,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente");	
 		$stmt->execute();
@@ -21,7 +21,7 @@ class ModelCliente extends Conexion{
 	#EDITAR USUARIO
 	#-------------------------------------
 
-	public static function editarUsuarioModel($datosModel){
+	public static function editarClienteModel($datosModel){
 
 		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,totalPago,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente WHERE RFC= :RFC");
 		$stmt->bindParam(":RFC", $datosModel, PDO::PARAM_STR);	
@@ -35,7 +35,7 @@ class ModelCliente extends Conexion{
 
 	#ACTUALIZAR CLIENTE
 	#-------------------------------------
-	public static function actualizarUsuarioModel($datosModel){
+	public static function actualizarClienteModel($datosModel){
 
 	  $stmt = Conexion::conectar()->prepare(
 	    	"UPDATE Cliente SET 
@@ -77,7 +77,7 @@ class ModelCliente extends Conexion{
 
 	#AGREGAR CLIENTE
 	#----------------------------------------
-	public static function registroClienteModel($datosModel){
+	public static function registrarClienteModel($datosModel){
 
 
 

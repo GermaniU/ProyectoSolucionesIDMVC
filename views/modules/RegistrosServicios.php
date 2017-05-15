@@ -28,7 +28,7 @@ if(!$_SESSION["validar"]){
 			<?php
 
                  $vistaServicio = new MvcControllerServicio();
-                 $vistaServicio ->vistaServicioController();
+                 $vistaServicio ->visualizarServicioController();
 
 			 ?>
 

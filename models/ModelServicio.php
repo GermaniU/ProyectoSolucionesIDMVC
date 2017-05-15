@@ -4,7 +4,7 @@ require_once 'conexionBD.php';
 class ModelServicio extends Conexion{
 	#VISTA SERVICIO	
 	#---------------------------------
-	public static function vistaServicioModel(){
+	public static function visualizarServicioModel(){
 		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio");	
 		$stmt->execute();
 		return $stmt->fetchAll();
@@ -69,7 +69,7 @@ class ModelServicio extends Conexion{
 
 	#AGREGAR SERVICIO
 	#-----------------------------------
-	public static function registroServicioModel($datosModel){
+	public static function registrarServicioModel($datosModel){
 		$stmt = Conexion::conectar()->prepare(
 			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio) 
 		

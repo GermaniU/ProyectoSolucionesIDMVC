@@ -51,9 +51,9 @@
 	 /* <td>'.$item["estado"].'</td>
 		<td>'.$item["idServicio"].'</td>*/
 
-	  public function vistaPaqueteController(){
+	  public function visualizarPaqueteController(){
 
-		$respuesta = ModelPaquete::vistaPaqueteModel();
+		$respuesta = ModelPaquete::visualizarPaqueteModel();
 		//		<td>'.$item["idPaquete"].'</td>
 
 		foreach($respuesta as $row => $item){
@@ -96,6 +96,9 @@
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
    				$estado=$this->estado;
+   				if (isset($_POST["nombreAnterior"])) {
+   					$nombreAnterior = $_POST["nombreAnterior"];
+   				}
 
           #metodos de validacion
 	      //---------------------------------------------------------------------
@@ -117,6 +120,19 @@
 			    }elseif ($estado > 1 || $estado < 0) {
 			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			    }
+			   
+			     if ($nombrePaquete == $nombreAnterior) {
+			     	
+			     	
+	            }else{
+	            	$respuesta1 = ModelPaquete::visualizarPaqueteModel();
+				    foreach($respuesta1 as $row => $item){
+	                  if ($item["nombrePaquete"]==$nombrePaquete) {
+	              	  		$errores ="Paquete existente";
+	              	  }
+	             }
+	            }
+	            #--------------------------------------------------------------------
          //-----------------------guardar datos en un arreglo para la base de datos------------------
 
 			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
@@ -199,6 +215,16 @@
 			    {
 			        $errores = "Ingresa un nombre de paquete valido";
 			    }
+			    #VALIDAR nombres IGUAL
+	             #-------------------------------------------------------------------
+	             $respuesta1 = ModelPaquete::visualizarPaqueteModel();
+				 foreach($respuesta1 as $row => $item){
+	                  if ($item["nombrePaquete"]== $nombrePaquete) {
+	              	  		$errores ="Nombre de paquete Existente";
+	              	  }
+	             }
+
+	            #--------------------------------------------------------------------
          //-----------------------guardar datos en un arreglo para la base de datos------------------
 
 			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
@@ -213,7 +239,7 @@
 
            if(!$errores){
 
-                  $respuesta = ModelPaquete::registroPaqueteModel($datosController);
+                  $respuesta = ModelPaquete::registrarPaqueteModel($datosController);
                   if($respuesta == "success"){
 
 					header("location:index.php?action=cambioPaquete");

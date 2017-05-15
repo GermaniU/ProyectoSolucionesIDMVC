@@ -6,7 +6,7 @@ class ModelPaquete extends Conexion{
 
     #VISTA PAQUETE
 	#-------------------------------
-	public static function vistaPaqueteModel(){
+	public static function visualizarPaqueteModel(){
 
 		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete");	
 		$stmt->execute();
@@ -31,7 +31,7 @@ class ModelPaquete extends Conexion{
 	}
    #BUSCAR PAQUETE PARA EL SERVICIO
    #-------------------------------------------------
-   public static function buscarpaquete($nombrepaquete){
+   public static function buscarPaquete($nombrepaquete){
        
 		$stmt = Conexion::conectar()->prepare("SELECT nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete FROM Paquete WHERE nombrePaquete= :nombrepaquete");
 
@@ -76,7 +76,7 @@ class ModelPaquete extends Conexion{
 	}
 	#AGREGAR PAQUETE
 	#----------------------------------------
-	public static function registroPaqueteModel($datosModel){
+	public static function registrarPaqueteModel($datosModel){
 
 
 

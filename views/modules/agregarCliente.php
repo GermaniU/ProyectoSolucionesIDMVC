@@ -37,7 +37,7 @@ ini_set('error_reporting', E_ALL);
 		<input class="form-control" type="tel" placeholder="Telefono" name="telefonoClienteEmpresa"  value="<?php if(isset($_POST["telefonoClienteEmpresa"])){echo $_POST["telefonoClienteEmpresa"]; } ?>"  required>
 
 		<p>Direccion del cliente:</p>
-		<input class="form-control" type="text" placeholder="Direcion" name="direccionClienteEmpresa"  value="<?php if(isset($_POST["direccionClienteEmpresa"])){echo $_POST["direccionClienteEmpresa"]; } ?>" required>
+		<input class="form-control" type="text" placeholder="Ejemplo: C 32 x 13 y 15 Num 567" name="direccionClienteEmpresa"  value="<?php if(isset($_POST["direccionClienteEmpresa"])){echo $_POST["direccionClienteEmpresa"]; } ?>" required>
 
 		<p>Correo del cliente</p>
 		<input class="form-control" type="email" placeholder="Correo" name="correoClienteEmpresa" value="<?php if(isset($_POST["correoClienteEmpresa"])){echo $_POST["correoClienteEmpresa"]; } ?>" required>
@@ -49,7 +49,7 @@ ini_set('error_reporting', E_ALL);
 <?php
 
 $registro = new MvcControllerCliente();
-$registro -> agregarClienteBDController();
+$registro -> agregarClienteController();
 
 if(isset($_GET["action"])){
 

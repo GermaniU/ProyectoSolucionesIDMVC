@@ -28,7 +28,7 @@ if(!$_SESSION["validar"]){
 			<tbody>
 			<?php
 			$vistaCliente = new MvcControllerCliente();
-			$vistaCliente -> vistaUsuariosController();
+			$vistaCliente -> visualizarClienteController();
 			?>
 			</tbody>
 		</table>

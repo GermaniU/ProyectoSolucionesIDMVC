@@ -2,7 +2,7 @@
 
 <?php
   $traerdatos = new MvcControllerCliente();
-  $respuesta = $traerdatos-> editarUsuarioController();
+  $respuesta = $traerdatos-> editarClienteController();
  ?>
 
 <div >
@@ -32,7 +32,7 @@
 
 
 				<p>Direccion del cliente: </p>
-				<input class="form-control" type="text" value="<?php echo $respuesta["direccionClienteEmpresa"]; ?>" name="direccionClienteEmpresa" required>
+				<input class="form-control" type="text" placeholder="Ejemplo: C 32 x 13 y 15 Num 567" value="<?php echo $respuesta["direccionClienteEmpresa"]; ?>" name="direccionClienteEmpresa" required>
 
 				<p>Correo del cliente</p>
 				<input class="form-control" type="email" value="<?php echo $respuesta["correoClienteEmpresa"]; ?>" name="correoClienteEmpresa" required>
@@ -45,5 +45,5 @@
 
 <?php
   $actualizardatos = new MvcControllerCliente();
-  $actualizardatos -> actualizarUsuarioController();
+  $actualizardatos -> actualizarClienteController();
 ?>

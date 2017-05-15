@@ -53,9 +53,9 @@
     #MOSTRAR CLIENTES
     #-----------------------
 
-	public function vistaUsuariosController(){
+	public function visualizarClienteController(){
 
-		$respuesta = ModelCliente::vistaUsuariosModel();
+		$respuesta = ModelCliente::visualizarClienteModel();
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
@@ -82,17 +82,17 @@
 	#EDITAR USUARIO
 	#------------------------------------
 
-	public function editarUsuarioController(){
+	public function editarClienteController(){
 
 		$datosController = $_GET["RFC"];
-		$respuesta = ModelCliente::editarUsuarioModel($datosController);
+		$respuesta = ModelCliente::editarClienteModel($datosController);
 
 		return $respuesta;
 	}
 
 #ACTUALIZAR USUARIO
 	#------------------------------------
-	public function actualizarUsuarioController(){
+	public function actualizarClienteController(){
         $errores ='';
 		if(isset($_POST["nombreCliente"])){
          //-----Obtener datos del formulario-----
@@ -128,6 +128,11 @@
 			    {
 			        $errores = "Ingresa un numero valido";
 			    }
+			    elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
+			    {
+			        $errores = "Ingresa una direccion valida";
+			    }
+			    
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -140,9 +145,22 @@
 				                      "correoClienteEmpresa"=>$correo,
 				                      "rfcAnterior" =>$rfcAnterior); // LINEA AGREGADA
 
+			     if ($rfc == $rfcAnterior) {
+			     	
+			     	
+	            }else{
+	            	$respuesta1 = ModelCliente::visualizarClienteModel();
+				    foreach($respuesta1 as $row => $item){
+	                  if ($item["RFC"]==$rfc) {
+	              	  		$errores ="Cliente existente";
+	              	  }
+	             }
+	            }
+			
+
            if(!$errores){
 
-                    $respuesta = ModelCliente::actualizarUsuarioModel($datosController);
+                    $respuesta = ModelCliente::actualizarClienteModel($datosController);
                     echo $respuesta;
 	                if($respuesta == "success"){
 
@@ -180,7 +198,7 @@
  #-----------------------------
  #AGREGAR CLIENTE A LA BASE DE DATOS
 	#-----------------------------------------------
-	public function agregarClienteBDController(){
+	public function agregarClienteController(){
         $errores ='';
 		if(isset($_POST["nombreCliente"])){
          //-----Obtener datos del formulario-----
@@ -214,10 +232,14 @@
 			    {
 			        $errores = "Ingresa un numero valido";
 			    }
+			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
+			    {
+			        $errores = "Ingresa una direccion valida";
+			    }
 
 				 #VALIDAR RFC IGUAL
 	             #-------------------------------------------------------------------
-	             $respuesta1 = ModelCliente::vistaUsuariosModel();
+	             $respuesta1 = ModelCliente::visualizarClienteModel();
 				 foreach($respuesta1 as $row => $item){
 	                  if ($item["RFC"]==$rfc) {
 	              	  		$errores ="Cliente existente";
@@ -239,7 +261,7 @@
 
 			     if(!$errores){
 
-                    $respuesta = ModelCliente::registroClienteModel($datosController);
+                    $respuesta = ModelCliente::registrarClienteModel($datosController);
 	                if($respuesta == "success"){
 
 					header("location:index.php?action=cambioCliente");

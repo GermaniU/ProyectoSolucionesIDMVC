@@ -81,9 +81,9 @@
 	 /* <td>'.$item["estado"].'</td>
 		<td>'.$item["idServicio"].'</td>*/
 
-	  public function vistaServicioController(){
+	  public function visualizarServicioController(){
 
-		$respuesta = ModelServicio::vistaServicioModel();
+		$respuesta = ModelServicio::visualizarServicioModel();
 		//	<td>'.$item["estadoServicio"].'</td>
 
 
@@ -110,7 +110,7 @@
      #Obtener nombre de todos los paquetes para el select
       public function ObtenerDatosPaquetes(){
 
-		$respuesta = ModelPaquete::vistaPaqueteModel();
+		$respuesta = ModelPaquete::visualizarPaqueteModel();
 		return $respuesta;
 
 	}
@@ -185,7 +185,7 @@
  	   			 
 	             #VALIDAR QUE UN CLIENTE SOLO PUEDA TENER UN SERVICIO
 	             #---------------------------------------------------
-	             $respuesta1 = ModelServicio::vistaServicioModel();
+	             $respuesta1 = ModelServicio::visualizarServicioModel();
 				 foreach($respuesta1 as $row => $item){
 	                  if ($item["RFC"]==$RFC) {
 	              	  		$errores ="Ya se ha agregado un servicio a este clientes";
@@ -194,7 +194,7 @@
 
        			 if(!$errores){
                     
-                    $respuesta = ModelServicio::registroServicioModel($datosController);
+                    $respuesta = ModelServicio::registrarServicioModel($datosController);
 	                 if($respuesta == "success"){
 
 					header("location:index.php?action=RegistrosServicios");
@@ -274,6 +274,8 @@
 			      elseif ($estadoServicio > 1 || $estadoServicio < 0) {
 			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			      }    
+
+	             
          //-----------------------------------
 
 			    
