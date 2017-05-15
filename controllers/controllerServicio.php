@@ -107,14 +107,14 @@
 
 	}
 
-     #Obtener datos de los paquetes existentes en la base de datos para desplegarlos en el 
-     #select option en HTML
+     #Obtener nombre de todos los paquetes para el select
       public function ObtenerDatosPaquetes(){
 
 		$respuesta = ModelPaquete::vistaPaqueteModel();
 		return $respuesta;
 
 	}
+	 #Obtener los datos del paquete seleccionado
 	public function ObtenerDatosPaquete(){
 		if (isset( $_POST["nombrePaquete"])) {
 	    $nombrePaquete = $_POST["nombrePaquete"];
@@ -270,6 +270,9 @@
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
 			        $errores = "Ingresa una descripcion valida"; 
+			      }
+			      elseif ($estadoServicio > 1 || $estadoServicio < 0) {
+			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			      }    
          //-----------------------------------
 
@@ -297,42 +300,35 @@
 
 				}
 
-				else{
-					/*echo '<div id="errorActualizarPaquete"></div>
-				     		<div class="modal fade" id="modalError" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-							  <div class="modal-dialog" role="document">
-							    <div class="modal-content">
-							      <div class="modal-header">
-							        <h5 class="modal-title" id="exampleModalLabel">Error</h5>
-							        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-							          <span aria-hidden="true">&times;</span>
+				}else{
+				   echo "<div id='errorAgregarCliente'></div>
+				     		<div class='modal fade' id='modalError' tabindex='-1' role='dialog' aria-labelledby='exampleModalLabel' aria-hidden='true'>
+							  <div class='modal-dialog' role='document'>
+							    <div class='modal-content'>
+							      <div class='modal-header'>
+							        <h5 class='modal-title' id='exampleModalLabel'>Error</h5>
+							        <button type='button' class='close' data-dismiss='modal' aria-label='Close'>
+							          <span aria-hidden='true'>&times;</span>
 							        </button>
 							      </div>
-							      <div class="modal-body">
-							       Los datos son demasiado largos o son datos incompatibles
+							      <div class='modal-body'>
+							          $errores
 							      </div>
-							      <div class="modal-footer">
-							        <button type="button" class="btn btn-warning" data-dismiss="modal">Cerrar</button>
+							      <div class='modal-footer'>
+							        <button type='button' class='btn btn-warning' data-dismiss='modal'>Cerrar</button>
 							      </div>
 							    </div>
 							  </div>
-							</div>';*/
-					//echo "error";
-					echo $errores;
-				}
-			}else{
-				echo $errores;
-			}
+						</div>";
+				
+			    }
 
 
+        }
+            
+    }
+
+}
 
 
-     }
- }
-
-
-
- }
-
-
- ?>
+?>
