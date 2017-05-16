@@ -120,10 +120,9 @@
 			    }elseif ($estado > 1 || $estado < 0) {
 			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			    }
+			    
 			   
-			     if ($nombrePaquete == $nombreAnterior) {
-			     	
-			     	
+			     if ($nombrePaquete == $nombreAnterior) {  	
 	            }else{
 	            	$respuesta1 = ModelPaquete::visualizarPaqueteModel();
 				    foreach($respuesta1 as $row => $item){

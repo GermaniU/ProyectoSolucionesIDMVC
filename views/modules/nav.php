@@ -3,7 +3,7 @@
     <span class="navbar-toggler-icon"></span>
   </button>
 <!--   <a class="navbar-brand" href="#">SolucionesID</a> -->
-  <a class="navbar-brand" href="#">
+  <a class="navbar-brand" href="index.php?action=RegistrosClientes">
     <img src="views/assets/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt="">
     SolucionesID
   </a>

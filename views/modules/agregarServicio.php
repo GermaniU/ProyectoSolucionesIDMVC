@@ -66,12 +66,12 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
               	<input type="text" readonly="readonly"  class="form-control"  value="<?php echo $_GET["RFC"]; ?>" name="RFC">
               </div>
               <div class="form-group">
-                     <label>Precio del servicio: </label>
-              	<input type="text"  class="form-control" value="<?php echo $infopaquete["costoPaquete"];  ?>" name="costoServicio" required>
+                     <label>Precio del Paquete: </label>
+              	<input type="number" readonly="readonly" class="form-control" value="<?php echo $infopaquete["costoPaquete"];  ?>" name="costoServicio" >
               </div>
               <div class="form-group">
-                     <label>Descripcion del servicio</label>
-              	<input type="text"  class="form-control" value="<?php echo $infopaquete["descripcionPaquete"];  ?>" name="descripcion" required>
+                     <label>Descripcion del Paquete</label>
+              	<input type="text" readonly="readonly" class="form-control" value="<?php echo $infopaquete["descripcionPaquete"];  ?>" name="descripcion" >
               </div>
 	      <div class="form-group">
                      <label>Inicio del servicio</label>

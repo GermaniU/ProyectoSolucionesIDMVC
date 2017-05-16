@@ -6,7 +6,7 @@ class ModelAdministrador extends Conexion{
 	#INGRESO USUARIO
 		
 	#-------------------------------------
-	public static function ingresoAdministradorModel($datosModel){
+	public static function ingresarAdministradorModel($datosModel){
 
 		$stmt = Conexion::conectar()->prepare("SELECT UserAdmin, password FROM Administrador WHERE UserAdmin = :UserAdmin");	
 		$stmt->bindParam(":UserAdmin", $datosModel["UserAdmin"], PDO::PARAM_STR);
@@ -19,7 +19,7 @@ class ModelAdministrador extends Conexion{
 
 	}
 
-	public static function DatosAdministrador(){
+	public static function DatosAdministradorModel(){
 
 		$stmt = Conexion::conectar()->prepare("SELECT UserAdmin, password FROM Administrador");	
 		$stmt->execute();

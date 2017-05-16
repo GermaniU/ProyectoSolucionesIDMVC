@@ -62,7 +62,6 @@
 				<td>'.$item["RFC"].'</td>
 				<td>'.$item["nombreCliente"].'</td>
 				<td>'.$item["dominio"].'</td>
-				<td>'.$item["totalPago"].'</td>
 				<td>'.$item["nombreEmpresa"].'</td>
 				<td>'.$item["telefonoClienteEmpresa"].'</td>
 				<td>'.$item["direccionClienteEmpresa"].'</td>
@@ -105,34 +104,47 @@
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
 		         $rfcAnterior = $_POST["rfcAnterior"];
+                 $re = '/^[a-zA-Z-\s]*$/';
+
+         
 
           #metodos de validacion
 	      //---------------------------------------------------------------------
-				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+	      //     
+	           
+	            if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
-			     }
-			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente))
+			    }
+			    elseif (!preg_match($re,$cliente))
 			    {
 			        $errores = "Ingresa un nombre  valido";
-			    }
-			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio))
-			    {
-			        $errores = "Ingresa un domino valido";
 			    }
 			    elseif (!preg_match("/^[0-9]{10}$/",$telefono))
 			    {
 			        $errores = "Ingresa un telefono valido";
 			    }
-
+			     elseif (!preg_match("/^(www)\.([a-z0-9]+)(\.[a-z]+)$/",$dominio))
+			    {
+			        $errores = "Ingresa un dominio valido";
+			    }
 			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
 			    {
 			        $errores = "Ingresa un numero valido";
 			    }
-			    elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
+			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
 			    {
 			        $errores = "Ingresa una direccion valida";
 			    }
+			    $rfc = trim($rfc);
+			    $numerodeletras ;
+
+			    $numerodeletras= strlen($rfc);
 			    
+			    if (!$numerodeletras  == 13 || $numerodeletras  == 14) {
+			    	 $errores = "Ingresa un RFC valido";
+			    }
+
+
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
 
 			     $datosController = array( "RFC"=>$rfc,
@@ -210,19 +222,17 @@
 		         $telefono = $this->telefonoCliente;
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
+                 $re = '/^[a-zA-Z-\s]*$/';
 
 				 #metodos de validacion
 				//---------------------------------------------------------------------
-				if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
+				 
+	            if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
 				 		  $errores .= 'Por favor ingresa un correo valido <br />';
-			     }
-			    elseif (!preg_match("/[a-zA-Z-]$/",$cliente))
+			    }
+			    elseif (!preg_match($re,$cliente))
 			    {
 			        $errores = "Ingresa un nombre  valido";
-			    }
-			    elseif (!preg_match("/[a-zA-Z-.-]$/",$dominio))
-			    {
-			        $errores = "Ingresa un domino valido";
 			    }
 			    elseif (!preg_match("/^[0-9]{10}$/",$telefono))
 			    {
@@ -236,6 +246,19 @@
 			    {
 			        $errores = "Ingresa una direccion valida";
 			    }
+			     elseif (!preg_match("/^(www)\.([a-z0-9]+)(\.[a-z]+)$/",$dominio))
+			    {
+			        $errores = "Ingresa un dominio valido";
+			    }
+			    $rfc = trim($rfc);
+			    $numerodeletras ;
+
+			    $numerodeletras= strlen($rfc);
+			    
+			    if (!$numerodeletras  == 13 || $numerodeletras  == 14) {
+			    	 $errores = "Ingresa un RFC valido";
+			    }
+			    
 
 				 #VALIDAR RFC IGUAL
 	             #-------------------------------------------------------------------

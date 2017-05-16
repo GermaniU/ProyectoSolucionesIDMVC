@@ -31,8 +31,8 @@
 				<input class="form-control" type="text" value="<?php echo $respuesta["descripcionPaquete"]; ?>" name="descripcionPaquete" required>
 			</div>
 			<div class="form-group">
-				<label>Estado del paquete:</label>
-			 	<input class="form-control" type="number" value="<?php echo $respuesta["estado"]; ?>" name="estado" required>
+				<!-- <label>Estado del paquete:</label> -->
+			 	<input class="form-control" type="hidden" value="<?php echo $respuesta["estado"]; ?>" name="estado" required>
 			</div>
 			 <button type="submit" class="btn btn-primary">Actualizar</button>
 			 <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosPaquetes'">Cancelar</button>

@@ -17,7 +17,7 @@
 <?php
 
 $ingreso = new ControllerAdministrador();
-$ingreso -> ingresoUsuarioController();
+$ingreso -> ingresarAdministradorController();
 
 if(isset($_GET["action"])){
 

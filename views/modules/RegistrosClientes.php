@@ -17,8 +17,7 @@ if(!$_SESSION["validar"]){
 				<th>RFC</th>
 				<th>Cliente</th>
 				<th>Dominio</th>
-				<th>Pago total</th>
-				<th>Empresa</th>
+ 				<th>Empresa</th>
 				<th>Teléfono</th>
 				<th>Dirección</th>
 				<th>Correo</th>

@@ -34,14 +34,14 @@ class ControllerAdministrador{
 	}
 	#INGRESO DE USUARIOS
 	#------------------------------------
-	public function ingresoUsuarioController(){
+	public function ingresarAdministradorController(){
 
 		if(isset($_POST["usuariof"])){
 
 			$datosController = array( "UserAdmin"=>$_POST["usuariof"], 
 								      "password"=>$_POST["passwordf"]);
 
-			$respuesta = ModelAdministrador::ingresoAdministradorModel($datosController, "Administrador");
+			$respuesta = ModelAdministrador::ingresarAdministradorModel($datosController, "Administrador");
 
 			if($respuesta["UserAdmin"] == $_POST["usuariof"] && $respuesta["password"] == $_POST["passwordf"]){
 
@@ -65,7 +65,7 @@ class ControllerAdministrador{
 
 	#--------------------------------------------
 	# CAMBIAR CONTRASEÑA
-    public function cambiarContraseñaAdministrador(){
+    public function cambiarContraseñaAdministradorController(){
          //$usuario = $_POST["usuario"];
         $errores ='';
 		if(isset($_POST["contrasenaActual"])){
@@ -74,7 +74,7 @@ class ControllerAdministrador{
          	$contrasenaNueva = $_POST["contrasenaNueva"];
             $VerificarContrasena= $_POST["verificarContrasena"];
 
-            $respuesta1	= ModelAdministrador::DatosAdministrador();
+            $respuesta1	= ModelAdministrador::DatosAdministradorModel();
             
 
             if ($respuesta1["password"] == $password) {

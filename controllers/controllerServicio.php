@@ -143,6 +143,8 @@
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
  	   			 $estadoServicio = 1;//$this->estadoServicio;
 
+ 	   		
+
  	   			//------------------Metodos de validacion------------------------------
  	   			  $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
@@ -159,7 +161,7 @@
 			      }
 			      elseif (!preg_match("/[a-zA-Z-0-9]/",$descripcion)) 
 			      { 
-			        $errores = "Ingresa una descripcion valida"; 
+			        $errores = "Por  favor selecciona un paquete"; 
 			      }
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
@@ -252,21 +254,20 @@
          //--------Metodos para validar que los datos ingresados sean correctos
                   $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
+
+
   
-                  if ($fechaInicioServicio[0]<2008) {
+                  if ($fechaInicioServicio[0] < 2008 || $fechaInicioServicio[1]<0 ||$fechaInicioServicio[2]<0) {
                   	 $errores = "ingresa un año valido";
                   }
-                  elseif($fechaRenovacionServicio[0]<2008) {
+                  elseif($fechaRenovacionServicio[0] < 2008 || $fechaRenovacionServicio[1]<0 ||$fechaInicioServicio[2]<0) {
                   	 $errores = "ingresa un año valido";
                   }
                   elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
 			      { 
 			        $errores = "Ingresa un numero valido"; 
 			      }
-			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcion)) 
-			      { 
-			        $errores = "Ingresa una descripcion valida"; 
-			      }
+			      
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
 			        $errores = "Ingresa una descripcion valida"; 
@@ -298,7 +299,7 @@
                $respuesta = ModelServicio::actualizarServicioModel($datosController);
 	                 if($respuesta == "success"){
 
-					header("location:index.php?action=cambioServicio");
+					header("location:index.php?action=RegistrosServicios");
 
 				}
 

@@ -39,7 +39,7 @@
 
 </head>
 
-<body>
+<body oncontextmenu="return false ">
 
  		<?php include "modules/nav.php"; ?>
 

@@ -21,8 +21,8 @@
 				 <input class="form-control" type="text" value="<?php echo $respuesta["dominio"]; ?>" name="dominio" required>
 
 
-				<p>Total de pago: </p>
-				 <input class="form-control" type="text" value="<?php echo $respuesta["totalPago"]; ?>" name="totalPago" required>
+<!-- 				<p>Total de pago: </p>
+ -->				 <input class="form-control" type="hidden" value="<?php echo $respuesta["totalPago"]; ?>" name="totalPago" required>
 
 				<p>Nombre del Empresa: </p>
 				 <input class="form-control" type="text" value="<?php echo $respuesta["nombreEmpresa"]; ?>" name="nombreEmpresa" required>

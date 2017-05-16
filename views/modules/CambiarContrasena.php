@@ -31,7 +31,7 @@ if(!$_SESSION["validar"]){
 <?php 
 
   $cambiarcontraseña = new ControllerAdministrador();
-  $cambiarcontraseña -> cambiarContraseñaAdministrador();
+  $cambiarcontraseña -> cambiarContraseñaAdministradorController();
 
 
 ?>
