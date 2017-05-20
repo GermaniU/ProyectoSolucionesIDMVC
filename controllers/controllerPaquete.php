@@ -3,11 +3,10 @@
  class MvcControllerPaquete{
    public $nombrePaquete;
    public $idPaquete;
-   #public $idServicio;
    public $costoPaquete;
    public $tipoPaquete;
    public $descripcionPaquete;
-   #public $estado;
+   
 
     public function set_nombrePaquete($nombrePaquete) {
 		$this->nombrePaquete = $nombrePaquete;
@@ -15,9 +14,6 @@
 	public function set_idPaquete($idPaquete) {
 			$this->idPaquete = $idPaquete;
 	}
-/*	public function set_idServicio($idServicio) {
-			$this->idServicio = $idServicio;
-	}*/
 	public function set_costoPaquete($costoPaquete) {
 			$this->costoPaquete = $costoPaquete;
 	}
@@ -36,25 +32,18 @@
 
 			$this->set_nombrePaquete( $_POST["nombrePaquete"]);
 			$this->set_idPaquete($_POST["idPaquete"]);
-/*			$this->set_idServicio( $_POST["idServicio"]);
-*/			$this->set_costoPaquete( $_POST["costoPaquete"]);
+			$this->set_costoPaquete( $_POST["costoPaquete"]);
 			$this->set_tipoPaquete($_POST["tipoPaquete"]);
 			$this->set_descripcionPaquete( $_POST["descripcionPaquete"]);
-			  /*if (isset( $_POST["estado"])) {
-			  	 $this->set_estado( $_POST["estado"]);
-			  }*/
-			 }
-	  }
+			
+			}
+	}
 
 	  #MOSTRAT PAQUETES
 	  #----------------------------------------------------------
-	 /* <td>'.$item["estado"].'</td>
-		<td>'.$item["idServicio"].'</td>*/
-
 	  public function visualizarPaqueteController(){
 
 		$respuesta = ModelPaquete::visualizarPaqueteModel();
-		//		<td>'.$item["idPaquete"].'</td>
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
@@ -91,18 +80,15 @@
 		//-----Obtener datos del formulario-----
    				$nombrePaquete=$this->nombrePaquete;
    				$idPaquete=$this->idPaquete;
-/*   			$idServicio=$this->idServicio;
-*/   			$costoPaquete=$this->costoPaquete;
+    			$costoPaquete=$this->costoPaquete;
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
-   				#$estado=$this->estado;
    				if (isset($_POST["nombreAnterior"])) {
    					$nombreAnterior = $_POST["nombreAnterior"];
    				}
 
           #metodos de validacion
 	      //---------------------------------------------------------------------
-
 			    if ($costoPaquete < 0) {
 			        $errores = "ingresa una cantidad valida positiva";
 			    }
@@ -118,12 +104,8 @@
 			    {
 			        $errores = "Ingresa un nombre de paquete valido";
 			    }
-			    /*elseif ($estado > 1 || $estado < 0) {
-			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
-			    }*/
-			    
-			   
-			     if ($nombrePaquete == $nombreAnterior) {  	
+			    if ($nombrePaquete == $nombreAnterior) {  	
+	            
 	            }else{
 	            	$respuesta1 = ModelPaquete::visualizarPaqueteModel();
 				    foreach($respuesta1 as $row => $item){
@@ -132,16 +114,15 @@
 	              	  }
 	             }
 	            }
-	            #--------------------------------------------------------------------
-         //-----------------------guardar datos en un arreglo para la base de datos------------------
+	        #--------------------------------------------------------------------
+           //-----------------------guardar datos en un arreglo para la base de datos------------------
 
 			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
 							          "idPaquete"=>$idPaquete,
-/*				                      "idServicio"=>$idServicio,
-*/				                      "costoPaquete"=>$costoPaquete,
+				                      "costoPaquete"=>$costoPaquete,
 				                      "tipoPaquete"=>$tipoPaquete,
 				                      "descripcionPaquete"=>$descripcionPaquete
-				                      /*"estado"=>$estado*/);
+				                          );
 
 		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
 
@@ -191,12 +172,9 @@
           //-----Obtener datos del formulario-----
 		        $nombrePaquete=$this->nombrePaquete;
    				$idPaquete=$this->idPaquete;
-/*   			$idServicio=$this->idServicio;
-*/   			$costoPaquete=$this->costoPaquete;
+    			$costoPaquete=$this->costoPaquete;
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
-   				/*$estado=1;
-*/
           #metodos de validacion
 	      //---------------------------------------------------------------------
 
@@ -216,7 +194,7 @@
 			        $errores = "Ingresa un nombre de paquete valido";
 			    }
 			    #VALIDAR nombres IGUAL
-	             #-------------------------------------------------------------------
+	            #-------------------------------------------------------------------
 	             $respuesta1 = ModelPaquete::visualizarPaqueteModel();
 				 foreach($respuesta1 as $row => $item){
 	                  if ($item["nombrePaquete"]== $nombrePaquete) {
@@ -225,18 +203,16 @@
 	             }
 
 	            #--------------------------------------------------------------------
-         //-----------------------guardar datos en un arreglo para la base de datos------------------
+       //-----------------------guardar datos en un arreglo para la base de datos------------------
 
 			     $datosController = array( "nombrePaquete"=>$nombrePaquete,
 							          "idPaquete"=>$idPaquete,
-/*				                      "idServicio"=>$idServicio,
-*/				                      "costoPaquete"=>$costoPaquete,
+				                      "costoPaquete"=>$costoPaquete,
 				                      "tipoPaquete"=>$tipoPaquete,
 				                      "descripcionPaquete"=>$descripcionPaquete
-				                      /*"estado"=>$estado*/);
+				                         );
 
 		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
-
            if(!$errores){
 
                   $respuesta = ModelPaquete::registrarPaqueteModel($datosController);

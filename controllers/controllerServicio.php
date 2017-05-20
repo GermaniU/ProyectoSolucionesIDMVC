@@ -9,7 +9,6 @@
  	   public $inicioServicio;
  	   public $fechadeRenovacion;
  	   public $descripcionServicioExtra;
- 	   #public $estadoServicio;
 
  	    public function set_idServicio($idServicio) {
 		
@@ -51,13 +50,7 @@
 		$this->descripcionServicioExtra = $descripcionServicioExtra;
 	    
 	    }  
-	    /*public function set_estadoServicio($estadoServicio) {
-		
-		$this->estadoServicio = $estadoServicio;
-	    
-	    }*/
          
-
 	    public function __construct(){
 	    	if (isset($_POST["RFC"])) {
 
@@ -68,9 +61,7 @@
 	    		$this->set_descripcion($_POST["descripcion"]);
 	    		$this->set_fechaInicioServicio($_POST["inicioServicio"]);
 	    		$this->set_fechaRenovacion($_POST["fechadeRenovacion"]);
-	    		$this->set_descripcionServicioExtra($_POST["descripcionServicioExtra"]);
-	    		#$this->set_estadoServicio($_POST["estadoServicio"]);
-	    	    
+	    		$this->set_descripcionServicioExtra($_POST["descripcionServicioExtra"]);	    	    
 	    	}
 	    }  
 
@@ -78,14 +69,9 @@
 
       #MOSTRAR SERVICIOS
 	  #----------------------------------------------------------
-	 /* <td>'.$item["estado"].'</td>
-		<td>'.$item["idServicio"].'</td>*/
-
 	  public function visualizarServicioController(){
 
 		$respuesta = ModelServicio::visualizarServicioModel();
-		//	<td>'.$item["estadoServicio"].'</td>
-
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
@@ -133,7 +119,6 @@
 		$errores = '';
 
           if (isset($_POST["RFC"])) {
-          	    //$idServicio = 1;//$this->idServicio;
  	   			 $RFC = $this->RFC;
  	   			 $nombrePaquete = $this->nombrePaquete;
  	   			 $costoServicio = $this->costoServicio;
@@ -141,11 +126,8 @@
  	   			 $inicioServicio = $this->inicioServicio;
  	   			 $fechadeRenovacion = $this->fechadeRenovacion;
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
- 	   			 #$estadoServicio = 1;//$this->estadoServicio;
-
  	   		
-
- 	   			//------------------Metodos de validacion------------------------------
+ 	   	       	//------------------Metodos de validacion------------------------------
  	   			  $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
   
@@ -180,8 +162,6 @@
 	            	"inicioServicio" =>$inicioServicio,
 	            	"fechadeRenovacion" =>$fechadeRenovacion,
 	            	"descripcionServicioExtra" =>$descripcionServicioExtra
-	            	/*"estadoServicio" =>$estadoServicio*/
-
 	           	     );
 
  	   			 
@@ -250,7 +230,6 @@
  	   			 $inicioServicio = $this->inicioServicio;
  	   			 $fechadeRenovacion = $this->fechadeRenovacion;
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
- 	   			 #$estadoServicio = $this->estadoServicio;
          //--------Metodos para validar que los datos ingresados sean correctos
                   $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
@@ -272,12 +251,9 @@
 			      { 
 			        $errores = "Ingresa una descripcion valida"; 
 			      }
-			      /*elseif ($estadoServicio > 1 || $estadoServicio < 0) {
-			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
-			      }    
-*/
+			    
 	             
-         //-----------------------------------
+          //-----------------------------------
 
 			    
            $datosController = array
@@ -290,8 +266,6 @@
             	"inicioServicio" =>$inicioServicio,
             	"fechadeRenovacion" =>$fechadeRenovacion,
             	"descripcionServicioExtra" =>$descripcionServicioExtra
-/*            	"estadoServicio" =>$estadoServicio
-*/
            	);
              
 
