@@ -62,7 +62,7 @@
 				<td>'.$item["nombrePaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
 				<td>'.$item["costoPaquete"].'</td>
-								<td><a href="index.php?action=editarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+								<td><a href="index.php?action=EditarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 
 					</td>
 				</tr>';

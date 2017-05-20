@@ -98,7 +98,7 @@
 				<td>'.$item["descripcionServicioExtra"].'</td>
 								
 
-				<td><a href="index.php?action=editarServicio&idServicio='.$item["idServicio"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+				<td><a href="index.php?action=EditarServicio&idServicio='.$item["idServicio"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 
 					</td>
 				</tr>';

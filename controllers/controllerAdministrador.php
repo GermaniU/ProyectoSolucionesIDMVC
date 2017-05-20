@@ -49,7 +49,7 @@ class ControllerAdministrador{
 
 				$_SESSION["validar"] = true;
 
-				header("location:index.php?action=clientes");
+				header("location:index.php?action=RegistrosClientes");
 
 			}
 

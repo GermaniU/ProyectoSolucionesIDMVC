@@ -67,9 +67,9 @@
 				<td>'.$item["direccionClienteEmpresa"].'</td>
 				<td>'.$item["correoClienteEmpresa"].'</td>
 				<td>
-				<p><a href="index.php?action=editarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
+				<p><a href="index.php?action=EditarCliente&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
 				</p>
-				<p><a href="index.php?action=agregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-suitcase" aria-hidden="true"></i></button></a>
+				<p><a href="index.php?action=AgregarServicio&RFC='.$item["RFC"].'"><button class="btn btn-outline-primary" ><i class="fa fa-suitcase" aria-hidden="true"></i></button></a>
 				</p>
 				</td>
 				</tr>';

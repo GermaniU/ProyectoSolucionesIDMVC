@@ -17,7 +17,7 @@ function visualizarTablaPaquetes() {
 		        	className: 'btn color btn-success',
 		        	titleAttr: 'Agregar Paquete',
 		        	action: function( e, dt, node, config ){
-		        		location.href="index.php?action=agregarPaquete";
+		        		location.href="index.php?action=AgregarPaquete";
 		        	}
 		        },
 		    	{
@@ -85,7 +85,7 @@ function visualizarTablaClientes() {
 		        	className: 'btn color btn-success',
 		        	titleAttr: 'Agregar Cliente',
 		        	action: function( e, dt, node, config ){
-		        		location.href="index.php?action=agregarCliente";
+		        		location.href="index.php?action=AgregarCliente";
 		        	}
 		        },
 		    	{

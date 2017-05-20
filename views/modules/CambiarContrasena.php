@@ -24,7 +24,9 @@ if(!$_SESSION["validar"]){
 		<label>Confirmar contraseña nueva:</label>
 		<input class="form-control" type="password" name="verificarContrasena" value="" required>
 	</div>
-	<button type="submit" class="btn btn-primary">Enviar</button>
+	<button type="submit" class="btn btn-primary">Actualizar</button>
+    <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosClientes'">Cancelar</button>
+
 </div>
 </form>
 
