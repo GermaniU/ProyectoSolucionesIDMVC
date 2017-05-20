@@ -52,7 +52,6 @@ class ModelPaquete extends Conexion{
 
 		$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
-		//$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
 		$stmt->bindParam(":costopaquete", $datosModel["costoPaquete"], PDO::PARAM_INT);
 		$stmt->bindParam(":tipopaquete", $datosModel["tipoPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcionpaquete", $datosModel["descripcionPaquete"], PDO::PARAM_STR);
@@ -85,7 +84,6 @@ class ModelPaquete extends Conexion{
 			VALUES (
 			:nombrepaquete,:costopaquete,:tipopaquete,:descripcionpaquete)");	
 
-		//$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":costopaquete", $datosModel["costoPaquete"], PDO::PARAM_INT);
 		$stmt->bindParam(":tipopaquete", $datosModel["tipoPaquete"], PDO::PARAM_STR);

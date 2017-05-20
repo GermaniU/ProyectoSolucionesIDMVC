@@ -35,7 +35,7 @@ class ModelServicio extends Conexion{
 			descripcion = :descripcion,
 		    inicioServicio = :inicioservicio,
 			fechadeRenovacion = :fechaderenovacion,
-			descripcionServicioExtra = :descripcionservicioextra,
+			descripcionServicioExtra = :descripcionservicioextra
 			WHERE idServicio = :idservicio");
 
 		$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
@@ -72,8 +72,7 @@ class ModelServicio extends Conexion{
 			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra) 
 		
 			VALUES (
-			:rfc,:nombrepaquete,:costoservicio,:descripcion,:inicioservicio,:fechaderenovacion,:descripcionservicioextra,)");	
-		//$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
+			:rfc,:nombrepaquete,:costoservicio,:descripcion,:inicioservicio,:fechaderenovacion,:descripcionservicioextra)");	
 		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":costoservicio", $datosModel["costoServicio"], PDO::PARAM_INT);

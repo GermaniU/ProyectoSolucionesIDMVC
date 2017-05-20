@@ -177,6 +177,8 @@
        			 if(!$errores){
                     
                     $respuesta = ModelServicio::registrarServicioModel($datosController);
+                    print_r($respuesta);
+
 	                 if($respuesta == "success"){
 
 					header("location:index.php?action=RegistrosServicios");
