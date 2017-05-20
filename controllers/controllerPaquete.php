@@ -7,7 +7,7 @@
    public $costoPaquete;
    public $tipoPaquete;
    public $descripcionPaquete;
-   public $estado;
+   #public $estado;
 
     public function set_nombrePaquete($nombrePaquete) {
 		$this->nombrePaquete = $nombrePaquete;
@@ -40,9 +40,9 @@
 */			$this->set_costoPaquete( $_POST["costoPaquete"]);
 			$this->set_tipoPaquete($_POST["tipoPaquete"]);
 			$this->set_descripcionPaquete( $_POST["descripcionPaquete"]);
-			  if (isset( $_POST["estado"])) {
+			  /*if (isset( $_POST["estado"])) {
 			  	 $this->set_estado( $_POST["estado"]);
-			  }
+			  }*/
 			 }
 	  }
 
@@ -95,7 +95,7 @@
 */   			$costoPaquete=$this->costoPaquete;
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
-   				$estado=$this->estado;
+   				#$estado=$this->estado;
    				if (isset($_POST["nombreAnterior"])) {
    					$nombreAnterior = $_POST["nombreAnterior"];
    				}
@@ -117,9 +117,10 @@
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
 			    {
 			        $errores = "Ingresa un nombre de paquete valido";
-			    }elseif ($estado > 1 || $estado < 0) {
-			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			    }
+			    /*elseif ($estado > 1 || $estado < 0) {
+			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
+			    }*/
 			    
 			   
 			     if ($nombrePaquete == $nombreAnterior) {  	
@@ -139,8 +140,8 @@
 /*				                      "idServicio"=>$idServicio,
 */				                      "costoPaquete"=>$costoPaquete,
 				                      "tipoPaquete"=>$tipoPaquete,
-				                      "descripcionPaquete"=>$descripcionPaquete,
-				                      "estado"=>$estado);
+				                      "descripcionPaquete"=>$descripcionPaquete
+				                      /*"estado"=>$estado*/);
 
 		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
 
@@ -194,8 +195,8 @@
 */   			$costoPaquete=$this->costoPaquete;
    				$tipoPaquete=$this->tipoPaquete;
   				$descripcionPaquete=$this->descripcionPaquete;
-   				$estado=1;
-
+   				/*$estado=1;
+*/
           #metodos de validacion
 	      //---------------------------------------------------------------------
 
@@ -231,8 +232,8 @@
 /*				                      "idServicio"=>$idServicio,
 */				                      "costoPaquete"=>$costoPaquete,
 				                      "tipoPaquete"=>$tipoPaquete,
-				                      "descripcionPaquete"=>$descripcionPaquete,
-				                      "estado"=>$estado);
+				                      "descripcionPaquete"=>$descripcionPaquete
+				                      /*"estado"=>$estado*/);
 
 		 // ---------------------Si no hay errores enviar a la base de datos------------------------------
 

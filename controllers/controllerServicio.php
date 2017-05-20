@@ -9,7 +9,7 @@
  	   public $inicioServicio;
  	   public $fechadeRenovacion;
  	   public $descripcionServicioExtra;
- 	   public $estadoServicio;
+ 	   #public $estadoServicio;
 
  	    public function set_idServicio($idServicio) {
 		
@@ -51,11 +51,11 @@
 		$this->descripcionServicioExtra = $descripcionServicioExtra;
 	    
 	    }  
-	    public function set_estadoServicio($estadoServicio) {
+	    /*public function set_estadoServicio($estadoServicio) {
 		
 		$this->estadoServicio = $estadoServicio;
 	    
-	    }
+	    }*/
          
 
 	    public function __construct(){
@@ -69,7 +69,7 @@
 	    		$this->set_fechaInicioServicio($_POST["inicioServicio"]);
 	    		$this->set_fechaRenovacion($_POST["fechadeRenovacion"]);
 	    		$this->set_descripcionServicioExtra($_POST["descripcionServicioExtra"]);
-	    		$this->set_estadoServicio($_POST["estadoServicio"]);
+	    		#$this->set_estadoServicio($_POST["estadoServicio"]);
 	    	    
 	    	}
 	    }  
@@ -141,7 +141,7 @@
  	   			 $inicioServicio = $this->inicioServicio;
  	   			 $fechadeRenovacion = $this->fechadeRenovacion;
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
- 	   			 $estadoServicio = 1;//$this->estadoServicio;
+ 	   			 #$estadoServicio = 1;//$this->estadoServicio;
 
  	   		
 
@@ -179,8 +179,8 @@
 	            	"descripcion" =>$descripcion,
 	            	"inicioServicio" =>$inicioServicio,
 	            	"fechadeRenovacion" =>$fechadeRenovacion,
-	            	"descripcionServicioExtra" =>$descripcionServicioExtra,
-	            	"estadoServicio" =>$estadoServicio
+	            	"descripcionServicioExtra" =>$descripcionServicioExtra
+	            	/*"estadoServicio" =>$estadoServicio*/
 
 	           	     );
 
@@ -250,7 +250,7 @@
  	   			 $inicioServicio = $this->inicioServicio;
  	   			 $fechadeRenovacion = $this->fechadeRenovacion;
  	   			 $descripcionServicioExtra = $this->descripcionServicioExtra;
- 	   			 $estadoServicio = $this->estadoServicio;
+ 	   			 #$estadoServicio = $this->estadoServicio;
          //--------Metodos para validar que los datos ingresados sean correctos
                   $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
@@ -272,10 +272,10 @@
 			      { 
 			        $errores = "Ingresa una descripcion valida"; 
 			      }
-			      elseif ($estadoServicio > 1 || $estadoServicio < 0) {
+			      /*elseif ($estadoServicio > 1 || $estadoServicio < 0) {
 			    	$errores = "Ingresa un estado valido 1 = Activo  0 =Suspendido ";
 			      }    
-
+*/
 	             
          //-----------------------------------
 
@@ -289,9 +289,9 @@
             	"descripcion" =>$descripcion,
             	"inicioServicio" =>$inicioServicio,
             	"fechadeRenovacion" =>$fechadeRenovacion,
-            	"descripcionServicioExtra" =>$descripcionServicioExtra,
-            	"estadoServicio" =>$estadoServicio
-
+            	"descripcionServicioExtra" =>$descripcionServicioExtra
+/*            	"estadoServicio" =>$estadoServicio
+*/
            	);
              
 

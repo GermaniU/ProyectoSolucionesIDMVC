@@ -8,7 +8,7 @@ class ModelPaquete extends Conexion{
 	#-------------------------------
 	public static function visualizarPaqueteModel(){
 
-		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete");	
+		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete FROM Paquete");	
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -20,7 +20,7 @@ class ModelPaquete extends Conexion{
 	#-------------------------------------
   public static function editarPaqueteModel($idPaquete){
 
-		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado FROM Paquete WHERE idPaquete= :idPaquete");
+		$stmt = Conexion::conectar()->prepare("SELECT idPaquete,nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete FROM Paquete WHERE idPaquete= :idPaquete");
 		$stmt->bindParam(":idPaquete", $idPaquete, PDO::PARAM_STR);	
 		$stmt->execute();
 
@@ -48,7 +48,7 @@ class ModelPaquete extends Conexion{
 	#-------------------------------------
 	public static function actualizarPaqueteModel($datosModel){
 
-		$stmt = Conexion::conectar()->prepare("UPDATE Paquete SET idPaquete = :idpaquete, nombrePaquete = :nombrepaquete, costoPaquete = :costopaquete, tipoPaquete = :tipopaquete, descripcionPaquete = :descripcionpaquete, estado = :estado WHERE idPaquete = :idpaquete");
+		$stmt = Conexion::conectar()->prepare("UPDATE Paquete SET idPaquete = :idpaquete, nombrePaquete = :nombrepaquete, costoPaquete = :costopaquete, tipoPaquete = :tipopaquete, descripcionPaquete = :descripcionpaquete WHERE idPaquete = :idpaquete");
 
 		$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
@@ -56,7 +56,6 @@ class ModelPaquete extends Conexion{
 		$stmt->bindParam(":costopaquete", $datosModel["costoPaquete"], PDO::PARAM_INT);
 		$stmt->bindParam(":tipopaquete", $datosModel["tipoPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcionpaquete", $datosModel["descripcionPaquete"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datosModel["estado"], PDO::PARAM_STR);
 	
 
 		if($stmt->execute()){
@@ -81,17 +80,16 @@ class ModelPaquete extends Conexion{
 
 
 		$stmt = Conexion::conectar()->prepare(
-			"INSERT INTO Paquete (nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete,estado ) 
+			"INSERT INTO Paquete (nombrePaquete,costoPaquete,tipoPaquete,descripcionPaquete ) 
 
 			VALUES (
-			:nombrepaquete,:costopaquete,:tipopaquete,:descripcionpaquete,:estado)");	
+			:nombrepaquete,:costopaquete,:tipopaquete,:descripcionpaquete)");	
 
 		//$stmt->bindParam(":idpaquete", $datosModel["idPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":costopaquete", $datosModel["costoPaquete"], PDO::PARAM_INT);
 		$stmt->bindParam(":tipopaquete", $datosModel["tipoPaquete"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcionpaquete", $datosModel["descripcionPaquete"], PDO::PARAM_STR);
-		$stmt->bindParam(":estado", $datosModel["estado"], PDO::PARAM_STR);
 
 
 		if($stmt->execute()){

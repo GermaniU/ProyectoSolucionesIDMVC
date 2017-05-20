@@ -5,7 +5,7 @@ class ModelServicio extends Conexion{
 	#VISTA SERVICIO	
 	#---------------------------------
 	public static function visualizarServicioModel(){
-		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio");	
+		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra FROM Servicio");	
 		$stmt->execute();
 		return $stmt->fetchAll();
 		$stmt->close();
@@ -14,7 +14,7 @@ class ModelServicio extends Conexion{
 	#-----------------------------------------------------
 	public static function editarServicioModel($idServicio){
 
-		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio FROM Servicio WHERE idServicio= :idServicio");
+		$stmt = Conexion::conectar()->prepare("SELECT idServicio,RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra FROM Servicio WHERE idServicio= :idServicio");
 		$stmt->bindParam(":idServicio", $idServicio, PDO::PARAM_STR);	
 		$stmt->execute();
 
@@ -36,7 +36,6 @@ class ModelServicio extends Conexion{
 		    inicioServicio = :inicioservicio,
 			fechadeRenovacion = :fechaderenovacion,
 			descripcionServicioExtra = :descripcionservicioextra,
-			estadoServicio = :estadoservicio 
 			WHERE idServicio = :idservicio");
 
 		$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
@@ -47,7 +46,6 @@ class ModelServicio extends Conexion{
 		$stmt->bindParam(":inicioservicio", $datosModel["inicioServicio"], PDO::PARAM_STR);
 		$stmt->bindParam(":fechaderenovacion", $datosModel["fechadeRenovacion"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcionservicioextra", $datosModel["descripcionServicioExtra"], PDO::PARAM_STR);
-		$stmt->bindParam(":estadoservicio", $datosModel["estadoServicio"], PDO::PARAM_STR);
 	
 
 		if($stmt->execute()){
@@ -71,10 +69,10 @@ class ModelServicio extends Conexion{
 	#-----------------------------------
 	public static function registrarServicioModel($datosModel){
 		$stmt = Conexion::conectar()->prepare(
-			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra,estadoServicio) 
+			"INSERT INTO Servicio(RFC,nombrePaquete,costoServicio,descripcion,inicioServicio,fechadeRenovacion,descripcionServicioExtra) 
 		
 			VALUES (
-			:rfc,:nombrepaquete,:costoservicio,:descripcion,:inicioservicio,:fechaderenovacion,:descripcionservicioextra,:estadoservicio)");	
+			:rfc,:nombrepaquete,:costoservicio,:descripcion,:inicioservicio,:fechaderenovacion,:descripcionservicioextra,)");	
 		//$stmt->bindParam(":idservicio", $datosModel["idServicio"], PDO::PARAM_STR);
 		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrepaquete", $datosModel["nombrePaquete"], PDO::PARAM_STR);
@@ -86,7 +84,6 @@ class ModelServicio extends Conexion{
 		
 		$stmt->bindParam(":fechaderenovacion", $datosModel["fechadeRenovacion"], PDO::PARAM_STR);
 		$stmt->bindParam(":descripcionservicioextra", $datosModel["descripcionServicioExtra"], PDO::PARAM_STR);
-		$stmt->bindParam(":estadoservicio", $datosModel["estadoServicio"], PDO::PARAM_STR);
      	if($stmt->execute()){
 			return "success";
 		}

@@ -106,14 +106,12 @@
 		         $rfcAnterior = $_POST["rfcAnterior"];
                  $re = '/^[a-zA-Z-\s]*$/';
 
-         
 
           #metodos de validacion
 	      //---------------------------------------------------------------------
-	      //     
-	           
-	            if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-				 		  $errores .= 'Por favor ingresa un correo valido <br />';
+	      //   
+	           if (!preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/' ,$correo)) {
+  					  $errores = "Ingresa un correo  valido";
 			    }
 			    elseif (!preg_match($re,$cliente))
 			    {
@@ -131,18 +129,28 @@
 			    {
 			        $errores = "Ingresa un numero valido";
 			    }
-			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
+			     elseif(!preg_match("/^[a-zA-Z0-9_\s]*$/",$direccioncliente))
 			    {
 			        $errores = "Ingresa una direccion valida";
 			    }
-			    $rfc = trim($rfc);
-			    $numerodeletras ;
-
-			    $numerodeletras= strlen($rfc);
-			    
-			    if (!$numerodeletras  == 13 || $numerodeletras  == 14) {
-			    	 $errores = "Ingresa un RFC valido";
+			    elseif(!preg_match("/([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))/",$rfc))
+			    {
+			        $errores = "Ingresa un RFC valido";
 			    }
+
+
+                 //-------------Validar longitud- RFC-----------
+                $rfc = trim($rfc);
+			    $numerodeletras ;
+                $numerodeletras= strlen($rfc);
+			  
+         
+			    if($numerodeletras == 13 || $numerodeletras == 14) {
+			    	
+			    }else{
+			    	 $errores = "longitud de  RFC no valido";
+			    } 
+                 
 
 
 			    //------------------------GUARDAR DATOS PARA LA BASE DE DATOS---------
@@ -161,6 +169,7 @@
 			     	
 			     	
 	            }else{
+	            	//Comprobrar que no exista RFC iguales
 	            	$respuesta1 = ModelCliente::visualizarClienteModel();
 				    foreach($respuesta1 as $row => $item){
 	                  if ($item["RFC"]==$rfc) {
@@ -223,12 +232,14 @@
 		         $direccioncliente = $this->direccionCliente;
 		         $correo = $this->correo;
                  $re = '/^[a-zA-Z-\s]*$/';
+                
 
 				 #metodos de validacion
 				//---------------------------------------------------------------------
 				 
-	            if(!filter_var($correo, FILTER_VALIDATE_EMAIL)){
-				 		  $errores .= 'Por favor ingresa un correo valido <br />';
+				
+	           if (!preg_match('/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/' ,$correo)) {
+  					  $errores = "Ingresa un correo  valido";
 			    }
 			    elseif (!preg_match($re,$cliente))
 			    {
@@ -238,29 +249,42 @@
 			    {
 			        $errores = "Ingresa un telefono valido";
 			    }
-			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
-			    {
-			        $errores = "Ingresa un numero valido";
-			    }
-			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$direccioncliente))
-			    {
-			        $errores = "Ingresa una direccion valida";
-			    }
 			     elseif (!preg_match("/^(www)\.([a-z0-9]+)(\.[a-z]+)$/",$dominio))
 			    {
 			        $errores = "Ingresa un dominio valido";
 			    }
-			    $rfc = trim($rfc);
-			    $numerodeletras ;
-
-			    $numerodeletras= strlen($rfc);
-			    
-			    if (!$numerodeletras  == 13 || $numerodeletras  == 14) {
-			    	 $errores = "Ingresa un RFC valido";
+			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
+			    {
+			        $errores = "Ingresa un numero valido";
 			    }
+			     elseif(!preg_match("/([a-zA-z0-9\#\. ]+)/",$direccioncliente))
+			    {
+			        $errores = "Ingresa una direccion valida";
+			    }
+			    elseif(!preg_match("/([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))/",$rfc))
+			    {
+			        $errores = "Ingresa un RFC valido";
+			    }
+
+
+                 //-------------Validar longitud-RFC-----------
+                $rfc = trim($rfc);
+			    $numerodeletras ;
+                $numerodeletras= strlen($rfc);
+			  
+         
+			    if($numerodeletras == 13 || $numerodeletras == 14) {
+			    	
+			    }else{
+			    	 $errores = "longitud de  RFC no valido";
+			    } 
+			    echo $numerodeletras;
+
+
+
 			    
 
-				 #VALIDAR RFC IGUAL
+				 #VALIDAR RFC IGUALES
 	             #-------------------------------------------------------------------
 	             $respuesta1 = ModelCliente::visualizarClienteModel();
 				 foreach($respuesta1 as $row => $item){

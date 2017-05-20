@@ -9,7 +9,7 @@ class ModelCliente extends Conexion{
 
 	public static function visualizarClienteModel(){
 
-		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,totalPago,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente");	
+		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente");	
 		$stmt->execute();
 
 		return $stmt->fetchAll();
@@ -23,7 +23,7 @@ class ModelCliente extends Conexion{
 
 	public static function editarClienteModel($datosModel){
 
-		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,totalPago,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente WHERE RFC= :RFC");
+		$stmt = Conexion::conectar()->prepare("SELECT RFC,nombreCliente, dominio,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa FROM Cliente WHERE RFC= :RFC");
 		$stmt->bindParam(":RFC", $datosModel, PDO::PARAM_STR);	
 		$stmt->execute();
 
@@ -42,7 +42,6 @@ class ModelCliente extends Conexion{
 	    	RFC = :rfc, 
 	    	nombreCliente = :nombrecliente, 
 	    	dominio = :dominio, 
-	    	totalPago = :totalpago, 
 	    	nombreEmpresa = :nombreempresa, 
 	    	telefonoClienteEmpresa = :telefono, 
 	    	direccionClienteEmpresa = :direccion,
@@ -52,7 +51,6 @@ class ModelCliente extends Conexion{
 		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrecliente", $datosModel["nombreCliente"], PDO::PARAM_STR);
 		$stmt->bindParam(":dominio", $datosModel["dominio"], PDO::PARAM_STR);
-		$stmt->bindParam(":totalpago", $datosModel["totalPago"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombreempresa", $datosModel["nombreEmpresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefono", $datosModel["telefonoClienteEmpresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":direccion", $datosModel["direccionClienteEmpresa"], PDO::PARAM_STR);
@@ -82,15 +80,14 @@ class ModelCliente extends Conexion{
 
 
 		$stmt = Conexion::conectar()->prepare(
-			"INSERT INTO Cliente (RFC,nombreCliente,dominio,totalPago,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa ) 
+			"INSERT INTO Cliente (RFC,nombreCliente,dominio,nombreEmpresa,telefonoClienteEmpresa,direccionClienteEmpresa,correoClienteEmpresa ) 
 
 			VALUES (
-			:rfc,:nombrecliente,:dominioh,:totalpago,:nombreempresa,:telefonoclienteempresa,:direccionclienteempresa,:correoclienteempresa)");	
+			:rfc,:nombrecliente,:dominioh,:nombreempresa,:telefonoclienteempresa,:direccionclienteempresa,:correoclienteempresa)");	
 
 		$stmt->bindParam(":rfc", $datosModel["RFC"], PDO::PARAM_STR);
 		$stmt->bindParam(":nombrecliente", $datosModel["nombreCliente"], PDO::PARAM_STR);
 		$stmt->bindParam(":dominioh", $datosModel["dominio"], PDO::PARAM_STR);
-		$stmt->bindParam(":totalpago", $datosModel["totalPago"], PDO::PARAM_INT);
 		$stmt->bindParam(":nombreempresa", $datosModel["nombreEmpresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":telefonoclienteempresa", $datosModel["telefonoClienteEmpresa"], PDO::PARAM_STR);
 		$stmt->bindParam(":direccionclienteempresa", $datosModel["direccionClienteEmpresa"], PDO::PARAM_STR);

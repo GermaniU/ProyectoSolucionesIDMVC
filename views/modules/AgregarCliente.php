@@ -2,6 +2,7 @@
 	<form method="post" id="form-registro">
 		<p>RFC:</p>
 		<input class="form-control" type="text"   placeholder="RFC:" name="RFC" value="<?php if(isset($_POST["RFC"])){echo $_POST["RFC"]; } ?>" required>
+		<a href="http://www.consisa.com.mx/rfc" target="_blank">¿No conoces tu rfc? Generalo</a><br><br>
 
 		<p>Nombre del cliente:</p>
 		<input class="form-control" type="text" placeholder="Nombre:" name="nombreCliente" value="<?php if(isset($_POST["nombreCliente"])){echo $_POST["nombreCliente"]; } ?>" required>
