@@ -12,7 +12,6 @@
 	<link rel="stylesheet" href="views/assets/css/css/dataTables.bootstrap4.min.css">
 	<link rel="stylesheet" href="views/assets/css/css/buttons.bootstrap4.min.css">
 	<link rel="stylesheet" href="views/assets/css/css/bootstrap.min.css">
-
 	<link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
 	<script type="text/javascript" src="views/assets/js/jquery-1.12.4.js"></script>
 	<script type="text/javascript" src="views/assets/js/jquery.dataTables.min.js"></script>
@@ -29,17 +28,9 @@
 	<script type="text/javascript" src="views/assets/js/buttons.colVis.min.js"></script>
 	<script type="text/javascript" src="views/assets/js/Tabla.js"></script>
 	<script type="text/javascript" src="views/assets/js/Advertencia.js"></script>
-
-
-
-
-
-
-
-
 </head>
 
-<body oncontextmenu="return false ">
+<body>
 
  		<?php include "modules/nav.php"; ?>
 

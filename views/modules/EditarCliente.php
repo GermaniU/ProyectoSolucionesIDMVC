@@ -1,10 +1,18 @@
+<?php
+session_start();
+if(!$_SESSION["validar"]){
+	header("location:index.php?action=IngresarAdministrador");
+}
+?>
+<?php
+  $actualizardatos = new MvcControllerCliente();
+  $actualizardatos -> actualizarClienteController();
+?>
 <h1 class="text-center title-form-cli">Editar Cliente</h1>
-
 <?php
   $traerdatos = new MvcControllerCliente();
   $respuesta = $traerdatos-> editarClienteController();
  ?>
-
 <div >
 		<form method="post" id="form-registro">
 
@@ -43,7 +51,3 @@
 		</form>
 </div>
 
-<?php
-  $actualizardatos = new MvcControllerCliente();
-  $actualizardatos -> actualizarClienteController();
-?>

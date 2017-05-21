@@ -1,4 +1,13 @@
-
+<?php
+session_start();
+if(!$_SESSION["validar"]){
+	header("location:index.php?action=IngresarAdministrador");
+}
+?>
+<?php
+$actualizardatos = new MvcControllerServicio();
+$actualizardatos->actualizarServicioController();
+?>
 <?php
 
  $nombrepaquete = new MvcControllerServicio();
@@ -48,7 +57,7 @@ $respuesta = $traerdatos -> editarServicioController();
 ?>
  <div >
 		<form method="post" id="form-registro">
-   
+
 			<input class="form-control" type="hidden" value="<?php echo $respuesta["idServicio"]; ?>" name="idServicio">
 
 			<div class="form-group">
@@ -69,14 +78,14 @@ $respuesta = $traerdatos -> editarServicioController();
 			 		echo $infopaquete["costoPaquete"];
 			 	}else{
                     echo  $respuesta["costoServicio"];
-			 	} 
+			 	}
 			 		# code...
 			 	 ?>" name="costoServicio" readonly="readonly">
 			</div>
 			<div class="form-group">
 				<label>Descripcion del Paquete:</label>
 				<input class="form-control" type="text" value="<?php if (isset( $infopaquete["descripcionPaquete"])) {
-				        echo  $infopaquete["descripcionPaquete"]; 	
+				        echo  $infopaquete["descripcionPaquete"];
 				}else{
 					echo $respuesta["descripcion"];
 					} ?>" name="descripcion" readonly="readonly" >
@@ -102,8 +111,4 @@ $respuesta = $traerdatos -> editarServicioController();
        </form>
    </div>
 
-<?php
-$actualizardatos = new MvcControllerServicio();
-$actualizardatos->actualizarServicioController();
-?>
 

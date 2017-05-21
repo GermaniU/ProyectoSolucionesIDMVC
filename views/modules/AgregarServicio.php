@@ -1,21 +1,16 @@
 <?php
-/*// Motrar todos los errores de PHP
-error_reporting(-1);
-
-// No mostrar los errores de PHP
-error_reporting(0);
-
-// Motrar todos los errores de PHP
-error_reporting(E_ALL);
-
-// Motrar todos los errores de PHP
-ini_set('error_reporting', E_ALL);*/
+session_start();
+if(!$_SESSION["validar"]){
+  header("location:index.php?action=IngresarAdministrador");
+}
 ?>
 <?php
-
- $nombrepaquete = new MvcControllerServicio();
- $nombrespaquetes= $nombrepaquete->ObtenerDatosPaquetes();
-
+    $actualizardatos = new MvcControllerServicio();
+    $actualizardatos->agregarServicioBDController();
+?>
+<?php
+   $nombrepaquete = new MvcControllerServicio();
+   $nombrespaquetes= $nombrepaquete->ObtenerDatosPaquetes();
 ?>
 <div class="text-center">
 
@@ -44,13 +39,10 @@ ini_set('error_reporting', E_ALL);*/
   </form>
 
 </div>
-
 <?php
 $paquete = new MvcControllerServicio();
 $infopaquete = $paquete -> ObtenerDatosPaquete();
-
  ?>
-
 <div class="container text-center form-group">
        <form method="post" id="form-registro">
               <div class="form-group">
@@ -83,7 +75,7 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
 	      </div>
               <div class="form-group">
                      <label>Descripcion del servicio extra</label>
-              	<input type="text"  class="form-control" value="<?php if(isset($_POST["descripcionServicioExtra"])){echo $_POST["descripcionServicioExtra"]; } ?>" name="descripcionServicioExtra" required>
+              	<input type="text" maxlength="150" class="form-control" value="<?php if(isset($_POST["descripcionServicioExtra"])){echo $_POST["descripcionServicioExtra"]; } ?>" name="descripcionServicioExtra" required>
               </div>
               <div class="form-group">
                      <!-- <label>Estado del servicio</label> -->
@@ -93,23 +85,6 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
               	<button type="submit" class="btn btn-primary">Agregar</button>
                 <button type="button" class="btn btn-primary"  onClick="location.href ='index.php?action=RegistrosServicios'">Cancelar</button>
               </div>
-
-
-
 </form>
 
-<?php
 
-  $actualizardatos = new MvcControllerServicio();
-  $actualizardatos->agregarServicioBDController()
-/*if(isset($_GET["action"])){
-
-	if($_GET["action"] == "ok"){
-
-		echo "Registro Exitoso";
-
-	}
-
-}*/
-
-?>

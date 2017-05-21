@@ -1,12 +1,8 @@
 <?php
-
 session_start();
-
 if(!$_SESSION["validar"]){
-
 	header("location:index.php?action=IngresarAdministrador");
 }
-
 ?>
 <h1 class="text-center animated fast fadeIn">Cliente</h1>
 

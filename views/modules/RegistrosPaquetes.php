@@ -6,7 +6,7 @@
 ?>
 <h1 class="text-center animated fast fadeIn">Paquetes</h1>
 	<div class="table-responsive col-sm-12 margin-bottom ">
-		<table id="tdPaquetes" class="table table-striped table-bordered table-hover animated  fadeIn ">
+		<table id="tdPaquetes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn ">
 			<thead>
 			<tr class="table-success">
 				<th>Tipo de paquete</th>

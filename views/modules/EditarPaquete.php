@@ -1,3 +1,13 @@
+<?php
+session_start();
+if(!$_SESSION["validar"]){
+	header("location:index.php?action=IngresarAdministrador");
+}
+?>
+<?php
+    $actualizardatos = new MvcControllerPaquete();
+	$actualizardatos->actualizarPaqueteController();
+?>
 <h1 class="text-center title-form-cli">Editar Paquete</h1>
 <?php
 
@@ -18,7 +28,7 @@
 			 	<input class="form-control" type="text" value="<?php echo $respuesta["nombrePaquete"]; ?>" name="nombrePaquete" required>
 			</div>
 			<div class="form-group">
-				
+
 			 	<input class="form-control" type="hidden" value="<?php echo $respuesta["nombrePaquete"]; ?>" name="nombreAnterior" required>
 			</div>
 
@@ -39,10 +49,3 @@
 
 		</form>
     </div>
-
-
-
-<?php
-    $actualizardatos = new MvcControllerPaquete();
-	$actualizardatos->actualizarPaqueteController();
-?>

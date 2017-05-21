@@ -10,7 +10,7 @@ if(!$_SESSION["validar"]){
 ?>
 <h1 class="text-center animated fast fadeIn">Servicio</h1>
 	<div class="table-responsive col-sm-12 margin-bottom">
-		<table id="tdServicios" class="table table-striped table-bordered table-hover animated  fadeIn">
+		<table id="tdServicios" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn">
 			<thead class="">
 			<tr class="table-success">
 				<th>RFC</th>
