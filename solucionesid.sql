@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: localhost
--- Tiempo de generación: 19-05-2017 a las 23:08:05
+-- Tiempo de generación: 22-05-2017 a las 06:03:40
 -- Versión del servidor: 5.7.18-0ubuntu0.16.04.1
 -- Versión de PHP: 7.0.15-0ubuntu0.16.04.4
 
@@ -54,14 +54,6 @@ CREATE TABLE `Cliente` (
   `correoClienteEmpresa` varchar(100) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
---
--- Volcado de datos para la tabla `Cliente`
---
-
-INSERT INTO `Cliente` (`RFC`, `nombreCliente`, `dominio`, `nombreEmpresa`, `telefonoClienteEmpresa`, `direccionClienteEmpresa`, `correoClienteEmpresa`) VALUES
-('A12S09HJNMBGH', 'Gerardo cetzala', 'www.riconweb.com', 'Rincon Web', '9291928392', 'Calle 35 x 12 y 14 num 34', 'germani.pene@ggg.com'),
-('L23C17B', 'Luis Mota P', 'www.google.com', 'Motita', '9991345672', 'C23 NUMERO 456 POR 57 Y 58', 'crackets@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -73,7 +65,7 @@ CREATE TABLE `Paquete` (
   `idPaquete` int(11) NOT NULL,
   `costoPaquete` int(11) DEFAULT NULL,
   `tipoPaquete` varchar(50) DEFAULT NULL,
-  `descripcionPaquete` varchar(150) DEFAULT NULL
+  `descripcionPaquete` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
@@ -81,8 +73,10 @@ CREATE TABLE `Paquete` (
 --
 
 INSERT INTO `Paquete` (`nombrePaquete`, `idPaquete`, `costoPaquete`, `tipoPaquete`, `descripcionPaquete`) VALUES
-('Paquete Basico', 79, 20000, 'web  w', '1 pagina web 2 correos 1 base de datos '),
-('Host Premium', 80, 20000, 'Host', '21 Host');
+('Basico', 81, 950, 'Hospedaje en internet', 'Espacio en disco duro 3GB,\r\nDominios gratis tipo .com , .org  y .net\r\nSubdominios 5\r\nTrafico de gran capacidad 10 GB\r\nBackup diarios y semanales SI\r\nConexion 155 MB/S\r\nCuentas de correo(e-mail de 50 mb c/u)  5\r\nWebmail    SI\r\nFiltros ANTISPAM (correo no deseado) SI\r\nSIstema Antivirus SI\r\nReenviador de e-mail SI\r\nAuto contestador de e-mail SI\r\nSMTP send email SI\r\nCatch all e-mail SI\r\nPGP MAIL (e-mail encriptado) SI\r\nPHP 5.2 / 7.0  SI\r\nBase de datos MySQL 2\r\nCarpetas cgi-bin SI\r\nWordpress, Joomla, Drupal, etc. SI\r\nMoodle, Chamilo, Dokeos, etc. SI\r\nPrestashop, Magento, OpenCart, etc SI\r\nPanel de control CPanel SI\r\nPÃ¡ginas protegidas por contraseÃ±a SI\r\nFTP cuentas de acceso SI\r\nEstadÃ­sticas detalladas del sitio SI'),
+('Standard', 82, 1600, 'Hospedaje en internet', 'Espacio en disco duro 5GB,\r\nDominios gratis tipo .com , .org  y .net\r\nSubdominios 10\r\nTrafico de gran capacidad 20 GB\r\nBackup diarios y semanales SI\r\nConexion 155 MB/S\r\nCuentas de correo(e-mail de 50 mb c/u)  10\r\nWebmail    SI\r\nFiltros ANTISPAM (correo no deseado) SI\r\nSIstema Antivirus SI\r\nReenviador de e-mail SI\r\nAuto contestador de e-mail SI\r\nSMTP send email SI\r\nCatch all e-mail SI\r\nPGP MAIL (e-mail encriptado) SI\r\nPHP 5.2 / 7.0  SI\r\nBase de datos MySQL 20\r\nCarpetas cgi-bin SI\r\nWordpress, Joomla, Drupal, etc. SI\r\nMoodle, Chamilo, Dokeos, etc. SI\r\nPrestashop, Magento, OpenCart, etc SI\r\nPanel de control CPanel SI\r\nPÃ¡ginas protegidas por contraseÃ±a SI\r\nFTP cuentas de acceso SI\r\nEstadÃ­sticas detalladas del sitio SI'),
+('Profesional', 83, 2600, 'Hospedaje en internet', 'Espacio en disco duro 10GB,\r\nDominios gratis tipo .com , .org  y .net\r\nSubdominios Ilimitado\r\nTrafico de gran capacidad Ilimitado\r\nBackup diarios y semanales SI\r\nConexion 155 MB/S\r\nCuentas de correo(e-mail de 50 mb c/u)  25\r\nWebmail    SI\r\nFiltros ANTISPAM (correo no deseado) SI\r\nSIstema Antivirus SI\r\nReenviador de e-mail SI\r\nAuto contestador de e-mail SI\r\nSMTP send email SI\r\nCatch all e-mail SI\r\nPGP MAIL (e-mail encriptado) SI\r\nPHP 5.2 / 7.0  SI\r\nBase de datos MySQL limitado\r\nCarpetas cgi-bin SI\r\nWordpress, Joomla, Drupal, etc. SI\r\nMoodle, Chamilo, Dokeos, etc. SI\r\nPrestashop, Magento, OpenCart, etc SI\r\nPanel de control CPanel SI\r\nPÃ¡ginas protegidas por contraseÃ±a SI\r\nFTP cuentas de acceso SI\r\nEstadÃ­sticas detalladas del sitio SI'),
+('Corporativo', 84, 3800, 'Hospedaje en internet', 'Espacio en disco duro 30GB,\r\nDominios gratis tipo .com , .org  y .net\r\nSubdominios Ilimitado\r\nTrafico de gran capacidad Ilimitado\r\nBackup diarios y semanales SI\r\nConexion 155 MB/S\r\nCuentas de correo(e-mail de 50 mb c/u)  Ilimitadas\r\nWebmail    SI\r\nFiltros ANTISPAM (correo no deseado) SI\r\nSIstema Antivirus SI\r\nReenviador de e-mail SI\r\nAuto contestador de e-mail SI\r\nSMTP send email SI\r\nCatch all e-mail SI\r\nPGP MAIL (e-mail encriptado) SI\r\nPHP 5.2 / 7.0  SI\r\nBase de datos MySQL Ilimitado\r\nCarpetas cgi-bin SI\r\nWordpress, Joomla, Drupal, etc. SI\r\nMoodle, Chamilo, Dokeos, etc. SI\r\nPrestashop, Magento, OpenCart, etc SI\r\nPanel de control CPanel SI\r\nPÃ¡ginas protegidas por contraseÃ±a SI\r\nFTP cuentas de acceso SI\r\nEstadÃ­sticas detalladas del sitio SI');
 
 -- --------------------------------------------------------
 
@@ -95,19 +89,11 @@ CREATE TABLE `Servicio` (
   `RFC` varchar(13) DEFAULT NULL,
   `nombrePaquete` varchar(30) NOT NULL,
   `costoServicio` int(11) DEFAULT NULL,
-  `descripcion` varchar(150) NOT NULL,
+  `descripcion` text NOT NULL,
   `inicioServicio` date DEFAULT NULL,
   `FechadeRenovacion` date DEFAULT NULL,
-  `descripcionServicioExtra` varchar(150) DEFAULT NULL
+  `descripcionServicioExtra` text
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
-
---
--- Volcado de datos para la tabla `Servicio`
---
-
-INSERT INTO `Servicio` (`idServicio`, `RFC`, `nombrePaquete`, `costoServicio`, `descripcion`, `inicioServicio`, `FechadeRenovacion`, `descripcionServicioExtra`) VALUES
-(15, 'G23C17B', '', 20000, '1 pagina web 2 correos 1 base de datos ', '2010-01-01', '2010-12-01', 'q2eqweqweqewe'),
-(16, 'L23C17B', 'Paquete Basico', 20000, '1 pagina web 2 correos 1 base de datos ', '2010-01-01', '2010-01-01', 'dkaslasldasd');
 
 --
 -- Índices para tablas volcadas
@@ -148,12 +134,12 @@ ALTER TABLE `Servicio`
 -- AUTO_INCREMENT de la tabla `Paquete`
 --
 ALTER TABLE `Paquete`
-  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=81;
+  MODIFY `idPaquete` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=85;
 --
 -- AUTO_INCREMENT de la tabla `Servicio`
 --
 ALTER TABLE `Servicio`
-  MODIFY `idServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `idServicio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
