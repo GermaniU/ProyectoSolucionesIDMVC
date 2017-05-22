@@ -29,7 +29,8 @@ if(!$_SESSION["validar"]){
 	</div>
 	<div class="form-group">
 		<label for="Descripcion del paquete">Descripcion del paquete:</label>
-		<input class="form-control" type="text" maxlength="150" name="descripcionPaquete" value="<?php if(isset($_POST["descripcionPaquete"])){echo $_POST["descripcionPaquete"]; } ?>" required>
+		<!-- <input class="form-control" type="text" maxlength="150" name="descripcionPaquete" value="" required> -->
+		<textarea name="descripcionPaquete" class="form-control" id=""  rows="5"></textarea>
 	</div>
 	<div class="form-group">
 		<label for="Costo del paquete">Costo del paquete:</label>

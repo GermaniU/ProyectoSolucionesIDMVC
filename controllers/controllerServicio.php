@@ -130,6 +130,12 @@
  	   	       	//------------------Metodos de validacion------------------------------
  	   			  $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
+
+ 	   			  if($fechaRenovacionServicio[0]>$fechaInicioServicio[0]||$fechaRenovacionServicio[1]>$fechaInicioServicio[1]||$fechaRenovacionServicio[2]>$fechaInicioServicio[2]) {
+                  }else{
+                  	 $errores = "La fecha de renovacion debe ser mayor a fecha inicio servicio";
+
+                  }
   
                   if ($fechaInicioServicio[0]<2008) {
                   	 $errores = "Ingresa un año válido";
@@ -137,18 +143,27 @@
                   elseif($fechaRenovacionServicio[0]<2008) {
                   	 $errores = "Ingresa un año válido";
                   }
+
                   elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
 			      { 
 			        $errores = "Ingresa un numero válido"; 
 			      }
-			      elseif (!preg_match("/[a-zA-Z-0-9]/",$descripcion)) 
+			/*      elseif (!preg_match("/[a-zA-Z-0-9]/",$descripcion)) 
 			      { 
 			        $errores = "Por favor selecciona un paquete"; 
-			      }
-			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
-			      { 
-			        $errores = "Ingresa una descripción válida"; 
-			      }    
+			      }*/
+				  elseif (!preg_match("/[a-zA-Z].[0-9]|[a-zA-Z]+([,]|[a-zA-Z].[0-9]|[a-zA-Z])$/",$descripcion))
+				  {
+				      $errores = "Ingresa una descripcion válida";
+				  }
+				   elseif (!preg_match("/^[a-zA-Z]|[0-9]|[a-zA-Z]+([,]|[a-zA-Z].[0-9]|[a-zA-Z])$/",$descripcionServicioExtra))
+				  {
+				      $errores = "Ingresa una descripcion servicio extra válida";
+				  }
+				     
+				     
+
+			    
 
                      
 	            #--------------------------------------------------------------------  
@@ -236,8 +251,11 @@
                   $fechaInicioServicio= explode("-", $inicioServicio); 
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
 
+ 	   			   if($fechaRenovacionServicio[0]>$fechaInicioServicio[0]||$fechaRenovacionServicio[1]>$fechaInicioServicio[1]||$fechaRenovacionServicio[2]>$fechaInicioServicio[2]) {
+                  }else{
+                  	 $errores = "La fecha de renovacion debe ser mayor a fecha inicio servicio";
 
-  
+                  }
                   if ($fechaInicioServicio[0] < 2008 || $fechaInicioServicio[1]<0 ||$fechaInicioServicio[2]<0) {
                   	 $errores = "Ingresa un año válido";
                   }
@@ -249,11 +267,20 @@
 			        $errores = "Ingresa un numero válido"; 
 			      }
 			      
+		/*	      
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
 			        $errores = "Ingresa una descripcion válida"; 
-			      }
-			    
+			      }*/
+			      elseif (!preg_match("/^[a-zA-Z]|[0-9]|[a-zA-Z]+([,]|[a-zA-Z].[0-9]|[a-zA-Z])$/",$descripcionServicioExtra))
+				  {
+				      $errores = "Ingresa una descripcion servicioextra válida";
+				  }
+				    elseif (!preg_match("/[a-zA-Z].[0-9]|[a-zA-Z]+([,])$/",$descripcion))
+				  {
+				      $errores = "Ingresa una descripcion válida";
+				  }
+				
 	             
           //-----------------------------------
 

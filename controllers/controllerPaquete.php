@@ -47,8 +47,8 @@
 
 		foreach($respuesta as $row => $item){
 		echo'<tr>
-				<td>'.$item["tipoPaquete"].'</td>
 				<td>'.$item["nombrePaquete"].'</td>
+				<td>'.$item["tipoPaquete"].'</td>
 				<td>'.$item["descripcionPaquete"].'</td>
 				<td>'.$item["costoPaquete"].'</td>
 								<td><a href="index.php?action=EditarPaquete&idPaquete='.$item["idPaquete"].'"><button class="btn btn-outline-primary"><i class="fa fa-pencil" aria-hidden="true"></i></button></a>
@@ -92,15 +92,15 @@
 			    if ($costoPaquete < 0) {
 			        $errores = "Ingresa una cantidad válida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
+			    elseif (!preg_match("/[a-zA-Z].[0-9]|[a-zA-Z]+([,])$/",$descripcionPaquete))
 			    {
 			        $errores = "Ingresa una descripcion válida";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
+			    elseif (!preg_match("/{^[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
 			    {
 			        $errores = "Ingresa un nombre de paquete válido";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
+			    elseif (!preg_match("/^[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
 			    {
 			        $errores = "Ingresa un nombre de paquete válido";
 			    }
@@ -181,15 +181,15 @@
 			    if ($costoPaquete < 0) {
 			        $errores = "Ingresa una cantidad válida positiva";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
+			    elseif (!preg_match("/[a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
 			    {
 			        $errores = "Ingresa una descripcion válida";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
+			    elseif (!preg_match("/^[a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
 			    {
 			        $errores = "Ingresa un nombre de paquete válido";
 			    }
-			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
+			    elseif (!preg_match("/^[a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
 			    {
 			        $errores = "Ingresa un nombre de paquete válido";
 			    }

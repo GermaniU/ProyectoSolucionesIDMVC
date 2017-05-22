@@ -63,7 +63,8 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
               </div>
               <div class="form-group">
                      <label>Descripcion del Paquete</label>
-              	<input type="text" readonly="readonly" class="form-control" value="<?php echo $infopaquete["descripcionPaquete"];  ?>" name="descripcion" >
+              <!-- 	<input type="text" class="form-control" value="" name="descripcion" > -->
+                <textarea name="descripcion" class="form-control"  readonly="readonly" rows="5"><?php echo $infopaquete["descripcionPaquete"];  ?></textarea>
               </div>
 	      <div class="form-group">
                      <label>Inicio del servicio</label>
@@ -75,7 +76,8 @@ $infopaquete = $paquete -> ObtenerDatosPaquete();
 	      </div>
               <div class="form-group">
                      <label>Descripcion del servicio extra</label>
-              	<input type="text" maxlength="150" class="form-control" value="<?php if(isset($_POST["descripcionServicioExtra"])){echo $_POST["descripcionServicioExtra"]; } ?>" name="descripcionServicioExtra" required>
+            <!--   	<input type="text" maxlength="150" class="form-control" value="" name="descripcionServicioExtra" required> -->
+                <textarea name="descripcionServicioExtra" class="form-control" rows="3"><?php if(isset($_POST["descripcionServicioExtra"])){echo $_POST["descripcionServicioExtra"]; } ?></textarea>
               </div>
               <div class="form-group">
                      <!-- <label>Estado del servicio</label> -->

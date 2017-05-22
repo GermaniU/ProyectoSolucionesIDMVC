@@ -9,8 +9,8 @@
 		<table id="tdPaquetes" class="table table-responsive table-striped table-bordered table-hover animated  fadeIn ">
 			<thead>
 			<tr class="table-success">
-				<th>Tipo de paquete</th>
 				<th>Nombre del paquete</th>
+				<th>Tipo de paquete</th>
 				<th>Descripci&oacute;n del paquete</th>
 				<th>Costo del paquete</th>
 				<th></th>

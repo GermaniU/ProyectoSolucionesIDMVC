@@ -38,7 +38,7 @@ if(!$_SESSION["validar"]){
 			</div>
 			<div class="form-group">
 				<label>Descripcion del paquete:</label>
-				<input class="form-control" type="text" value="<?php echo $respuesta["descripcionPaquete"]; ?>" name="descripcionPaquete" required>
+				<textarea name="descripcionPaquete" class="form-control" id="" rows="5"><?php echo $respuesta["descripcionPaquete"]; ?></textarea>
 			</div>
 			<div class="form-group">
 				<!-- <label>Estado del paquete:</label> -->

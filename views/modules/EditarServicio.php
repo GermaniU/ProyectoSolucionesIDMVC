@@ -84,11 +84,12 @@ $respuesta = $traerdatos -> editarServicioController();
 			</div>
 			<div class="form-group">
 				<label>Descripcion del Paquete:</label>
-				<input class="form-control" type="text" value="<?php if (isset( $infopaquete["descripcionPaquete"])) {
+				<!-- <input class="form-control" type="text" value="" name="descripcion"  > -->
+				<textarea name="descripcion" class="form-control" rows="5" readonly="readonly"><?php if (isset( $infopaquete["descripcionPaquete"])) {
 				        echo  $infopaquete["descripcionPaquete"];
 				}else{
 					echo $respuesta["descripcion"];
-					} ?>" name="descripcion" readonly="readonly" >
+					} ?></textarea>
 			</div>
 			<div class="form-group">
 				<label>Fecha inicio servicio:</label>
@@ -100,7 +101,9 @@ $respuesta = $traerdatos -> editarServicioController();
 			</div>
 			<div class="form-group">
 				<label>Descripcion complemento extra:</label>
-				<input class="form-control" type="text" value="<?php echo $respuesta["descripcionServicioExtra"]; ?>" name="descripcionServicioExtra" required>
+<!-- 				<input class="form-control" type="text" value="" name="descripcionServicioExtra" required>
+ -->				<textarea name="descripcionServicioExtra" class="form-control" rows="3"><?php echo $respuesta["descripcionServicioExtra"]; ?></textarea>
+
 			</div>
 			<div class="form-group">
 <!-- 				<label>Estado del servicio:</label>
