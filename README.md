@@ -1,7 +1,6 @@
-ProyectoSolucionesIDMVC
+# ProyectoSolucionesIDMVC  
 
-
-usuario: admin
-password: admin
-
-Avance 40%
+__Ingresar al sistema:__
+```sh
+Usuario  : admin
+Password : ad
