@@ -90,19 +90,19 @@
           #metodos de validacion
 	      //---------------------------------------------------------------------
 			    if ($costoPaquete < 0) {
-			        $errores = "ingresa una cantidad valida positiva";
+			        $errores = "Ingresa una cantidad válida positiva";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
 			    {
-			        $errores = "Ingresa una descripcion valida";
+			        $errores = "Ingresa una descripcion válida";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
 			    {
-			        $errores = "Ingresa un nombre de paquete valido";
+			        $errores = "Ingresa un nombre de paquete válido";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
 			    {
-			        $errores = "Ingresa un nombre de paquete valido";
+			        $errores = "Ingresa un nombre de paquete válido";
 			    }
 			    if ($nombrePaquete == $nombreAnterior) {  	
 	            
@@ -179,19 +179,19 @@
 	      //---------------------------------------------------------------------
 
 			    if ($costoPaquete < 0) {
-			        $errores = "ingresa una cantidad valida positiva";
+			        $errores = "Ingresa una cantidad válida positiva";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$descripcionPaquete))
 			    {
-			        $errores = "Ingresa una descripcion valida";
+			        $errores = "Ingresa una descripcion válida";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$nombrePaquete))
 			    {
-			        $errores = "Ingresa un nombre de paquete valido";
+			        $errores = "Ingresa un nombre de paquete válido";
 			    }
 			    elseif (!preg_match("/[_a-zA-Z].[0-9]|[a-zA-Z]$/",$tipoPaquete))
 			    {
-			        $errores = "Ingresa un nombre de paquete valido";
+			        $errores = "Ingresa un nombre de paquete válido";
 			    }
 			    #VALIDAR nombres IGUAL
 	            #-------------------------------------------------------------------

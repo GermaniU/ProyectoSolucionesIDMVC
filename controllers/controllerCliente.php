@@ -115,27 +115,27 @@
 			    }
 			    elseif (!preg_match($re,$cliente))
 			    {
-			        $errores = "Ingresa un nombre  valido";
+			        $errores = "Ingresa un nombre  válido";
 			    }
 			    elseif (!preg_match("/^[0-9]{10}$/",$telefono))
 			    {
-			        $errores = "Ingresa un telefono valido";
+			        $errores = "Ingresa un telefono válido";
 			    }
 			     elseif (!preg_match("/^(www)\.([a-z0-9]+)(\.[a-z]+)$/",$dominio))
 			    {
-			        $errores = "Ingresa un dominio valido";
+			        $errores = "Ingresa un dominio válido";
 			    }
 			    elseif($totalpago < 0 ) //check for a pattern of 91-0123456789
 			    {
-			        $errores = "Ingresa un numero valido";
+			        $errores = "Ingresa un numero válido";
 			    }
 			     elseif(!preg_match("/^[a-zA-Z0-9_\s]*$/",$direccioncliente))
 			    {
-			        $errores = "Ingresa una direccion valida";
+			        $errores = "Ingresa una direccion válida";
 			    }
 			    elseif(!preg_match("/([A-ZÑ\x26]{3,4}([0-9]{2})(0[1-9]|1[0-2])(0[1-9]|1[0-9]|2[0-9]|3[0-1]))((-)?([A-Z\d]{3}))/",$rfc))
 			    {
-			        $errores = "Ingresa un RFC valido";
+			        $errores = "Ingresa un RFC válido";
 			    }
 
 
@@ -148,7 +148,7 @@
 			    if($numerodeletras == 13 || $numerodeletras == 14) {
 			    	
 			    }else{
-			    	 $errores = "longitud de  RFC no valido";
+			    	 $errores = "longitud de  RFC no válido";
 			    } 
                  
 

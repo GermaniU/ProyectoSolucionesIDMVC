@@ -132,22 +132,22 @@
  	   			  $fechaRenovacionServicio= explode("-" ,$fechadeRenovacion);
   
                   if ($fechaInicioServicio[0]<2008) {
-                  	 $errores = "ingresa un año valido";
+                  	 $errores = "Ingresa un año válido";
                   }
                   elseif($fechaRenovacionServicio[0]<2008) {
-                  	 $errores = "ingresa un año valido";
+                  	 $errores = "Ingresa un año válido";
                   }
                   elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
 			      { 
-			        $errores = "Ingresa un numero valido"; 
+			        $errores = "Ingresa un numero válido"; 
 			      }
 			      elseif (!preg_match("/[a-zA-Z-0-9]/",$descripcion)) 
 			      { 
-			        $errores = "Por  favor selecciona un paquete"; 
+			        $errores = "Por favor selecciona un paquete"; 
 			      }
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
-			        $errores = "Ingresa una descripcion valida"; 
+			        $errores = "Ingresa una descripción válida"; 
 			      }    
 
                      
@@ -170,7 +170,7 @@
 	             $respuesta1 = ModelServicio::visualizarServicioModel();
 				 foreach($respuesta1 as $row => $item){
 	                  if ($item["RFC"]==$RFC) {
-	              	  		$errores ="Ya se ha agregado un servicio a este clientes";
+	              	  		$errores ="Ya se ha agregado un servicio a este cliente";
 	              	  }
 	             }
 
@@ -239,19 +239,19 @@
 
   
                   if ($fechaInicioServicio[0] < 2008 || $fechaInicioServicio[1]<0 ||$fechaInicioServicio[2]<0) {
-                  	 $errores = "ingresa un año valido";
+                  	 $errores = "Ingresa un año válido";
                   }
                   elseif($fechaRenovacionServicio[0] < 2008 || $fechaRenovacionServicio[1]<0 ||$fechaInicioServicio[2]<0) {
-                  	 $errores = "ingresa un año valido";
+                  	 $errores = "Ingresa un año válido";
                   }
                   elseif($costoServicio < 0 ) //check for a pattern of 91-0123456789 
 			      { 
-			        $errores = "Ingresa un numero valido"; 
+			        $errores = "Ingresa un numero válido"; 
 			      }
 			      
 			      elseif (!preg_match("/[a-zA-Z-0-9]$/",$descripcionServicioExtra)) 
 			      { 
-			        $errores = "Ingresa una descripcion valida"; 
+			        $errores = "Ingresa una descripcion válida"; 
 			      }
 			    
 	             
